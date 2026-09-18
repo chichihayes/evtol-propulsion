@@ -374,6 +374,25 @@
       text. Stage 1's report deliberately has no summary section &mdash; it feeds Stage 2 directly, so
       nothing gets condensed away before the model that needs the full detail sees it.</figcaption>
     </figure>
+
+    <h3>Does HyDE still earn its place once the model reads everything anyway?</h3>
+    <p>Worth asking directly: once Stage 1 reads the full corpus instead of retrieving from it, is the
+    HyDE call still doing anything, or is it a leftover from the retrieval-era architecture? Tested it
+    directly &mdash; same design description, same corpus, same model, run three ways: with HyDE, with
+    two competing HyDE framings stitched together, and with no HyDE at all.</p>
+    <p>With no HyDE, Stage 1 still caught every issue stated directly in the design description, but
+    missed the issues that only emerge from connecting two separate parts of it &mdash; exactly the
+    "reasoning-intensive" gap from Chapter 2, just showing up one stage later than expected. Stacking
+    two HyDE framings together didn't fix that either; it diluted both into vaguer gaps instead of
+    sharpening either one. The version that actually surfaced one of the hard, cross-cutting findings
+    cleanly, with a specific clause citation, was the single, plain HyDE call this pipeline runs today.</p>
+    <div class="callout">
+      <span class="k">Honest limitation</span>
+      <p>This isn't a solved problem, just a kept one: HyDE's own output varies between runs on identical
+      input, and whichever cross-cutting issue it happens to name is the one Stage 1 reliably elaborates
+      on &mdash; the ones it doesn't name are the ones most likely to get missed. HyDE measurably helps
+      here; it doesn't yet catch everything, every time.</p>
+    </div>
   </section>
 
   <section id="evidence">

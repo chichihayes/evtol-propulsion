@@ -69,6 +69,4 @@ async function callOpenRouter(systemPrompt, userMessage, maxTokens, model = "dee
   return { text: content.trim(), usage: data.usage };
 }
 
-const HYDE_MODEL = "anthropic/claude-sonnet-4.6";
-
-module.exports = { HYDE_SYSTEM_PROMPT, STAGE1_SYSTEM_PROMPT, STAGE2_SYSTEM_PROMPT, readCorpus, callOpenRouter, HYDE_MODEL };
+module.exports = { HYDE_SYSTEM_PROMPT, STAGE1_SYSTEM_PROMPT, STAGE2_SYSTEM_PROMPT, readCorpus, callOpenRouter };
