@@ -318,64 +318,76 @@
     &mdash; at once and reasons over it directly.</p>
 
     <figure>
-      <svg viewBox="0 0 700 330" role="img" aria-label="Flow diagram: a design description feeds two parallel HyDE calls, combined and fed with the full stage 1 corpus into a Stage 1 main call, producing a compliance report with no summary section; that report then feeds two more parallel HyDE calls, combined with the stage 1 plus stage 2 technical corpus into a Stage 2 main call, producing ranked design fix recommendations.">
+      <svg viewBox="0 0 620 610" role="img" aria-label="Top to bottom flow diagram. Stage 1: a design description feeds two parallel HyDE calls that get combined; that combined framing, together with the design and the full stage 1 corpus, feeds a Stage 1 main call, producing a compliance report with no summary section. Stage 2: that report feeds two more parallel HyDE calls, combined; that framing, together with the report and the stage 1 plus stage 2 technical corpus, feeds a Stage 2 main call, producing ranked design fix recommendations.">
         <defs>
           <marker id="arr3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
             <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
           </marker>
         </defs>
 
-        <rect x="16" y="20" width="150" height="44" rx="7" fill="var(--paper-2)" stroke="currentColor" stroke-width="1"/>
-        <text class="dtext" x="91" y="38" text-anchor="middle" font-size="11" font-weight="600" fill="currentColor">design description</text>
-        <text class="dtext" x="91" y="53" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.6">engineer's input</text>
+        <text class="dtext" x="0" y="14" font-size="10.5" font-weight="650" fill="var(--accent)" letter-spacing="0.06em">STAGE 1</text>
 
-        <line x1="91" y1="64" x2="91" y2="100" stroke="currentColor" stroke-width="1.2" marker-end="url(#arr3)"/>
-        <rect x="16" y="100" width="150" height="40" rx="7" fill="var(--paper-2)" stroke="currentColor" stroke-width="1"/>
-        <text class="dtext" x="91" y="118" text-anchor="middle" font-size="11" font-weight="600" fill="currentColor">2&times; HyDE calls</text>
-        <text class="dtext" x="91" y="131" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.6">parallel, combined</text>
+        <rect x="0" y="24" width="260" height="42" rx="7" fill="var(--paper-2)" stroke="currentColor" stroke-width="1"/>
+        <text class="dtext" x="130" y="42" text-anchor="middle" font-size="11.5" font-weight="600" fill="currentColor">design description</text>
+        <text class="dtext" x="130" y="57" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.6">engineer's input</text>
 
-        <line x1="91" y1="140" x2="91" y2="176" stroke="currentColor" stroke-width="1.2" marker-end="url(#arr3)"/>
+        <line x1="130" y1="66" x2="130" y2="98" stroke="currentColor" stroke-width="1.3" marker-end="url(#arr3)"/>
 
-        <rect x="200" y="20" width="180" height="44" rx="7" fill="var(--paper-2)" stroke="currentColor" stroke-width="1"/>
-        <text class="dtext" x="290" y="38" text-anchor="middle" font-size="11" font-weight="600" fill="currentColor">stage-1 corpus</text>
-        <text class="dtext" x="290" y="53" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.6">9 docs, ~876K tokens</text>
-        <line x1="290" y1="64" x2="290" y2="176" stroke="currentColor" stroke-width="1.2" marker-end="url(#arr3)"/>
+        <rect x="0" y="98" width="260" height="40" rx="7" fill="var(--paper-2)" stroke="currentColor" stroke-width="1"/>
+        <text class="dtext" x="130" y="116" text-anchor="middle" font-size="11.5" font-weight="600" fill="currentColor">2&times; HyDE calls, combined</text>
+        <text class="dtext" x="130" y="130" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.6">two independent framings, run in parallel</text>
 
-        <line x1="166" y1="120" x2="200" y2="196" stroke="currentColor" stroke-width="1.2" marker-end="url(#arr3)"/>
+        <line x1="130" y1="138" x2="130" y2="170" stroke="currentColor" stroke-width="1.3" marker-end="url(#arr3)"/>
 
-        <rect x="140" y="176" width="300" height="58" rx="8" fill="var(--accent)" opacity="0.12" stroke="var(--accent)" stroke-width="1.4"/>
-        <text class="dtext" x="290" y="200" text-anchor="middle" font-size="12.5" font-weight="650" fill="var(--accent)">Stage 1 main call</text>
-        <text class="dtext" x="290" y="217" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.75">reads design + HyDE excerpt + full corpus at once</text>
-        <text class="dtext" x="290" y="229" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.6">deepseek/deepseek-v4-flash &middot; no summary section</text>
+        <rect x="0" y="170" width="260" height="72" rx="9" fill="var(--accent)" opacity="0.12" stroke="var(--accent)" stroke-width="1.5"/>
+        <text class="dtext" x="130" y="196" text-anchor="middle" font-size="13" font-weight="650" fill="var(--accent)">Stage 1 main call</text>
+        <text class="dtext" x="130" y="213" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.75">reads design + combined HyDE + full corpus</text>
+        <text class="dtext" x="130" y="226" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.6">deepseek/deepseek-v4-flash</text>
+        <text class="dtext" x="130" y="237" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.6">no summary section</text>
 
-        <line x1="290" y1="234" x2="290" y2="270" stroke="currentColor" stroke-width="1.2" marker-end="url(#arr3)"/>
-        <rect x="150" y="270" width="280" height="42" rx="7" fill="var(--paper-2)" stroke="currentColor" stroke-width="1"/>
-        <text class="dtext" x="290" y="288" text-anchor="middle" font-size="11" font-weight="600" fill="currentColor">compliance report</text>
-        <text class="dtext" x="290" y="302" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.6">compliant / non-compliant / gaps, full detail</text>
+        <line x1="330" y1="206" x2="270" y2="206" stroke="currentColor" stroke-width="1.3" marker-end="url(#arr3)"/>
+        <rect x="330" y="181" width="270" height="50" rx="7" fill="var(--paper-2)" stroke="currentColor" stroke-width="1"/>
+        <text class="dtext" x="465" y="200" text-anchor="middle" font-size="11" font-weight="600" fill="currentColor">stage-1 corpus</text>
+        <text class="dtext" x="465" y="215" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.6">9 documents, ~876K tokens</text>
 
-        <line x1="440" y1="291" x2="500" y2="291" stroke="currentColor" stroke-width="1.2" marker-end="url(#arr3)"/>
+        <line x1="130" y1="242" x2="130" y2="274" stroke="currentColor" stroke-width="1.3" marker-end="url(#arr3)"/>
 
-        <rect x="500" y="100" width="150" height="40" rx="7" fill="var(--paper-2)" stroke="currentColor" stroke-width="1"/>
-        <text class="dtext" x="575" y="118" text-anchor="middle" font-size="11" font-weight="600" fill="currentColor">2&times; HyDE calls</text>
-        <text class="dtext" x="575" y="131" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.6">parallel, combined</text>
-        <line x1="500" y1="270" x2="575" y2="140" stroke="currentColor" stroke-width="1.2" marker-end="url(#arr3)" opacity="0.7"/>
+        <rect x="0" y="274" width="260" height="42" rx="7" fill="var(--paper-2)" stroke="currentColor" stroke-width="1"/>
+        <text class="dtext" x="130" y="292" text-anchor="middle" font-size="11.5" font-weight="600" fill="currentColor">compliance report</text>
+        <text class="dtext" x="130" y="307" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.6">compliant / non-compliant / gaps, full detail</text>
 
-        <rect x="500" y="20" width="150" height="44" rx="7" fill="var(--paper-2)" stroke="currentColor" stroke-width="1"/>
-        <text class="dtext" x="575" y="38" text-anchor="middle" font-size="11" font-weight="600" fill="currentColor">+ stage-2 technical</text>
-        <text class="dtext" x="575" y="53" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.6">docs, engineering reference</text>
+        <line x1="0" y1="338" x2="600" y2="338" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4" opacity="0.4"/>
+        <text class="dtext" x="0" y="358" font-size="10.5" font-weight="650" fill="var(--accent-2)" letter-spacing="0.06em">STAGE 2</text>
 
-        <rect x="480" y="176" width="200" height="58" rx="8" fill="var(--accent-2)" opacity="0.14" stroke="var(--accent-2)" stroke-width="1.4"/>
-        <text class="dtext" x="580" y="200" text-anchor="middle" font-size="12.5" font-weight="650" fill="var(--accent-2)">Stage 2 main call</text>
-        <text class="dtext" x="580" y="217" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.75">reads report + HyDE + both corpora</text>
-        <text class="dtext" x="580" y="229" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.6">2&ndash;3 ranked fix options per finding</text>
+        <line x1="130" y1="316" x2="130" y2="374" stroke="currentColor" stroke-width="1.3" marker-end="url(#arr3)"/>
 
-        <line x1="575" y1="140" x2="580" y2="176" stroke="currentColor" stroke-width="1.2" marker-end="url(#arr3)"/>
-        <line x1="575" y1="64" x2="580" y2="176" stroke="currentColor" stroke-width="1.2" marker-end="url(#arr3)" opacity="0.7"/>
+        <rect x="0" y="374" width="260" height="40" rx="7" fill="var(--paper-2)" stroke="currentColor" stroke-width="1"/>
+        <text class="dtext" x="130" y="392" text-anchor="middle" font-size="11.5" font-weight="600" fill="currentColor">2&times; HyDE calls, combined</text>
+        <text class="dtext" x="130" y="406" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.6">two independent framings, run in parallel</text>
+
+        <line x1="130" y1="414" x2="130" y2="446" stroke="currentColor" stroke-width="1.3" marker-end="url(#arr3)"/>
+
+        <rect x="0" y="446" width="260" height="72" rx="9" fill="var(--accent-2)" opacity="0.14" stroke="var(--accent-2)" stroke-width="1.5"/>
+        <text class="dtext" x="130" y="472" text-anchor="middle" font-size="13" font-weight="650" fill="var(--accent-2)">Stage 2 main call</text>
+        <text class="dtext" x="130" y="489" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.75">reads report + combined HyDE + both corpora</text>
+        <text class="dtext" x="130" y="502" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.6">deepseek/deepseek-v4-flash</text>
+        <text class="dtext" x="130" y="513" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.6">2&ndash;3 ranked fix options per finding</text>
+
+        <line x1="330" y1="482" x2="270" y2="482" stroke="currentColor" stroke-width="1.3" marker-end="url(#arr3)"/>
+        <rect x="330" y="457" width="270" height="50" rx="7" fill="var(--paper-2)" stroke="currentColor" stroke-width="1"/>
+        <text class="dtext" x="465" y="476" text-anchor="middle" font-size="11" font-weight="600" fill="currentColor">+ stage-2 technical docs</text>
+        <text class="dtext" x="465" y="491" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.6">engineering reference, alongside stage-1 corpus</text>
+
+        <line x1="130" y1="518" x2="130" y2="550" stroke="currentColor" stroke-width="1.3" marker-end="url(#arr3)"/>
+
+        <rect x="0" y="550" width="260" height="42" rx="7" fill="var(--paper-2)" stroke="currentColor" stroke-width="1"/>
+        <text class="dtext" x="130" y="568" text-anchor="middle" font-size="11.5" font-weight="600" fill="currentColor">design fix recommendations</text>
+        <text class="dtext" x="130" y="583" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.6">2&ndash;3 ranked options per finding, one top pick</text>
       </svg>
-      <figcaption>Fig. 4 &mdash; Every arrow here is a real call in the live app: the HyDE calls are
-      small and cheap, each main call is the one that actually reads and reasons over the source
-      text. Stage 1's report deliberately has no summary section &mdash; it feeds Stage 2 directly, so
-      nothing gets condensed away before the model that needs the full detail sees it.</figcaption>
+      <figcaption>Fig. 4 &mdash; Read top to bottom: every box is a real call in the live app, every side
+      box is extra context merged in at that step. Stage 1's report deliberately has no summary section
+      &mdash; it feeds Stage 2 directly, so nothing gets condensed away before the model that needs the
+      full detail sees it.</figcaption>
     </figure>
 
     <h3>Does HyDE still earn its place once the model reads everything anyway?</h3>
