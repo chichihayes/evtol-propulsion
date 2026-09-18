@@ -1,0 +1,224 @@
+[
+  {
+    "text": "Steady State Thermal Analyses of SCEPTOR X-57\nWingtip Propulsion\nSydney L. Schnulo,\u2217Je\ufb00rey C. Chin,\u2020 and Andrew D. Smith\u2021\nNASA Glenn Research Center, Cleveland, OH, 44135, U.S.A.\nArthur Dubois\u00a7\nJoby Aviation, Santa Cruz, CA, 95060, U.S.A.\nElectric aircraft concepts enable advanced propulsion airframe integration approaches\nthat promise increased e\ufb03ciency as well as reduced emissions and noise. NASA\u2019s fully elec-\ntric Maxwell X-57, developed under the SCEPTOR program, features distributed propul-\nsion across a high aspect ratio wing. There are 14 propulsors in all: 12 high lift motor that\nare only active during take o\ufb00and climb, and 2 larger motors positioned on the wingtips\nthat operate over the entire mission. The power electronics involved in the wingtip propul-\nsion are temperature sensitive and therefore require thermal management. This work fo-\ncuses on the high and low \ufb01delity heat transfer analysis methods performed to ensure that\nthe wingtip motor inverters do not reach their temperature limits. It also explores di\ufb00er-\nent geometry con\ufb01gurations involved in the X-57 development and any thermal concerns.\nAll analyses presented are performed at steady state under stressful op",
+    "page_start": 1,
+    "page_end": 1,
+    "section_ref": null
+  },
+  {
+    "text": "emperature limits. It also explores di\ufb00er-\nent geometry con\ufb01gurations involved in the X-57 development and any thermal concerns.\nAll analyses presented are performed at steady state under stressful operating conditions,\ntherefore predicting temperatures which are considered the worst-case scenario to remain\nconservative.\nNomenclature\nA\nArea, m2\nAR\nAspect Ratio\nCf\nFlow Coe\ufb03cient\nDh\nHydraulic Diameter, m\n\u03b4\nBoundary Layer Thickness, m\nH\nHeat Sink Channel Height, m\nh\nConvective Heat Transfer Coe\ufb03cient, W/m2K\nk\nThermal Conductivity, W/mK\nL\nLength, m\nN\nNumber of Fins\nNu\nNusselt Number\n\u03bd\nKinematic Viscosity of Air, m2/s\nP\nPower, kW\nPr\nPrandtl Number\n\u02d9Q\nHeat Transfer Rate, W\nq\nDynamic Pressure, Pa\nRe\nReynolds Number\n\u03c1\nDensity, kg/m3\nT\nTemperature, \u25e6C\nU\nFlow Velocity, m/s\nV\nVelocity, m/s\nW\nHeat Sink Channel Width, m\nI.\nIntroduction\nIn electric aircraft, temperature limits are not only a major concern in component design, but the\ndissipation of heat is spread across the aircraft. Batteries, power buses, motors, and inverters all carry\na thermal load.1 A major challenge in using power electronics for aircraft propulsion is maintaining safe\noperating temperatures without adding excess weight a",
+    "page_start": 1,
+    "page_end": 1,
+    "section_ref": null
+  },
+  {
+    "text": "r buses, motors, and inverters all carry\na thermal load.1 A major challenge in using power electronics for aircraft propulsion is maintaining safe\noperating temperatures without adding excess weight and drag associated with many thermal management\n\u2217Aerospace Engineer, Propulsion Systems Analysis Branch, sydney.l.schnulo@nasa.gov, and AIAA Member.\n\u2020Aerospace Engineer, Propulsion Systems Analysis Branch, je\ufb00rey.c.chin@nasa.gov, and AIAA Member.\n\u2021Aerospace Engineer, Vantage Partners, andrew.d.smith-1@nasa.gov, and AIAA Member.\n\u00a7Aeronautical Engineer, Joby Aviation, arthur.dubois@jobyaviation.com, AIAA Member.\n1 of 14\nAmerican Institute of Aeronautics and Astronautics",
+    "page_start": 1,
+    "page_end": 1,
+    "section_ref": null
+  },
+  {
+    "text": "age Partners, andrew.d.smith-1@nasa.gov, and AIAA Member.\n\u00a7Aeronautical Engineer, Joby Aviation, arthur.dubois@jobyaviation.com, AIAA Member.\n1 of 14\nAmerican Institute of Aeronautics and Astronautics\n\nmethods, such as implementation of an active cooling loop or external heat sinks.\nTraditional internal\ncombustion engines may produce much more heat than electric components, but this waste heat is expelled\nthrough the exhaust. Many unique power electronic cooling architectures have been explored to minimize the\nnegative impact of adding means of cooling.2 The cooling method explored in this paper involves allowing\n\ufb02ow to pass through the X-57 wingtip nacelle of the cruise propulsion system to passively cool the motor\nand inverters in series.\nA.\nBackground\nNASA is collaborating with multiple industry partners through the Scalable Convergent Electric Propulsion\nTechnology Operations Research (SCEPTOR) program to develop a new generation of aircraft which leverage\npropulsion airframe integration and boundary layer interaction to improve the overall energy consumption\nand aircraft weight over conventional internal combustion engines. The research testbed, shown in \ufb01gure 1,\nhas become th",
+    "page_start": 1,
+    "page_end": 2,
+    "section_ref": null
+  },
+  {
+    "text": "ration and boundary layer interaction to improve the overall energy consumption\nand aircraft weight over conventional internal combustion engines. The research testbed, shown in \ufb01gure 1,\nhas become the \ufb01rst aircraft in 10 years to be given a NASA X-plane designation: the Maxwell X-57. The\nFigure 1: NASA\u2019s Scalable Convergent Electric Propulsion Technology Operations Research (SCEPTOR)\n\ufb01nal fully electric X-57 aircraft concept with distributed propulsion.\nproject succeeds and is informed by previous NASA distributed electric propulsion (DEP) research endeavors\nincluding HEIST and LEAPTECH.3 The plane is being developed in progressively complex modi\ufb01cations,\nor mods. Mod I is the baseline: a stock Tecnam P2006T. The \ufb01nal design, Mod IV, is the Tecnam plane\nout\ufb01tted with a high aspect ratio wing and batteries in the fuselage. Six small high lift motors span the\nleading edge of each high aspect ratio wing to enable a 2.5 times reduction in wing area and are ultimately\nintended to provide a 4.8 times reduction in energy at cruise over the original Tecnam P2006T aircraft.4\nThe high lift motors are only active during takeo\ufb00and climb; during other segments of the mission, their\npropellers",
+    "page_start": 2,
+    "page_end": 2,
+    "section_ref": null
+  },
+  {
+    "text": "4.8 times reduction in energy at cruise over the original Tecnam P2006T aircraft.4\nThe high lift motors are only active during takeo\ufb00and climb; during other segments of the mission, their\npropellers collapse aerodynamically against their nacelles to reduce drag.\nB.\nWingtip Propulsor Cooling Architecture\nPrimary propulsion power is derived from two larger cruise propulsors mounted to the aircraft wingtips. The\nnacelle ingests air which cools the outrunner permanent magnet motors through a radial heat sink placed on\nthe inner radius of the stator.5 Arthur Dubois and Robert Christie completed the motor heat sink design in\nprevious work.2 The geometry of the nacelle \ufb02ow path is shown in \ufb01gure 2.\n2 of 14\nAmerican Institute of Aeronautics and Astronautics",
+    "page_start": 2,
+    "page_end": 2,
+    "section_ref": null
+  },
+  {
+    "text": "Dubois and Robert Christie completed the motor heat sink design in\nprevious work.2 The geometry of the nacelle \ufb02ow path is shown in \ufb01gure 2.\n2 of 14\nAmerican Institute of Aeronautics and Astronautics\n\nFigure 2: Free stream air \ufb02ows through the wingtip nacelle, \ufb01rst through the motor, then it is ducted\nthrough the heat sink where it leaves the nacelle through the exhaust hole. It is important to note that there\nis another duct and inverter \ufb01lling the other half of the nacelle.\nThe \ufb02ow exhausted from the motor is then directed through the \ufb01nned heat sink that is installed on the\nmotor inverter chip. Flow exits through the exhaust hole. There are two inverters for each cruise motor, so\nthe second inverter/heat sink/duct con\ufb01guration is mirrored over the horizontal center line of \ufb01gure 2. This\ndiscussion details the methods used to ensure adequate cooling to the inverters, as well as considerations for\nthe second modi\ufb01cation of the design.\nII.\nInverter Heat Sink Optimization and Analysis\nEach six phase cruise motor is driven by a pair of custom 3-phase inverters developed by Joby Aviation.\nThe inverters are located mid-nacelle, and have no dedicated supply of cooling air. Because of t",
+    "page_start": 2,
+    "page_end": 3,
+    "section_ref": null
+  },
+  {
+    "text": "Each six phase cruise motor is driven by a pair of custom 3-phase inverters developed by Joby Aviation.\nThe inverters are located mid-nacelle, and have no dedicated supply of cooling air. Because of their relatively\nhigh heat tolerance, the inverter \ufb01n row may be cooled by exhaust air from the motor heat sink annulus.\nNacelle con\ufb01gurations with dedicated cooling inlets were explored, but rejected.5 The most stressful inverter\nthermal conditions occur during the climb phase of \ufb02ight. Each inverter must dissipate no less than 1KW\nwithout exceeding a temperature of 150\u25e6C, while using air that has already been heated by the motor as\na cooling \ufb02uid. To take full advantage of the temperature gradient between the motor exhaust and the\ninverter, the inverter is out\ufb01tted with a traditional parallel plate heat sink, shown in \ufb01gure 3.\nFigure 3: Maxwell X-57 wingtip motor inverter heat sink design.\nThe most challenging aspect of designing the inverter heat sink is the need to balance a high heat exchange\ndensity with low \ufb02ow resistance. Any signi\ufb01cant \ufb02ow restrictions through the inverter have a cascading e\ufb00ect\nresulting in lower \ufb02ow rates, and thus higher exhaust temperatures from the motor.",
+    "page_start": 3,
+    "page_end": 3,
+    "section_ref": null
+  },
+  {
+    "text": "xchange\ndensity with low \ufb02ow resistance. Any signi\ufb01cant \ufb02ow restrictions through the inverter have a cascading e\ufb00ect\nresulting in lower \ufb02ow rates, and thus higher exhaust temperatures from the motor. This makes it more\nlikely that both the motor and inverter assemblies will overheat. Through the design this was taken into\naccount, and the \ufb01nal \ufb02ow \ufb01eld with the \ufb02ow restrictions of the heat sinks is shown in \ufb01gure 2.\n3 of 14\nAmerican Institute of Aeronautics and Astronautics",
+    "page_start": 3,
+    "page_end": 3,
+    "section_ref": null
+  },
+  {
+    "text": "rheat. Through the design this was taken into\naccount, and the \ufb01nal \ufb02ow \ufb01eld with the \ufb02ow restrictions of the heat sinks is shown in \ufb01gure 2.\n3 of 14\nAmerican Institute of Aeronautics and Astronautics\n\nA.\nFin Row Analysis\nThe X57 cruise motor controller is cooled by a row of aluminum \ufb01ns immersed in air that has been pre-heated\nby the cruise motor. The decision to cascade air from the motor to controllers reduces the induced drag\nfrom the cruise nacelle cooling. Unfortunately, it also complicates thermal performance studies of the cruise\ncontrollers. A channel \ufb02ow model was used to estimate controller heat sink performance. Ground testing by\nJoby Aviation has already established an upper limit for available cooling air rates and temperature from\nthe X57 motor. Table 1 gives the heat sink channel dimensions.\nTable 1: Inverter heat sink channel dimensions.\nChannel Width (m)\n0.002\nChannel Height (m)\n0.043\nChannel Length (m)\n0.135\nFin Thickness (m)\n0.002\nNumber of Channels\n59\nNumber of Fins\n60\nA simple continuity check yields an upper limit for the channel Reynolds number, where the greatest\nexpected \ufb02ow rate through the controller heat sink is equal to half of the \ufb02ow through the moto",
+    "page_start": 3,
+    "page_end": 4,
+    "section_ref": null
+  },
+  {
+    "text": "s\n60\nA simple continuity check yields an upper limit for the channel Reynolds number, where the greatest\nexpected \ufb02ow rate through the controller heat sink is equal to half of the \ufb02ow through the motor, as there\nare two inverters per motor:\nUchannel =\nUmotor\n2 \u2217Nchan \u2217Achan\n(1)\nReynolds number can then be established using average channel velocity and dimensions. Having es-\ntablished a \ufb02ow rate and regime for the controller heat sink, a steady state operating temperature can be\nresolved from an internal heat transfer correlation with the given inlet conditions.\n\u02d9Qconvection = h \u2217Achannel \u2217(Tchannel \u2212Tmotorexhaust)\n(2)\nTo \ufb01nd the convective heat transfer coe\ufb03cient, Nusselt number is calculated.6\nh = Nu \u2217k\nDh\n(3)\nNu = 8.325 \u2217(1 \u22122.042 \u2217AR + 3.085 \u2217AR2 \u22122.477 \u2217AR3)\n(4)\nwhere\nAR = Wchannel\nHchannel\n(5)\nWith a total wetted channel area of 0.685 m2, this yields an estimate for the controller convective heat\ntransfer coe\ufb03cient of 56 W/m2K. Solving for the isothermal heat sink temperature, Tcontroller:\nTcontroller = Tmotorexhaust + Qcontroller\nh \u2217Achannel\n(6)\nyields a controller temperature of 91.3\u25e6C. This is assuming steady state at maximum power, where the\n\ufb02ow coming out of the motor is",
+    "page_start": 4,
+    "page_end": 4,
+    "section_ref": null
+  },
+  {
+    "text": "ntroller:\nTcontroller = Tmotorexhaust + Qcontroller\nh \u2217Achannel\n(6)\nyields a controller temperature of 91.3\u25e6C. This is assuming steady state at maximum power, where the\n\ufb02ow coming out of the motor is characterized to be 60\u25e6C. In addition to this low \ufb01delity analysis, high\n\ufb01delity thermal analysis performed in StarCCM showed a maximum temperature of 97\u25e6C, resulting in a 6\npercent error between the models.\n4 of 14\nAmerican Institute of Aeronautics and Astronautics",
+    "page_start": 4,
+    "page_end": 4,
+    "section_ref": null
+  },
+  {
+    "text": ", high\n\ufb01delity thermal analysis performed in StarCCM showed a maximum temperature of 97\u25e6C, resulting in a 6\npercent error between the models.\n4 of 14\nAmerican Institute of Aeronautics and Astronautics\n\nFigure 4: High \ufb01delity steady state analysis done by Joby Aviation in StarCCM yields a max temperature\nof 97\u25e6C.\nB.\nHeat Sink Geometry Design\nIn the \ufb01rst iteration of the heat sink, the \ufb01n tips remained a constant height across the length, as the bottom\nof the heat sink created a sunk in contour to conform to the geometry of the inverter chip. The original heat\nsink design installed on the inverter is shown in \ufb01gure 5\nFigure 5: The original heat sink design featured \ufb01ns that were \ufb02at across the top surfaces, while the bottom\ncurved to stay aligned with the inverter geometry.\nThe question of how this expanding \ufb02ow area as air travels through the heat sink geometry would a\ufb00ect\nheat transfer prompted a high \ufb01delity analysis.\nCFD of a single \ufb02ow channel, performed in COMSOL\nMultiphysics, reveal a recirculation zone where inverter waste heat would not be rejected as e\ufb00ectively. This\nanalysis can be seen in \ufb01gure 6(a).\n5 of 14\nAmerican Institute of Aeronautics and Astronautics",
+    "page_start": 4,
+    "page_end": 5,
+    "section_ref": null
+  },
+  {
+    "text": "iphysics, reveal a recirculation zone where inverter waste heat would not be rejected as e\ufb00ectively. This\nanalysis can be seen in \ufb01gure 6(a).\n5 of 14\nAmerican Institute of Aeronautics and Astronautics\n\n(a) Original \ufb01n gap design.\n(b) Final \ufb01n gap design.\nFigure 6: CFD of the original heat sink (a) single \ufb01n row channel shows a recirculation zone (blue) as the\nbottom dips to keep in contact with the inverter. When the bottom contour is duplicated at the top of the\nheat sink \ufb01ns, the \ufb02ow through the heat sink is more even (b).\nTo mitigate this concern, the contoured \ufb01n tips that are presented in \ufb01gure 3 are implemented. This\ngeometry allows even \ufb02ow through the heat sink (\ufb01gure 6(b)) due to \ufb01n height and therefore \ufb02ow area\nremaining constant, ensuring optimal heat transfer.\nIII.\nDirecting the Flow from the Motor Exhaust to the Heat Sinks\nIn order to maximize the \ufb02ow rate through the inverter heat sink, the \ufb02ow out of the available motor\nannulus area is ducted and forced through the two heat sinks on either side of the motor. If the ducting is\nnot present, then \ufb02ow will be inclined to avoid the resistance that the heat sink introduces. Due to necessary\nstructural bulkheads aft of the",
+    "page_start": 5,
+    "page_end": 6,
+    "section_ref": null
+  },
+  {
+    "text": "eat sinks on either side of the motor. If the ducting is\nnot present, then \ufb02ow will be inclined to avoid the resistance that the heat sink introduces. Due to necessary\nstructural bulkheads aft of the motor and on the inboard side of the cruise nacelle, a \ufb02ow obstruction was\nunavoidable. The duct geometry and expected \ufb02ow \ufb01eld are shown in \ufb01gure 7 Multiple duct designs were\nstudied to mitigate \ufb02ow losses and asymmetry at the front face of the heat sink.\nFigure 7: Inverter inlet duct in context (left), COMSOL result with \ufb02ow obstruction (middle), duct solid\ngeometry with structural cutout (right)\nTo minimize \ufb02ow recirculation past the structural cutout, two designs were compared against a baseline\nduct without any structural interference (\ufb01gure 8). The \ufb01rst design contained a discrete cutout, while the\nalternate design creates a gradual ramping path with the intention of reducing recirculation behind the\ncutout. It was found that the ramp did not improve \ufb02ow, and actually reduced the edge speed further.\n6 of 14\nAmerican Institute of Aeronautics and Astronautics",
+    "page_start": 6,
+    "page_end": 6,
+    "section_ref": null
+  },
+  {
+    "text": "ion of reducing recirculation behind the\ncutout. It was found that the ramp did not improve \ufb02ow, and actually reduced the edge speed further.\n6 of 14\nAmerican Institute of Aeronautics and Astronautics\n\nFigure 8: COMSOL studies (bottom) of di\ufb00erent geometries (top) with respect to structural constraints.\nAs a second study, \ufb02ow vanes were explored to redirect air displaced by the bulkhead cutouts, again\nwith the intention to minimize the \ufb02ow velocity mismatch at the face of the heat sink. Various ba\ufb04ing\ncon\ufb01gurations were explored, varying the number, size and angle of the vanes to partially redirect the \ufb02ow\nfrom fast regions to slower regions blocked by structural members. Each new design was analyzed in a coarse\nmeshed COMSOL CFD to rapidly characterize each con\ufb01guration, as shown in \ufb01gure 9.\nFigure 9: Flow-evening COMSOL studies with added turning vanes in the ducts.\nIt was concluded that fairly even \ufb02ow could be attained with a single turning vane in the center of the\nduct. Looking into the \ufb02ow, displaced \ufb02ow is redirected back toward the right edge of the duct, while the\nhigh speed air on the left side of the vane is expanded to reduce speed. Regardless of the blockage, the\n\ufb02ow",
+    "page_start": 6,
+    "page_end": 7,
+    "section_ref": null
+  },
+  {
+    "text": "nto the \ufb02ow, displaced \ufb02ow is redirected back toward the right edge of the duct, while the\nhigh speed air on the left side of the vane is expanded to reduce speed. Regardless of the blockage, the\n\ufb02ow gradient is primarily due to the left side of the duct drawing in air from a larger segment of the motor\nannulus circumference.\n7 of 14\nAmerican Institute of Aeronautics and Astronautics",
+    "page_start": 7,
+    "page_end": 7,
+    "section_ref": null
+  },
+  {
+    "text": "kage, the\n\ufb02ow gradient is primarily due to the left side of the duct drawing in air from a larger segment of the motor\nannulus circumference.\n7 of 14\nAmerican Institute of Aeronautics and Astronautics\n\nIV.\nConduction Analysis to Structure\nBeyond the thermal analysis of the motor and inverter system, calculations were performed to ensure\nheat spread to the nacelle composites did not surpass the thermal limits of the resins. Heat is transferred to\nthe composite structure through two mechanisms: conduction through the mounting structure, or convection\nthrough the internal air\ufb02ow path. Both scenarios are found to be within composite resin temperature limits\nof 74\u25e6C for the worst-case steady-state scenario condition of maximum power during takeo\ufb00. Structural\ntemperatures would be even lower if the analyses were repeated based on transient conditions, since structures\nwould slowly approach the air temperature, and the exposure to the hot air would only be momentary until\nthe plane climbs into cooler air.\nSteady state CFD was performed in StarCCM to \ufb01rst examine the convection heat scenario. Results show\ninternal air temperatures reaching a maximum of 70\u25e6C at the motor structural bulkhead",
+    "page_start": 7,
+    "page_end": 8,
+    "section_ref": null
+  },
+  {
+    "text": "o cooler air.\nSteady state CFD was performed in StarCCM to \ufb01rst examine the convection heat scenario. Results show\ninternal air temperatures reaching a maximum of 70\u25e6C at the motor structural bulkhead and 72\u25e6C from\nthe inverter heat sink exhaust. This is assuming hot day (49\u25e6C) conditions at Armstrong Flight Research\nCenter. These temperatures serve as an upper bound for the composite temperature. This analysis provides\nextra conservatisms by not factoring in the heat capacity of the composites, and heat spreading though the\nskin that would occur. The uneven temperature pro\ufb01le can be attributed to the asymmetry between the\ninboard and outboard geometry, the nacelle mounting structure reduces air\ufb02ow causing acceptable hot spots.\nThe design provides opportunity for even greater temperature margin by further con\ufb01ning the air within\nadditional ducting at the bulkhead and aft of the inverter. This would restrict the warmest air from ever\n(even momentarily) impinging on the composites.\nA second set of analyses were performed by GRC to model the heat conducted from the motor stator\ncoils, inwards through the internal mounting structure, then back outwards towards the composite nacelle\nstr",
+    "page_start": 8,
+    "page_end": 8,
+    "section_ref": null
+  },
+  {
+    "text": "ond set of analyses were performed by GRC to model the heat conducted from the motor stator\ncoils, inwards through the internal mounting structure, then back outwards towards the composite nacelle\nstructure. This heat path was shown to be insigni\ufb01cant. The long narrow path does not lend itself to e\ufb03cient\nconduction, and the temperature drop in the bulkhead alone is su\ufb03cient to show the temperature drop across\nthe entire system to be much lower than temperatures seen through the convective mechanism examined\nabove. Figure 10 shows a COMSOL FEA analysis showing conduction from an overly conservative internal\ntemperature to a negligible outer temperature that will be in direct contact with the composite structure.\nFigure 10: The purple motor structure (Left) does not directly touch the nacelle. Conduction requires heat\nto travel from the outer perimeter, inward to the middle, through fasteners, and back outwards through\nthe bulkhead. (Right) Heat conduction from the motor to the bulkhead to the outer composite structure.\nAssumes 15W/m2-K convection across bulkhead and 150W/m2-K outside edge convection coe\ufb03cient.\nV.\nModi\ufb01cation II Geometry Discussion\nThe SCEPTOR technologies are being",
+    "page_start": 8,
+    "page_end": 8,
+    "section_ref": null
+  },
+  {
+    "text": "to the outer composite structure.\nAssumes 15W/m2-K convection across bulkhead and 150W/m2-K outside edge convection coe\ufb03cient.\nV.\nModi\ufb01cation II Geometry Discussion\nThe SCEPTOR technologies are being demonstrated in a series of modi\ufb01cations, or Mods. In Mod I,\nthe original Tecnam 2006T aircraft was instrumented and \ufb02own as a baseline. This is the only fuel burning\nMod. Mod II will have the original Tecnam airframe with the Rotax 912S3 piston engines replaced by Joby\ncruise motors and inverters. The motors will be driven by batteries in the fuselage. In Mod III, the high\naspect ratio wing will be added, equipped with high lift nacelles. The cruise motors will operate from the\nwing tips. Finally, Mod IV will operate as described in previous sections. It is important to understand\n8 of 14\nAmerican Institute of Aeronautics and Astronautics",
+    "page_start": 8,
+    "page_end": 8,
+    "section_ref": null
+  },
+  {
+    "text": "cruise motors will operate from the\nwing tips. Finally, Mod IV will operate as described in previous sections. It is important to understand\n8 of 14\nAmerican Institute of Aeronautics and Astronautics\n\nthe di\ufb00erence between the Mod II and Mod IV cruise nacelles for the purpose of this work, as the subtle\ngeometry di\ufb00erences have an e\ufb00ect on the heat transfer occurring in both the motor and the inverter.\nA.\nMod II Ba\ufb04ing Study\nIn the second modi\ufb01cation (Mod II) of the X-57 vehicle, the Tecnam P2006T piston engines are replaced\nwith the cruise motors. Mod II serves as the electric Tecnam baseline and allows for the validation of electric\nmotors, batteries, and instrumentation to inform the later modi\ufb01cations. For the implementation of this\ncon\ufb01guration, cowling is placed around the motor, as shown in \ufb01gure 11.\nFigure 11: Cruise motor with Mod II cowling.\nThe motor is surrounded by cowling which allows a 3/8 inch gap for \ufb02ow over the motor on the top\nhalf and a rapid increase in area on the bottom half. This is cause for concern as it was found that 14\npercent of the motor cooling occurs radially through the nacelle skin to the environment with a convective\nheat transfer coe\ufb03cient of",
+    "page_start": 8,
+    "page_end": 9,
+    "section_ref": null
+  },
+  {
+    "text": "he bottom half. This is cause for concern as it was found that 14\npercent of the motor cooling occurs radially through the nacelle skin to the environment with a convective\nheat transfer coe\ufb03cient of 120 W/m2K in the Mod IV con\ufb01guration where the motor is directly exposed\nto the ambient air.5 To evaluate this concern, low \ufb01delity calculations yield the thermal boundary layer\nthickness over the length of the motor as well as the e\ufb00ective convective heat transfer coe\ufb03cient on both\nthe top and bottom motor surfaces. If the boundary layers do not interact and the heat transfer coe\ufb03cient\nis comparable to the Mod IV value, the motor will still be able to dissipate 14 percent of its heat through\nthe motor skin. Because \ufb02ow is turbulent, the thickness of the thermal boundary layer is comparable to the\nvelocity boundary layer thickness.6 The velocity and thermal boundary layer thickness over the motor \ufb02ow\nare found using equations 7 and 8 respectively.\n\u03b4\nLmotor\n= 0.382 \u2217(\n\u03bd\nU \u2217Lmotor\n)1/5\n(7)\n\u03b4t = \u03b4 \u2217Pr\u22120.33\n(8)\nAs the \ufb02ow moves across the motor surface, it is important that the boundary layer thickness does not\ngrow to half of the gap thickness. If it does grow to larger than half of the g",
+    "page_start": 9,
+    "page_end": 9,
+    "section_ref": null
+  },
+  {
+    "text": "t = \u03b4 \u2217Pr\u22120.33\n(8)\nAs the \ufb02ow moves across the motor surface, it is important that the boundary layer thickness does not\ngrow to half of the gap thickness. If it does grow to larger than half of the gap thickness, then the boundary\nlayer will begin to interact with the boundary layer that exists on the inner lip of the cowling. This interaction\nwill hinder heat transfer with respect to the Mod IV con\ufb01guration where the motor is exposed to free air.\nFigure 12 shows the results of the analysis along the length of the motor.\n9 of 14\nAmerican Institute of Aeronautics and Astronautics",
+    "page_start": 9,
+    "page_end": 9,
+    "section_ref": null
+  },
+  {
+    "text": "to the Mod IV con\ufb01guration where the motor is exposed to free air.\nFigure 12 shows the results of the analysis along the length of the motor.\n9 of 14\nAmerican Institute of Aeronautics and Astronautics\n\nFigure 12: Thermal boundary layer low \ufb01delity analysis results.\nThe gap center line shown is the mid line of the 3/8 inch gap. It is apparent that the boundary layers\nwill not begin to interact along the length of the motor, so the convective heat transfer will occur at the\nsame rate as when the motor is exposed to free stream air. To verify this, the convective heat transfer\ncoe\ufb03cient across the motor is calculated. Analysis of the free stream motor case showed an average heat\ntransfer coe\ufb03cient of 120 W/m2K.5 Equation 9 provides the heat transfer coe\ufb03cient over the length of the\nmotor.\nh = Nu \u2217kair\nLmotor\n(9)\nIn order to calculate the convective heat transfer coe\ufb03cient, Nusselt number must be evaluated. Nusselt\nnumber is found using equation 10.6\nNu = 0.296 \u2217Re \u2217Pr1/3\n(10)\nThe average heat transfer coe\ufb03cient along the length of the motor is found to be roughly 133 W/m2K\nwhich corroborates the boundary layer thickness conclusion that heat transfer will take place with the cowling\nin",
+    "page_start": 9,
+    "page_end": 10,
+    "section_ref": null
+  },
+  {
+    "text": "heat transfer coe\ufb03cient along the length of the motor is found to be roughly 133 W/m2K\nwhich corroborates the boundary layer thickness conclusion that heat transfer will take place with the cowling\nin the same manner as the free stream scenario. The heat transfer coe\ufb03cient across the length of the motor\nis seen in \ufb01gure 13(a).\n(a) Constant 3/8\u201d gap.\n(b) Expanding gap.\nFigure 13: Convective heat transfer coe\ufb03cient across the motor length where there is a constant 3/8\u201d gap\nbetween the ba\ufb04ing and the motor skin (a) and where the gap height is expanding across the motor length\n(b) is 133 W/m2K and 45 W/m2K respectively.\n10 of 14\nAmerican Institute of Aeronautics and Astronautics",
+    "page_start": 10,
+    "page_end": 10,
+    "section_ref": null
+  },
+  {
+    "text": "the ba\ufb04ing and the motor skin (a) and where the gap height is expanding across the motor length\n(b) is 133 W/m2K and 45 W/m2K respectively.\n10 of 14\nAmerican Institute of Aeronautics and Astronautics\n\nIt is important to note that the results shown in \ufb01gure 13(a) assumed a constant 3/8 inch gap, and\ntherefore steady velocity, over the motor. This is the case for the top surface of the motor. In the bottom\nsurface however, the area of the gap expands considerably along the length of the motor. This causes the\n\ufb02ow to decelerate. Taking this deceleration into consideration, the average heat transfer coe\ufb03cient decreases\nsigni\ufb01cantly, to about 45 W/m2K (\ufb01gure 13(b)). This implies that the bottom of the motor will not receive\nas much cooling as the top. To ensure that this is not the case, it was recommended that ba\ufb04ing be added\nto the lower motor to ensure a consistent 3/8\u201d annular gap around the entirety of the motor.\nB.\nMod II Cooling Analysis Script with O\ufb00-Nominal Cases\nMod II not only includes outer ba\ufb04ing, but the ducts and inverters are placed in a slightly di\ufb00erent con\ufb01g-\nuration in which the inverters are seated side-by-side rather than back-to-back, \ufb01gure 14, in order to \ufb01t in",
+    "page_start": 10,
+    "page_end": 11,
+    "section_ref": null
+  },
+  {
+    "text": "includes outer ba\ufb04ing, but the ducts and inverters are placed in a slightly di\ufb00erent con\ufb01g-\nuration in which the inverters are seated side-by-side rather than back-to-back, \ufb01gure 14, in order to \ufb01t into\nthe original Tecnam wing.\nFigure 14: Internal ducting for Mod II inverter cooling\nA python script was developed to support thermal analysis of the Mod II con\ufb01guration and \ufb02ight condition\nmatrix. The steady state thermo-hydraulic model consists of a network of zero dimensional \ufb02uid nodes\nconnected by \ufb02ow-resisting elements. For the Mod II study, only major heat sources, heat sinks, and \ufb02ow\nresistors were modeled, as shown in \ufb01gure 15.\nFigure 15: Resistor visualization of the heat transfer circuit modeled in python.\nWhile the X-57 Mod II example is simpli\ufb01ed (merging parallel \ufb02ow paths through each inverter), the\nscript can accommodate \ufb02ow networks of arbitrary con\ufb01guration so long as solutions for overall and branch\n\ufb02ow resistances are included. The input parameters as well as sample inputs are given in table 2.\n11 of 14\nAmerican Institute of Aeronautics and Astronautics",
+    "page_start": 11,
+    "page_end": 11,
+    "section_ref": null
+  },
+  {
+    "text": "o long as solutions for overall and branch\n\ufb02ow resistances are included. The input parameters as well as sample inputs are given in table 2.\n11 of 14\nAmerican Institute of Aeronautics and Astronautics\n\nTable 2: Sample Inputs: X-57 Mod II Flight Condition.\nInlet Dynamic Pressure, (Pa)\n1171\nDensity at Altitude (kg/m3)\n1.055\nCruise Power (kW per Motor)\n72.1\nInlet Temperature (\u25e6C)\n35\nMotor Dissipated Heat (kW)\n3.605\nController Dissipated Heat (kW)\n2.884\nThermal characterization of the Mod II nacelle \ufb02ow path assumes a constant convective heat transfer\ncoe\ufb03cient, constant convective surface area, and a range of inlet dynamic pressure that result in cooling\nchannel \ufb02ow rates consistent with the internal convection model. For the purposes of the script, \ufb02ow is\nidealized (incompressible), as the maximum inlet dynamic pressure for any tested case rarely exceeds 1500\nPa.7 Additionally, viscous e\ufb00ects in each component are captured by their respective \ufb02ow coe\ufb03cients, where\nthe total \ufb02ow rate though the resistor network is:\nU = q(Cfmotor + Cfcontroller)\n(11)\nThe generalized \ufb02ow coe\ufb03cients are derived from the pressure response of the Darcy Weisbach correlation\nfor fully developed \ufb02ow7 and are",
+    "page_start": 11,
+    "page_end": 12,
+    "section_ref": null
+  },
+  {
+    "text": "gh the resistor network is:\nU = q(Cfmotor + Cfcontroller)\n(11)\nThe generalized \ufb02ow coe\ufb03cients are derived from the pressure response of the Darcy Weisbach correlation\nfor fully developed \ufb02ow7 and are assumed to be constant for all inlet dynamic pressures. Entrance and exit\nregion e\ufb00ects were not modeled in either component, as the rectangular cooling channels in both the motor\nand controller heat sinks have a su\ufb03ciently long aspect ratio (Dh/L greater than 100). If node pressures\nare desired, residual dynamic pressures can be found by applying continuity to individual resistive elements.\nWith steady state \ufb02ow resolved the motor, controller, and plenum (or node) temperatures can be solved\nbe applying the convective heat transfer expression and enthalpy balance across each element. The total\nconvective heat transfer coe\ufb03cient, h, captures the wetted surface area inside the cooling channels in addition\nto the explicitly computed convective heat transfer coe\ufb03cient per the Dittus-Boelter6 correlation in which\nh = Nu \u2217k\nDh\n(12)\nand\nNu = 0.023 \u2217Re4/5 \u2217Pr2/5\n(13)\nBecause of the narrow range of tested \ufb02ight conditions, an average convective heat transfer coe\ufb03cient is\ncomputed for each compo",
+    "page_start": 12,
+    "page_end": 12,
+    "section_ref": null
+  },
+  {
+    "text": "orrelation in which\nh = Nu \u2217k\nDh\n(12)\nand\nNu = 0.023 \u2217Re4/5 \u2217Pr2/5\n(13)\nBecause of the narrow range of tested \ufb02ight conditions, an average convective heat transfer coe\ufb03cient is\ncomputed for each component; in e\ufb00ect, creating a linearized hydraulic model. Because the accuracy of the\nthermal performance script depends on good characterization of the major hydraulic resistive elements in\nthe cruise nacelle (as well as convective heat sources and sinks) veri\ufb01ed test data is critical to estimating real-\nworld thermal performance of the Mod II cruise assembly. Without such characterization, it is di\ufb03cult to\ncompare thermal performance between the various X-57 con\ufb01gurations. However, even without high \ufb01delity\nresults, the steady state thermal performance script can be useful when comparing di\ufb00erent \ufb02ight conditions\nfor one con\ufb01guration. Applied to three cruise states of the X-57 mod II (slightly varying air speed, power\nand altitude), the script resolves each condition\u2019s relative thermal performance, as shown in \ufb01gure 16. Test\nID 3 corresponds to the max takeo\ufb00power just after lifto\ufb00. Test ID 11 and 13 correspond to maximum\nclimb rates, using the highest motor power and a more typical mot",
+    "page_start": 12,
+    "page_end": 12,
+    "section_ref": null
+  },
+  {
+    "text": "ormance, as shown in \ufb01gure 16. Test\nID 3 corresponds to the max takeo\ufb00power just after lifto\ufb00. Test ID 11 and 13 correspond to maximum\nclimb rates, using the highest motor power and a more typical motor power, respectively.\n12 of 14\nAmerican Institute of Aeronautics and Astronautics",
+    "page_start": 12,
+    "page_end": 12,
+    "section_ref": null
+  },
+  {
+    "text": "ter lifto\ufb00. Test ID 11 and 13 correspond to maximum\nclimb rates, using the highest motor power and a more typical motor power, respectively.\n12 of 14\nAmerican Institute of Aeronautics and Astronautics\n\nFigure 16: Mod II python test script outputs (top) and inputs (bottom)\nCoupling between the controller and motor states is apparent when comparing test IDs 3 and 11: for only\na 15 knot increase in air speed, the motor temperature drops 12.5\u25e6C, while the controller falls nearly 30\u25e6C.\nThe decreased temperature of the air leaving the motor provides a higher temperature gradient, improving\nthe e\ufb00ectiveness of the downstream controller heat sink. This python script allows the user to run many\ndi\ufb00erent \ufb02ight conditions in small amounts of time to predict thermal performance.\nVI.\nConclusion\nFuture work will rely on test data to better characterize the \ufb02ow characteristics through the nacelle to\nimprove overall model \ufb01delity, especially of the Mod II script. Many of the \ufb02ow correlations and coe\ufb03cients\nare assumed based on CFD analysis and need to be veri\ufb01ed through testing to fully validate model accu-\nracy. Additionally, as the design of the wingtip progresses, other thermal concerns may occ",
+    "page_start": 12,
+    "page_end": 13,
+    "section_ref": null
+  },
+  {
+    "text": "ients\nare assumed based on CFD analysis and need to be veri\ufb01ed through testing to fully validate model accu-\nracy. Additionally, as the design of the wingtip progresses, other thermal concerns may occur to warrant\nfurther thermal calculations. One example is that instrumentation and controls will be placed aft of the\ninverter. Thermal considerations will play a role in both protecting the equipment from operating above its\ntemperature limit and ensuring that it is positioned in a way to allow adequate \ufb02ow through the system.\nBy performing steady state analysis of the methods used to cool the power electronics of the wingtip\npropulsor, it has been ensured that the components will not reach their temperature limit in the SCEPTOR\nX-57 \ufb02ight pro\ufb01le. For the most part, steady state analysis was performed at the highest power operating\npoint. The steady state temperatures reached were below the temperature limit of the motor and inverter.\nThis is conservative because in reality, the components will not be running at these high power draws long\nenough to reach steady state. The results of the thermal analyses presented indicate safe performance of the\nSCEPTOR Maxwell X-57 Aircraft.\n13 of",
+    "page_start": 13,
+    "page_end": 13,
+    "section_ref": null
+  },
+  {
+    "text": "ts will not be running at these high power draws long\nenough to reach steady state. The results of the thermal analyses presented indicate safe performance of the\nSCEPTOR Maxwell X-57 Aircraft.\n13 of 14\nAmerican Institute of Aeronautics and Astronautics",
+    "page_start": 13,
+    "page_end": 13,
+    "section_ref": null
+  },
+  {
+    "text": "enough to reach steady state. The results of the thermal analyses presented indicate safe performance of the\nSCEPTOR Maxwell X-57 Aircraft.\n13 of 14\nAmerican Institute of Aeronautics and Astronautics\n\nAcknowledgments\nThe authors would like to thank all involved in the X-57 Performance and Sizing IPT, as well as the\nPower and Controls IPT for their input and guidance on the thermal design of the wingtip nacelles and\nrelated subsystems. External contributions from ESAero and Joby Aviation were also invaluable.\nReferences\n1Chin, J., Schnulo, S., and Smith, A., \u201cTransient Thermal Analyses of Passive Systems on SCEPTOR X-57,\u201d June 2017.\n2Dubois, A., van der Geest, M., Bevirt, J., Christie, R., Borer, N. K., and Clarke, S. C., \u201cDesign of an Electric Propulsion\nSystem for SCEPTOR\u2019s Outboard Nacelle,\u201d 16th AIAA Aviation Technology, Integration, and Operations Conference, AIAA\nAviation, American Institute of Aeronautics and Astronautics, jun 2016.\n3Papathakis, Kurt, K. K. L. Y. C. S. and Ginn, S., \u201cDesign and Development of a 200-kW Turbo-electric Distributed\nPropulsion Testbed,\u201d June 2016.\n4Borer, N. K., Patterson, M. D., Viken, J. K., Moore, M. D., Bevirt, J., Stoll, A. M., and Gibson, A",
+    "page_start": 13,
+    "page_end": 14,
+    "section_ref": null
+  },
+  {
+    "text": "S., \u201cDesign and Development of a 200-kW Turbo-electric Distributed\nPropulsion Testbed,\u201d June 2016.\n4Borer, N. K., Patterson, M. D., Viken, J. K., Moore, M. D., Bevirt, J., Stoll, A. M., and Gibson, A. R., \u201cDesign and\nPerformance of the NASA SCEPTOR Distributed Electric Propulsion Flight Demonstrator,\u201d 16th AIAA Aviation Technology,\nIntegration, and Operations Conference, AIAA Aviation, American Institute of Aeronautics and Astronautics, jun 2016.\n5Christie, Robert, D. A. and Derlaga, J., \u201cDesign of an Electric Propulsion System for SCEPTOR,\u201d 16th AIAA Aviation\nTechnology, Integration, and Operations Conference, AIAA Aviation, American Institute of Aeronautics and Astronautics, jun\n2016.\n6Incropera, F. and DeWitt, D., Fundamentals of heat and mass transfer, J. Wiley, 2002.\n7White, F. M., Fluid Mechanics, McGraw Hill, 1979.\n14 of 14\nAmerican Institute of Aeronautics and Astronautics",
+    "page_start": 14,
+    "page_end": 14,
+    "section_ref": null
+  }
+]

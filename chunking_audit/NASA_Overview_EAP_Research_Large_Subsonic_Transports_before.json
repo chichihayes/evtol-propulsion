@@ -1,0 +1,182 @@
+[
+  {
+    "text": "Advanced Air Vehicles Program\nAdvanced Transport Technologies Project\nOverview of NASA Electrified Aircraft \nPropulsion Research for Large Subsonic \nTransports\nRalph H. Jansen, Dr. Cheryl Bowman, Amy Jankovsky, Dr. \nRodger Dyson, and and James L. Felder\nNASA Glenn Research Center, Cleveland, Ohio, 44135\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nIntroduction\n\u2022\nVision for large aircraft with Electrified Aircraft Propulsion\n\u2022\nAircraft System Studies\n\u2022\nPower research:  Electric machines and converters\n\u2022\nMaterials\n\u2022\nTest Facilities\n\u2022\nEmerging research areas:  Turbine integration, Boundary Layer Benefits\n\u2022\nConclusion\n2",
+    "page_start": 1,
+    "page_end": 2,
+    "section_ref": null
+  },
+  {
+    "text": "sion\n\u2022\nAircraft System Studies\n\u2022\nPower research:  Electric machines and converters\n\u2022\nMaterials\n\u2022\nTest Facilities\n\u2022\nEmerging research areas:  Turbine integration, Boundary Layer Benefits\n\u2022\nConclusion\n2\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nMotivation\n\u2022 NASA is investing in Electrified Aircraft Propulsion (EAP) \nresearch to improve the fuel efficiency, emissions, and \nnoise levels in commercial transport aircraft\n\u2022 The goals is to show that one or more viable EAP concepts \nexist for narrow-body aircraft and to advance crucial \ntechnologies related to those concepts. \n\u2022 Viability in this context implies that concept of operation \nbenefits have been identified for fuel burn, energy \nconsumption, emissions, and noise metrics. Reasonable \ndevelopment approaches for key technologies have been \nidentified. \n3",
+    "page_start": 2,
+    "page_end": 3,
+    "section_ref": null
+  },
+  {
+    "text": "concept of operation \nbenefits have been identified for fuel burn, energy \nconsumption, emissions, and noise metrics. Reasonable \ndevelopment approaches for key technologies have been \nidentified. \n3\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nNASA Evolution of Thought\n4\nFuselage: HWB\nPropulsion: Fully distributed\nPower Distribution: 50MW, \nSuperconducting, 7500V, FLIGHT \nCRITICAL \nPower Source: Turbo generators\nInfrastructure: Same air traffic\nFuselage: Tube and Wing\nPropulsion: Partially distributed\nPower Distribution: 3MW, 1,200V, \nnot flight critical\nPower Source: Turbo generators\nInfrastructure:  Same air traffic, \nairports\nFuselage: Tube and Wing\nPropulsion: Fully distributed\nPower Distribution: 1MW, 600V, \nFLIGHT CRITICAL\nPower Source: Batteries to 200miles, \nfuel to 500 miles\nInfrastructure: Underutilized small \nairports, new charging stations\nGREATLY REDUCED TECHNOLOGY NEEDS ENABLE \nNEAR TERM FLIGHT FULL SCALE DEMO\nEXTREME PAI, BATTERY POWERED, \nLOW COST FLIGHT DEMO\nFuselage: Fixed Wing VTOL\nPropulsion: Fully distributed\nPower Distribution: <1MW, <600V, \nFLIGHT CRITICAL\nPower Source: Batteries to 100 miles\nInfrastructure: Advanced air traffic,",
+    "page_start": 3,
+    "page_end": 4,
+    "section_ref": null
+  },
+  {
+    "text": "COST FLIGHT DEMO\nFuselage: Fixed Wing VTOL\nPropulsion: Fully distributed\nPower Distribution: <1MW, <600V, \nFLIGHT CRITICAL\nPower Source: Batteries to 100 miles\nInfrastructure: Advanced air traffic, \nreduced or no pilot, new infrastructure\nGOAL:\n2035 EAP EIS \nfor Single Aisle\nGOAL:\nNew Aircraft \nMarket\nActivities:\n2025 RJ or SA X-Plane\nEnabling R&D \nActivities:\nFixed Wing VTOL X-Plane\nEnabling R&D \nSmall and Large \ncome together with \nfull DEP and on-\nboard electrical \nstorage\nNEAR/ MID\nTERM\nMID/FAR\nTERM",
+    "page_start": 4,
+    "page_end": 4,
+    "section_ref": null
+  },
+  {
+    "text": "ities:\n2025 RJ or SA X-Plane\nEnabling R&D \nActivities:\nFixed Wing VTOL X-Plane\nEnabling R&D \nSmall and Large \ncome together with \nfull DEP and on-\nboard electrical \nstorage\nNEAR/ MID\nTERM\nMID/FAR\nTERM\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nSingle Aisle Aircraft Level System Studies\n5\nStudy\nPax Speed,\nMach\nAirframe\nEAP\nElectrical\npower,\nMW\nPropulsion\nNASA\nSTARC\u2013ABL\n154 0.8\nTube and wing\nPartial turboelectric\n2 to 3\n2 turbofans and \n1 aft motor-\ndriven fan\nBoeing SUGAR \nFreeze\n154 0.7\nTube and truss \nbrace wing\nPartially \nturboelectric (fuel \ncell)\n2 turbofans and \n1 aft motor-\ndriven fan\nNASA N3\u2013X\n300 0.84\nHybrid wing body\nTurboelectric\n50\n16 aft motor-\ndriven fans\nESAero ECO\u2013\n150 \n150 0.7\nTube and split wing Turboelectric\n16 wing motor-\ndriven fans\nBoeing SUGAR \nVolt\n154 0.7\nTube and truss \nbrace wing\nParallel hybrid \nelectric\n1.3 or 5.3\n2 motor-assisted \nturbofans\nRolls-Royce\n154 0.7\nTube and wing\nParallel hybrid \nelectric\n1 to 2.6\n2 motor-assisted \nturbofans\nUTRC\n154 0.7\nTube and wing\nParallel hybrid \nelectric\n2.1\n2 motor-assisted \nturbofans",
+    "page_start": 4,
+    "page_end": 5,
+    "section_ref": null
+  },
+  {
+    "text": "ssisted \nturbofans\nRolls-Royce\n154 0.7\nTube and wing\nParallel hybrid \nelectric\n1 to 2.6\n2 motor-assisted \nturbofans\nUTRC\n154 0.7\nTube and wing\nParallel hybrid \nelectric\n2.1\n2 motor-assisted \nturbofans\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nPartial Turboelectric\n\u2022\nNASA STARC-ABL:  fuel burn reduction 7-12%, same range, speed, \nairport infrastructure.  Same turbine/airframe technology, advanced 2-\n3MW power system, BLI, turbogenerator integration\n6\n\u2022\nBoeing SUGAR Freeze:  fuel burn reduction 56% for 900 mile mission, \nutilizes a truss-braced wing combined with a boundary-layer ingesting \nfan in an aft tail cone to maximize aerodynamic efficiency. The aft fan is \npowered by a solid oxide fuel cell topping cycle and driven by a \nsuperconducting motor with a cryogenic power management system",
+    "page_start": 5,
+    "page_end": 6,
+    "section_ref": null
+  },
+  {
+    "text": "in an aft tail cone to maximize aerodynamic efficiency. The aft fan is \npowered by a solid oxide fuel cell topping cycle and driven by a \nsuperconducting motor with a cryogenic power management system\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nFully Turboelectric\n\u2022\nNASA N3-X:  fuel burn reduction 70%, same range, speed, airport \ninfrastructure. Technology: Hybrid Wing Body, Fully distributed 50MW, \nSuperconducting, 7500V, power system\n7\n\u2022\nEmpirical Systems Aerospace ECO\u2013150R: Depending on the underlying \ntechnology assumptions performance ranges between matching and \nsignificantly exceeding current aircraft fuel burn. Technology considered \nranges from superconducting electrical machines cooled with liquid \nhydrogen to conventional machines at various technology levels. The \nECO\u2012150R, which utilizes midterm electrical machine technology.",
+    "page_start": 6,
+    "page_end": 7,
+    "section_ref": null
+  },
+  {
+    "text": "ranges from superconducting electrical machines cooled with liquid \nhydrogen to conventional machines at various technology levels. The \nECO\u2012150R, which utilizes midterm electrical machine technology.\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nParallel Hybrid Concepts\n\u2022\nAirframe/propulsion remains \nrelatively decoupled\n8\nUTRC hGTF \u2013 On-going, optimized geared turbofan engine for cruise \nby adding boost power for take off and climb\n\u2022\nParallel hybrid, 150 passenger, 900 nm\n\u2022\n2.1 MW machines, 1000 W-hr/kg batteries\n\u2022\n6% reduction in fuel burn and 2.5% reduction in \nenergy usage\nLow Spool\nHigh Spool\nBoeing Sugar Volt\n\u2022\nParallel hybrid, 150 passenger, 900 nm\n\u2022\n1.3 and 5.3 MW machines considered\n\u2022\nFuel off-loaded 750 W-hr/kg batteries charged from grid\n\u2022\n60% fuel burn reduction\nR-R LibertyWorks EVE \u2013 On-going, parametrically optimized \nengine with hybrid climb & cruise segments\n\u2022\nParallel hybrid, 150 passenger, 900 nm\n\u2022\n28% reduction in fuel burn for a 900-nm mission\n\u2022\nUp to a 10% total energy reduction for a 500-nm\n\u2022\nOptimizing for minimum fuel usage predicts an \n18 percent reduction in total fleet fuel usage.",
+    "page_start": 7,
+    "page_end": 8,
+    "section_ref": null
+  },
+  {
+    "text": "nm\n\u2022\n28% reduction in fuel burn for a 900-nm mission\n\u2022\nUp to a 10% total energy reduction for a 500-nm\n\u2022\nOptimizing for minimum fuel usage predicts an \n18 percent reduction in total fleet fuel usage.\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nElectric Machines Research\nContinuous\npower \nrating, MW\nSpecific\npower \ngoal,\nkW/kg\nEfficienc\ny\ngoal, \n%\nMotor\ntype\nSpeed\nNominal\ndimensions\nUniversity of \nIllinois\n1\n13\n>96\nPermanent \nmagnet\n18,000\nCylinder 0.45 m by \n0.12 m\nOhio State \nUniversity\n2.7\n13\n>96\nInduction\n2,500\nRing 1.0 m by 0.12 m\nNASA Glenn \nResearch Center\n1.4\n16\n>98\nWound field\n6,800\nCylinder 0.40 m by \n0.12 m\n\u2022 Motors and/or generators (Electric machines) are need on \nall electrified aircraft.\n\u2022 NASA is sponsoring or performing work to achieve power \ndensities 2-3 times the state of the art for machines in the \nMW or larger class.\n\u2022 Three major machine types are being developed: \npermanent magnet, induction, and wound field \n9",
+    "page_start": 8,
+    "page_end": 9,
+    "section_ref": null
+  },
+  {
+    "text": "rk to achieve power \ndensities 2-3 times the state of the art for machines in the \nMW or larger class.\n\u2022 Three major machine types are being developed: \npermanent magnet, induction, and wound field \n9\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nUniv. of Illinois Air Cooled PM Machine\nTopology\n\u2022\n1.0 MW permanent magnet synchronous motor with a performance goal of 13 kW/kg and \nefficiency of >96 percent\n\u2022\nOutside rotor with a composite overwrap and permanent magnets.\n\u2022\nRelatively high pole count and fundamental frequency.\n\u2022\nExtensive analysis and subcomponent testing have been done to optimize the \nelectromagnetic, structural, and thermal design. \nAircraft Level Integration\n\u2022\nThe motor integrated with the Rolls-Royce LibertyWorks EVE engine concept is shown\n\u2022\nThe motor design is being coordinated with a design and build effort at the University of \nIllinois to produce a multilevel inverter, which potentially could be used to drive the motor. \n10\nValidation\n\u2022\nForm wound litz wire fabrication \nand thermal testing\n\u2022\nfull-speed rotor validation testing \nwas done to ensure the best \npossible permanent \nmagnet/carbon fiber overwrap \nrotor design",
+    "page_start": 9,
+    "page_end": 10,
+    "section_ref": null
+  },
+  {
+    "text": "10\nValidation\n\u2022\nForm wound litz wire fabrication \nand thermal testing\n\u2022\nfull-speed rotor validation testing \nwas done to ensure the best \npossible permanent \nmagnet/carbon fiber overwrap \nrotor design\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nOhio State University Induction Machine\nTopology\n\u2022\n2.7 MW ring induction motor with a performance goal of 13 kW/kg and efficiency of >96 \npercent\n\u2022\nRelatively high pole count and fundamental frequency.\n\u2022\nThe Variable Cross-Section Wet Coil (VCSWC) technology utilizes direct fluid cooling on a \ntape conductor, which is the width of the slot in the active area, and widens at the end \nturns to maximize heat transfer and therefore current density.\nAircraft Level Integration\n\u2022\nThe 10 MW motor integrated with a turbofan is shown\n11\nValidation\n\u2022\nMotor 1 (300kW) shown validated \ncooling path and stator \nmanufacturing\n\u2022\nMotor 2 (1MW) validates tape coil \nfabrication and stator integration\n\u2022\nMotor 3 (2.7MW validates \nperformance",
+    "page_start": 10,
+    "page_end": 11,
+    "section_ref": null
+  },
+  {
+    "text": "11\nValidation\n\u2022\nMotor 1 (300kW) shown validated \ncooling path and stator \nmanufacturing\n\u2022\nMotor 2 (1MW) validates tape coil \nfabrication and stator integration\n\u2022\nMotor 3 (2.7MW validates \nperformance\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nNASA High Efficiency Megawatt Motor (HEMM)\nTopology\n\u2022\nHEMM is a 1.4MW wound field synchronous motor with a stretch performance goal of 16 \nkW/kg and efficiency of 99 percent\n\u2022\nThe motor combines a conductively self-cooled, DC superconducting rotor windings with a \nslotless stator, allowing the motor to achieve exceptional specific power and efficiency \nwithout inheriting the external cooling weight penalty commonly attributed to \nsuperconducting machines. \nAircraft Level Impact\n\u2022\nFuel Burn:  STARC-ABL studies have shown that increasing motor efficiency from 96% \npercent (state-of-the-art) to 99% will reduce fuel burn an additional 2 percent\n\u2022\nThermal System:  Improving from 96% efficiency to 99% will reduce the amount of waste \nheat and related thermal management systems by a factor of 4.\n12\nKey Features\n\u2022\nUses standard aircraft cooling systems\n\u2022\nDirect drive at optimal turbomachinery \nspeeds (no gearbox)\n\u2022\nCan be",
+    "page_start": 11,
+    "page_end": 12,
+    "section_ref": null
+  },
+  {
+    "text": "of waste \nheat and related thermal management systems by a factor of 4.\n12\nKey Features\n\u2022\nUses standard aircraft cooling systems\n\u2022\nDirect drive at optimal turbomachinery \nspeeds (no gearbox)\n\u2022\nCan be shut off if fault occurs (wound field)",
+    "page_start": 12,
+    "page_end": 12,
+    "section_ref": null
+  },
+  {
+    "text": "agement systems by a factor of 4.\n12\nKey Features\n\u2022\nUses standard aircraft cooling systems\n\u2022\nDirect drive at optimal turbomachinery \nspeeds (no gearbox)\n\u2022\nCan be shut off if fault occurs (wound field)\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nConverter Research\n\u2022\nPower converters are an essential component in most EAP \naircraft concepts, as they are used to convert from ac to dc \npower, or vice versa\n\u2022\nNASA is sponsoring or performing work to achieve power \ndensities 2-3 times the state of the art for converters in the MW \nor larger class.\n\u2022\nSilicon carbide and gallium nitride converts are being developed \nwith conventional cooling as well as a cryogenically cooled \nconverter\n13\nContinuous\npower \nrating,\nMW\nSpecific\npower goal,\nkW/kg\nEfficiency\ngoal, \n% \nTopology\nSwitch \nmaterial\nCooling\nGeneral Electric\n1\n19\n99\n3 level\nSiC/Si\nLiquid\nUniversity of \nIllinois\n0.2\n19\n99\n7 level\nGaN\nLiquid\nBoeing\n1\n26\n99.3\nSi\nCryogenic",
+    "page_start": 12,
+    "page_end": 13,
+    "section_ref": null
+  },
+  {
+    "text": "wer goal,\nkW/kg\nEfficiency\ngoal, \n% \nTopology\nSwitch \nmaterial\nCooling\nGeneral Electric\n1\n19\n99\n3 level\nSiC/Si\nLiquid\nUniversity of \nIllinois\n0.2\n19\n99\n7 level\nGaN\nLiquid\nBoeing\n1\n26\n99.3\nSi\nCryogenic\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nGeneral Electric Silicon Carbide Inverter \nTopology\n\u2022\nGE inverter implements SiC switch technology, using a 2400 V dc input and providing a \nthree- phase output capability, generating an output fundamental frequency ranging \nbetween 1 to 3 kHz\n\u2022\nThe design topology for this inverter is a three-level Active Neutral Point Clamped (ANPC) \ntopology \n\u2022\nGE\u2019s 1.7-kW, 500 A, SiC metal oxide semiconductor field effect transistor (MOSFET) dual-\nswitch power modules\n\u2022\nThe dc filter sizing is based on DO\u2012160E, Section 21 \nPerformance Goal\n\u2022\n19kW/kg, 99% efficiency\n14\nValidation\n\u2022\nThe project culminates in a ground \ndemonstration\n\u2022\nAdditional work will be need to \nvalidate high voltage operation at \naltitude",
+    "page_start": 13,
+    "page_end": 14,
+    "section_ref": null
+  },
+  {
+    "text": "Section 21 \nPerformance Goal\n\u2022\n19kW/kg, 99% efficiency\n14\nValidation\n\u2022\nThe project culminates in a ground \ndemonstration\n\u2022\nAdditional work will be need to \nvalidate high voltage operation at \naltitude\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nUniversity of Illinois Gallium Nitride Inverter \nTopology\n\u2022\nThe University of Illinois is building a 200-kW, multilevel, flying capacitor topology with \ngallium nitride power switches that is scalable to a 1-MW system \n\u2022\nThe topology employs nine levels and shifts the energy storage used in filtering elements \nfrom inductors, which are common to many designs, to capacitors, which have a much \nhigher energy density\n\u2022\nThe dc bus voltage will be 1000 V. \nPerformance Goal\n\u2022\n19kW/kg, 99% efficiency\n15\nValidation\n\u2022\nPrototype power modules \nhave been built and tested \nresulting in refinements.\n\u2022\nAdditional work has been \ndone to show viability at \ncryogenic temperatures in \na addition to room temp.",
+    "page_start": 14,
+    "page_end": 15,
+    "section_ref": null
+  },
+  {
+    "text": "5\nValidation\n\u2022\nPrototype power modules \nhave been built and tested \nresulting in refinements.\n\u2022\nAdditional work has been \ndone to show viability at \ncryogenic temperatures in \na addition to room temp.\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nBoeing Cryogenically Cooled Inverter \nTopology\n\u2022\nBoeing is developing a cryogenically cooled 1-MW inverter intended to be compatible with \nliquid natural gas or hydrogen cooling, but the experimental prototype will be cooled by \nliquid nitrogen.\n\u2022\nThree-level ANPC topology that uses different power switches for the fast and slow \nswitching\n\u2022\nThe input dc voltage is 1000 V, and the output frequency is 200 to 3000 Hz\n\u2022\nDC filter meets DO-160 EMI standard.\nPerformance Goal\n\u2022\n26kW/kg, 99.3% efficiency\n16\nValidation\n\u2022\nA calorimeter was developed \nthat can measure the \nefficiency of the 200-kW and \n1-MW prototypes by the \ndissipated losses to the liquid \nnitrogen to better than 0.1 \npercent of the total power",
+    "page_start": 15,
+    "page_end": 16,
+    "section_ref": null
+  },
+  {
+    "text": "tion\n\u2022\nA calorimeter was developed \nthat can measure the \nefficiency of the 200-kW and \n1-MW prototypes by the \ndissipated losses to the liquid \nnitrogen to better than 0.1 \npercent of the total power\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nMaterials for Electrified Aircraft Propulsion\n\u2022 New soft magnetic materials \u2013 improve performance of \nconverter filters and electric machines\n\u2022 Insulation \u2013 electrical insulation with better thermal transfer \nto improve electric machine performance\n\u2022 High-Conductivity Copper/Carbon Nanotube Conductor \u2013\napproach to reduce the mass of cables\n\u2022 Superconducting Wire Development \u2013 AC superconductors \nwhich could be used for electric machines or distribution\n17",
+    "page_start": 16,
+    "page_end": 17,
+    "section_ref": "DO-160"
+  },
+  {
+    "text": "ductivity Copper/Carbon Nanotube Conductor \u2013\napproach to reduce the mass of cables\n\u2022 Superconducting Wire Development \u2013 AC superconductors \nwhich could be used for electric machines or distribution\n17\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nNASA Soft Magnetic Materials\n\u2022\nSoft magnetic materials perform key functions in transformers, filter circuits (inductors), \nand electric machines (motors and generators). \n\u2022\nUnfortunately, they are also a significant contributor to the total weight and losses of such \nsystems. \n\u2022\nNASA is exploring the development, manufacturing, and characterization of a promising \nnew class of amorphous-nanocrystalline composite alloys as well as their use in devices\n\u2022\nA large-scale soft magnetic material spin casting unit originally developed under U.S. \nArmy support has been transitioned to NASA and has been upgraded to increase yield \nand ribbon quality. This is one of the few facilities in the United States capable of \nproducing magnetic material ribbons wide enough for the development of low power loss \nand high operational frequency components and devices\n\u2022\nA wide range of magnetic material characterization equipment is avai",
+    "page_start": 17,
+    "page_end": 18,
+    "section_ref": "DO-160"
+  },
+  {
+    "text": "agnetic material ribbons wide enough for the development of low power loss \nand high operational frequency components and devices\n\u2022\nA wide range of magnetic material characterization equipment is available including a \ncustom core loss measurement system, as well as device for measuring magnetic field \ndomains in materials.\n18\nNASA Glenn spin caster\nA 25-mm by 1.6-km \nspin cast ribbon\nTransformer fabricated \nfrom spin cast ribbon",
+    "page_start": 18,
+    "page_end": 18,
+    "section_ref": "DO-160"
+  },
+  {
+    "text": "ss measurement system, as well as device for measuring magnetic field \ndomains in materials.\n18\nNASA Glenn spin caster\nA 25-mm by 1.6-km \nspin cast ribbon\nTransformer fabricated \nfrom spin cast ribbon\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nInsulation Development\n\u2022\nAlthough the key role for insulation in electrical machines is electrical \nisolation, thermal conductivity is equally impactful in electric machine \ndesign. Trapped heat increases the electrical resistance of conductors, \nresulting in lost efficiency, greater fuel consumption, and greater overall \nthermal management burden.\n\u2022\nTwo-dimensional ceramic particles in the microscales and nanoscales \nare the foundation of many state-of-the-art insulation solutions, and \nprovide many promising approaches for further development. Recent \nwork at NASA Glenn in separating hexagonal boron nitride (hBN) into \nnanosheets, thus exploring the use of established compounds in a new \nway\n19\nFESEM image of coated hBN platelet\nThermal Conductivity Results",
+    "page_start": 18,
+    "page_end": 19,
+    "section_ref": "DO-160"
+  },
+  {
+    "text": "ASA Glenn in separating hexagonal boron nitride (hBN) into \nnanosheets, thus exploring the use of established compounds in a new \nway\n19\nFESEM image of coated hBN platelet\nThermal Conductivity Results\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nHigh-Conductivity Copper/Carbon Nanotube \nConductor\n\u2022\nThe primary conductor requirements in EAP applications require \nimprovement in absolute conduction relative to Cu at operational \ntemperatures (6\u00d7107 S/m at 20 \u00b0C) for electric machine applications, \nand specific conduction better than aluminum (1.4\u00d7107 S-cc/m-g) for \ntransmission applications\n\u2022\nGraphene and CNT-based composites are being explored by a large \nnumber of research efforts in order to meet these challenging \nconductivity requirements.\n\u2022\nNASA GRC effort \u2013 sort metallic / non metallic nanotubes, develop \nmethod for coating the metallic nanotube, draw into wire.\n20\nConductivity for Cu, CNT/Cu, and \nCNT yarns, ordered top to bottom\nConductivity of sorted metallic \nand mixed CNT Buckypaper",
+    "page_start": 19,
+    "page_end": 20,
+    "section_ref": "DO-160"
+  },
+  {
+    "text": "ubes, develop \nmethod for coating the metallic nanotube, draw into wire.\n20\nConductivity for Cu, CNT/Cu, and \nCNT yarns, ordered top to bottom\nConductivity of sorted metallic \nand mixed CNT Buckypaper\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nSuperconducting Wire Development\n\u2022\nSuperconducting wires conducting dc incur very low losses\n\u2022\nSuperconductors used for AC conducting incur hysteresis and eddy current losses in \nthat require increased cooling capacity at a system level and limit the AC frequency.\n\u2022\nNASA has made significant progress developing and characterizing new,  higher \nfrequency (>200Hz), AC superconductors that could be used in electrical machines\n\u2022\nThrough a series of NASA SBIR contracts, fabrication techniques for MgB2-based \nconductors were improved, and small filament sizes as low as 10 \u03bcm were \ndemonstrated.\n\u2022\nNASA has also sponsored the development of an experimental capability to \ncalorimetrically measure ac losses and stability properties of superconductors at \ntemperatures as low as 15 K under simultaneous ac transport current and rotating \nand pulsating magnetic fields as would occur in rotating machine stators\n21\nHyper Tech prod",
+    "page_start": 20,
+    "page_end": 21,
+    "section_ref": "DO-160"
+  },
+  {
+    "text": "ies of superconductors at \ntemperatures as low as 15 K under simultaneous ac transport current and rotating \nand pulsating magnetic fields as would occur in rotating machine stators\n21\nHyper Tech produced multifilament \nMgB2 superconducting wires\nCAPS idealized magnetic field test \ncapability for wire segments",
+    "page_start": 21,
+    "page_end": 21,
+    "section_ref": "DO-160"
+  },
+  {
+    "text": "d pulsating magnetic fields as would occur in rotating machine stators\n21\nHyper Tech produced multifilament \nMgB2 superconducting wires\nCAPS idealized magnetic field test \ncapability for wire segments\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nNASA Electric Aircraft Testbed (NEAT)\n\u2022\nNEAT is being developed to enable end-to-end \ndevelopment and testing of a full-scale electric \naircraft powertrain\n\u2022\nNEAT is being designed with a reconfigurable \narchitecture that industry, academia, and \nGovernment can utilize to further mature electric \naircraft technologies.\n22\nCapability\n\u2022\nPower up to 24 \nMW when \nregenerated\n\u2022\nThermal up to 2 \nMW heat \nrejection\n\u2022\nAltitude (up to \n120,000 feet \npressure)",
+    "page_start": 21,
+    "page_end": 22,
+    "section_ref": "DO-160"
+  },
+  {
+    "text": "ent can utilize to further mature electric \naircraft technologies.\n22\nCapability\n\u2022\nPower up to 24 \nMW when \nregenerated\n\u2022\nThermal up to 2 \nMW heat \nrejection\n\u2022\nAltitude (up to \n120,000 feet \npressure)\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nHybrid Electric Integrated Systems \nTestbed (HEIST)\n\u2022\nThe HEIST is being developed to study power management and transition complexities, modular \narchitectures, and flight control laws for turboelectric distributed propulsion technologies using \nrepresentative hardware and piloted simulations\n\u2022\nThe HEIST is configured in the fashion of an iron bird to provide realistic interactions, latencies, dynamic \nresponses, fault conditions, and other interdependencies for turboelectric distributed aircraft, but scaled to \nthe 200 kW level. \n\u2022\nIn contrast with NEAT, HEIST has power and voltage levels that would be considered subscale for a \ncommercial transport, but test capability extends to the entire airplane system and can exercise all \naspects of flight control, including cockpit operations. \n\u2022\nNEAT is being designed with a reconfigurable architecture that industry, academia, and Government can \nutilize to further matur",
+    "page_start": 22,
+    "page_end": 23,
+    "section_ref": "DO-160"
+  },
+  {
+    "text": "xercise all \naspects of flight control, including cockpit operations. \n\u2022\nNEAT is being designed with a reconfigurable architecture that industry, academia, and Government can \nutilize to further mature electric aircraft technologies.\n23",
+    "page_start": 23,
+    "page_end": 23,
+    "section_ref": "DO-160"
+  },
+  {
+    "text": "ol, including cockpit operations. \n\u2022\nNEAT is being designed with a reconfigurable architecture that industry, academia, and Government can \nutilize to further mature electric aircraft technologies.\n23\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nKey areas for Future work\n\u2022 Integrated full scale power train\n\u2013 Objective: End to end MW scale flight weight / efficiency power \ntrain\n\u2022 Validation of Boundary-Layer Ingestion Benefits\n\u2013 Objective: Combination of CFD and testing to validate aero \nbenefits of STARC-ABL or other concept\n\u2022 Turbofan/Generator Integration and Controls\n\u2013 Objective: Determine optimal turbine/power extraction \napproach and estimate performance gains or losses.\n24",
+    "page_start": 23,
+    "page_end": 24,
+    "section_ref": "DO-160"
+  },
+  {
+    "text": "ero \nbenefits of STARC-ABL or other concept\n\u2022 Turbofan/Generator Integration and Controls\n\u2013 Objective: Determine optimal turbine/power extraction \napproach and estimate performance gains or losses.\n24\n\nAdvanced Air Vehicles Program\nAdvanced Transport Technologies Project\nConclusion\n\u2022\nNASA is making significant progress towards establishing the viability of \nElectrified Aircraft Propulsion (EAP) through a combination of aircraft \nconceptual design studies and advancement of key tall-pole technologies. \n\u2022\nPartially turboelectric and parallel hybrid candidates have been shown \nviable for introduction into service in 2035, and a long-term vision has \nbeen established for a fully turboelectric system \n\u2022\nNASA is developing key powertrain technologies that are applicable for a \nwide variety of large aircraft configurations, including electrical machines \n(motors/generators), converters (inverters/rectifiers), and the underlying \nelectrical materials for EMI filters and cabling. \n\u2022\nIn the next 5 years the goal is to narrow the focus to the most viable \nconcepts as a means to prepare for flight demonstrations of those \nconcepts. \n\u2022\nIt is believed that the right building blocks are in place",
+    "page_start": 24,
+    "page_end": 25,
+    "section_ref": "DO-160"
+  },
+  {
+    "text": "5 years the goal is to narrow the focus to the most viable \nconcepts as a means to prepare for flight demonstrations of those \nconcepts. \n\u2022\nIt is believed that the right building blocks are in place to have a viable \nlarge-plane EAP configuration tested by 2025 leading to entry into service \nin 2035 if resources can be harnessed toward pursuing that goal.\n25",
+    "page_start": 25,
+    "page_end": 25,
+    "section_ref": "DO-160"
+  }
+]

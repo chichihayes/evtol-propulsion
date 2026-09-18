@@ -1,0 +1,48 @@
+=== HyDE doc ===
+Each electric motor and its dedicated battery pack and controller must be designed such that no single failure in any one propulsion unit or its associated power source results in loss of thrust from more than that unit. The shared coolant loop shall, following any single failure (e.g., pump, valve, or leak), maintain adequate cooling to all remaining motors to permit continued safe flight and landing. The flight control computer system, despite triple redundancy, shall not depend on a single power bus; an alternate or backup power supply path independent of the primary 28V DC bus must be provided to at least two of the three computers. Additionally, the absence of a common power bus between motor groups does not by itself satisfy propulsion system segregation requirements unless the grouping ensures that no credible electrical fault can disable more than one motor per group.
+
+=== Stage 1 Report ===
+## Compliant Requirements
+
+| Requirement | Document & Clause | Design Feature Satisfied |
+|-------------|------------------|--------------------------|
+| Independence of energy storage and supply systems – no failure in one system results in loss of supply from another | SC-VTOL VTOL.2430(a)(1) | Each motor powered by its own independent battery pack and controller; no shared power bus between motor groups. |
+| Each propulsion unit’s associated power source is independent – single failure in one unit does not cause loss of thrust from more than that unit | SC-VTOL VTOL.2430(a)(1); also consistent with framing intent | Eight motors each with dedicated battery pack and motor controller; no common power bus linking groups. |
+| Energy storage systems designed to withstand loads and provide energy for intended function | SC-VTOL VTOL.2430(b)(1), (4) | Individual battery packs sized for their respective motor, with adequate structural support (per type design). |
+| Lift/thrust unit installation accounts for likely operating conditions and foreign object threats | SC-VTOL VTOL.2400(c)(1) | Each motor/controller pair independently housed; no shared pathways that could propagate a single event. |
+
+## Non-Compliant Requirements
+
+| Requirement | Document & Clause | Design Deficiency | Relevant Quote from Document |
+|-------------|------------------|------------------|------------------------------|
+| Catastrophic failure conditions must be extremely improbable and **must not result from a single failure** | SC-VTOL VTOL.2510(a)(1) | All three flight‑control computers draw power from a single 28 V DC bus. A single bus fault (e.g., short, regulator failure, wiring damage) can disable all three computers simultaneously, causing loss of control – a catastrophic failure from a single failure. | *"each catastrophic failure condition is extremely improbable and does not result from a single failure"* |
+| Each electrical/electronic system that performs a function whose failure would prevent continued safe flight and landing must be designed and installed so that the function is not adversely affected after exposure to lightning (and automatically recovers) | SC-VTOL VTOL.2515(a)(1),(2) (for Category Enhanced) | A single power bus is a single point of failure that also nullifies any lightning‑protection margins for the flight‑control computers; a strike‑induced transient on the bus could affect all three computers. | *"the function at the aircraft level is not adversely affected during and after the time the aircraft is exposed to lightning"* |
+| Flight control systems must protect against likely hazards | SC-VTOL VTOL.2300(a)(2) | The shared power bus is a hazard that can defeat the triple redundancy of the flight‑control computers. | *"protect against likely hazards"* |
+| System power generation, energy storage, and distribution must supply required power for connected loads under all operating conditions; essential loads for continued safe flight and landing must not be lost due to a single failure | SC-VTOL VTOL.2525(a); SC-VTOL VTOL.2510(a)(1) (interpreted via safety objectives) | The flight‑control computers are essential loads, yet they rely on a single power bus – a single failure can deprive them of power. | *"supply the power required for operation of connected loads during all intended operating conditions"* (VTOL.2525(a)) |
+| Independence between multiple energy storage and supply systems – a failure in one system must not result in loss of energy storage or supply of another system | SC-VTOL VTOL.2430(a)(1) | The single shared liquid‑coolant loop connects all eight motors. A single failure (pump seizure, hose rupture, blockage) can cause overheating and subsequent failure of every motor, violating independence. | *"be designed to provide independence between multiple energy storage and supply systems so that a failure … of any one component in one system will not result in the loss of energy storage or supply of another system"* |
+| Cooling system must ensure adequate cooling in all flight attitudes and atmospheric conditions expected | EHPS.320(a) (SC‑E‑19, accepted specification for installed electric/hybrid lift/thrust units per SC-VTOL VTOL.2400(b)) | A single‑loop cooling system cannot guarantee adequate cooling after any single failure; loss of coolant or pump failure leads to overheating of all motors. | *"The design and construction of the EHPS cooling system must ensure adequate cooling in all flight attitudes and atmospheric conditions in which the EHPS is expected to operate."* |
+
+## Suggested Fixes
+
+### 1. Flight‑Control Computer Power Supply
+- Provide at least two independent power sources (e.g., an additional dedicated bus fed from a separate battery or from a different generator source) such that at least two of the three flight‑control computers are powered by a bus independent of the primary 28 V DC bus.
+- Alternatively, equip each computer with its own dedicated backup battery or secondary power input, with automatic switching upon failure of the primary bus.
+- Ensure the separation meets common‑cause failure requirements (lightning, HIRF, physical damage).
+
+### 2. Shared Coolant Loop
+- Redesign the cooling system to provide at least two independent coolant loops, each covering a subset of motors (e.g., one loop per side or per group), so that a single failure compromises cooling for only half the power units.
+- Alternatively, prove by analysis and test that a single failure in the shared loop (e.g., a pump failure or hose rupture) does not lead to loss of more than one motor’s thrust capability (e.g., through passive convection cooling, thermal inertia, or a limited-time ****operating mode). This is unlikely with a single loop serving all eight motors, so the split‑loop approach is recommended.
+- Ensure that each independent loop has its own pump, expansion tank, and monitoring.
+
+## Regulatory Gaps Found
+
+The provided documents do not contain explicit quantitative requirements for **cooling‑system redundancy** or **flight‑control power bus architecture** in the context of distributed electrical propulsion for VTOL aircraft. The requirements cited are derived from general **independence** and **single‑failure‑criterion** clauses (VTOL.2430(a)(1), VTOL.2510(a)(1)). While the design is clearly non‑compliant under those clauses, no specific AMC or MOC details the acceptable means of compliance for cooling‑loop segregation or power‑bus segregation for fly‑by‑wire computers. The applicant should propose a detailed means of compliance for EASA acceptance.
+
+## Overall Compliance Summary
+
+The design exhibits a sound foundation for propulsion independence by providing each motor with its own battery pack and controller and avoiding a common power bus between motor groups. However, two critical single‑point‑of‑failure issues render the aircraft non‑compliant with the SC-VTOL’s catastrophic‑failure‑criterion:  
+
+- **Flight‑control computers** are all powered from a single 28 V DC bus, contrary to VTOL.2430(a)(1) and VTOL.2510(a)(1).  
+- **The coolant loop** is shared across all eight motors, violating the independence requirement of VTOL.2430(a)(1) and the cooling‑adequacy requirement of EHPS.320.  
+
+These issues must be resolved before the design can be considered compliant with the applicable certification basis (Category Enhanced). The independent motor‐battery architecture is commendable and meets the segregation goals.

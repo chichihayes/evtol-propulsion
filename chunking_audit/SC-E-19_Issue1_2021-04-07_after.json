@@ -1,0 +1,569 @@
+[
+  {
+    "text": "CRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 1 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \nSUBJECT \n:  \nElectric / Hybrid Propulsion System \nREQUIREMENTS incl. Amdt. \n: \n\nASSOCIATED IM/AMC1 \n:  \nYes\u2612 / No \u2610 \nADVISORY MATERIAL \n:",
+    "page_start": 1,
+    "page_end": 1,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "INTRODUCTORY NOTE: \nThe following Special Condition has been classified as important and as such shall be subject to public \nconsultation in accordance with EASA Management Board decision 12/2007 dated 11 September 2007, Article 3 \n(2.) which states: \n\"2. Deviations from the applicable airworthiness codes, environmental protection certification specifications \nand/or acceptable means of compliance with Part 21, as well as important special conditions and equivalent \nsafety findings, shall be submitted to the panel of experts and be subject to a public consultation of at least 3 \nweeks, except if they have been previously agreed and published in the Official Publication of the Agency. The \nfinal decision shall be published in the Official Publication of the Agency.\"",
+    "page_start": 1,
+    "page_end": 1,
+    "section_ref": "AMC1",
+    "toc": false
+  },
+  {
+    "text": "IDENTIFICATION OF ISSUE: \n\nThis Special Condition has been developed to support Applications received by the Agency for the certification of \nElectric and / or Hybrid Propulsion Systems powered by propulsion batteries and / or fuel. \nThese EHPS are intended to be certified: \n- \nas part of an aircraft \nor \n- \nas an engine product and dedicated to a known intended aircraft application.",
+    "page_start": 1,
+    "page_end": 1,
+    "section_ref": "AMC1",
+    "toc": false
+  },
+  {
+    "text": "The certification specifications that are usually applicable to aircraft engines dedicated to CS-23, CS-25, CS-27, \nCS-29, and airships are contained in CS-E amendment 6. However, this certification specification considers \nneither Electric and / or Hybrid Propulsion Systems nor engines intended for new product architectures such as \nVTOL aircrafts. Innovative EHPS and aircraft architectures bring new challenges such as new interfaces, new \ninteractions, or new functions. \nIt is considered challenging at this stage to provide a generic set of requirements for an EHPS that could \nencompass all possibilities. \n\n1 In case of SC, the associated Interpretative Material and/or Means of Compliance may be published for \nawareness only and they are not subject to public consultation.",
+    "page_start": 1,
+    "page_end": 1,
+    "section_ref": "AMC1",
+    "toc": false
+  },
+  {
+    "text": "CRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 2 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \nThese are the reasons why this Special Condition provides the certification requirements for an Electric and / or \nHybrid Propulsion System when the intended aircraft application is identified. This ensures consistency between \nthe certification requirements of the aircraft and those of the EHPS and therefore would contribute to a proper \nintegration of the propulsion system in the aircraft. \n\nThis Special Condition is articulated so as to provide objective based certification requirements which are \nindependent of the propulsion system design or architecture. The type of technology used in the propulsion \nsystem will be addressed in the Means of Compliance. Means of Compliance will depend on the type of EHPS \nthat is considered and on the type of aircraft on which the EHPS is intended to be integrated.",
+    "page_start": 2,
+    "page_end": 2,
+    "section_ref": "CS-29",
+    "toc": false
+  },
+  {
+    "text": "CRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 3 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \nSpecial Condition \nElectric / Hybrid Propulsion System (EHPS)",
+    "page_start": 3,
+    "page_end": 3,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "Contents \nSUBPART A - GENERAL ........................................................................................................................................................... 5 \nEHPS.10 SCOPE ............................................................................................................................................................................ 5 \nEHPS.11 MEANS OF COMPLIANCE .................................................................................................................................................... 6 \nEHPS.15 TERMINOLOGY ................................................................................................................................................................. 7 \nEHPS.20 EHPS CONFIGURATION ...................................................................................................................................................10 \nEHPS.22 IDENTIFICATION ..............................................................................................................................................................10 \nEHPS.25 INSTRUCTIONS FOR CONTINUED AIRWORTHINESS (ICA) ........................................................................................................10 \nEHPS.30 INSTRUCTIONS FOR INSTALLATION AND OPERATION OF THE EHPS ...........................................................................................11 \nEHPS.40 RATINGS AND OPERATING LIMITATIONS ..............................................................................................................................11 \nSUBPART B \u2013 DESIGN AND CONSTRUCTION ........................................................................................................................ 13 \nEHPS.50 MATERIALS ....................................................................................................................................................................13 \nEHPS.80 SAFETY ASSESSMENT .......................................................................................................................................................13 \nEHPS.90 EHPS CRITICAL PARTS .....................................................................................................................................................14 \nEHPS.100 FIRE PROTECTION .........................................................................................................................................................15 \nEHPS.200 STATIC AND FATIGUE LOADS ...........................................................................................................................................15 \nEHPS.210 STRENGTH ...................................................................................................................................................................16 \nEHPS.230 VIBRATION SURVEY .......................................................................................................................................................16 \nEHPS.240 OVERSPEED AND ROTOR INTEGRITY .................................................................................................................................16 \nEHPS.250 ROTATING PARTS CONTAINMENT .....................................................................................................................................17 \nEHPS.260 CONTINUED ROTATION ..................................................................................................................................................17 \nEHPS.270 RAIN CONDITIONS .........................................................................................................................................................17 \nEHPS.280 ICING AND SNOW CONDITIONS ........................................................................................................................................17 \nEHPS.290 BIRD, HAIL STRIKE AND IMPACT OF FOREIGN MATTER ..........................................................................................................17 \nSUBPART C \u2013 SYSTEMS AND EQUIPMENT ........................................................................................................................... 19 \nEHPS.300 FUEL SYSTEM ...............................................................................................................................................................19 \nEHPS.310 LUBRICATION SYSTEM ....................................................................................................................................................19 \nEHPS.320 COOLING SYSTEM .........................................................................................................................................................20 \nEHPS.330 EQUIPMENT .................................................................................................................................................................20",
+    "page_start": 3,
+    "page_end": 3,
+    "section_ref": "SC E-19",
+    "toc": true
+  },
+  {
+    "text": "CRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 4 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \nEHPS.340 IGNITION SYSTEM ..........................................................................................................................................................20 \nEHPS.350 EHPS CONTROL SYSTEM ...............................................................................................................................................21 \nEHPS.355 TIME-LIMITED DISPATCH ...............................................................................................................................................23 \nEHPS.360 AIRCRAFT INSTRUMENTS ................................................................................................................................................23 \nEHPS.370 ELECTRICAL POWER GENERATION, DISTRIBUTION AND WIRINGS ............................................................................................24 \nEHPS.380 PROPULSION BATTERY ...................................................................................................................................................24 \nSUBPART D \u2013 SUBSTANTIATION .......................................................................................................................................... 25 \nEHPS.410 GENERAL CONDUCT OF TESTS .........................................................................................................................................25 \nEHPS.420 ENDURANCE DEMONSTRATION .......................................................................................................................................25 \nEHPS.430 DURABILITY DEMONSTRATION ........................................................................................................................................26 \nEHPS.440 CALIBRATION ASSURANCE ..............................................................................................................................................26 \nEHPS.450 TEARDOWN INSPECTION ................................................................................................................................................26 \nEHPS.460 OPERATIONAL DEMONSTRATION .....................................................................................................................................26 \nEHPS.470 ROTOR LOCKING DEMONSTRATION .................................................................................................................................27 \nEHPS 480 EHPS SPECIFIC OPERATION ............................................................................................................................................27 \nEHPS.490 SYSTEM, EQUIPMENT AND COMPONENT TESTS ...................................................................................................................28 \nASSOCIATED INTERPRETATIVE MATERIAL / MEANS OF COMPLIANCE................................................................................ 29",
+    "page_start": 4,
+    "page_end": 4,
+    "section_ref": "SC E-19",
+    "toc": true
+  },
+  {
+    "text": "CRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 5 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \nSUBPART A - GENERAL \nEHPS.10 Scope \nThe purpose of this special conditions is to provide the certification requirements for an Electric and / or Hybrid \nPropulsion System when the intended aircraft application has already been identified. \nThis Special Condition is applicable to any Electric / Hybrid Propulsion System, so called hereafter EHPS, which is \nused to provide or produce lift/thrust/power for flight in a manned and unmanned aircraft, during both normal \nand emergency operations, except for CS-22, CS-LSA, CS-23 Level 1 Day VFR and Light UAS. It should be noted \nthat for CS-25 aircraft, this Special Condition shall be complemented with appropriate emissions requirements \nthat are yet to be defined for EHPS.  \nEven if the EHPS contributes to the lift production in some intended aircraft applications like VTOL, the function \nof control of the lift to ensure the aircraft sustentation, control and manoeuvrability, is an aircraft function and it \nshould be covered by the intended aircraft application certification basis.",
+    "page_start": 5,
+    "page_end": 5,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "Exclusions from the scope of the SC E-19: \nEHPS for which no intended aircraft application is identified is outside of the scope of this Special Condition. \nAs the Type-certification basis for CS-22, CS-LSA, CS-23 Level 1 Day VFR and Light UAS do not systematically \nprovide safety objectives but instead only provide reliability objectives, EHPS that are dedicated to these \napplications are considered outside the scope of this Special Condition. \nEHPS that are not used to produce lift/thrust/power in flight are outside of the scope of this Special Condition. \nFor example, electric motors that drive wheels for taxiing are outside of the scope and should be considered as \npart of the landing gear system. \nAny design that includes the use of hydrogen, whether used to feed fuel cells or combustion engines is considered, \nat this stage, to be outside the scope of this Special Condition. These designs require further work and research \nbefore defining the associated certification requirements. \nPropellers are also outside of the scope of this Special Condition as the certification specifications for propellers \nare already provided in CS-P. \nAircraft Rotors providing lift are also outside of the scope of this Special Condition. \nAdditional certification requirements beyond this Special Condition will need to be satisfied at the aircraft level \nin order to safely integrate an EHPS into a manned or unmanned aircraft and these are outside of the scope of \nthis Special Condition.",
+    "page_start": 5,
+    "page_end": 5,
+    "section_ref": "CS-25",
+    "toc": false
+  },
+  {
+    "text": "CRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 6 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet.",
+    "page_start": 6,
+    "page_end": 6,
+    "section_ref": "CS-23",
+    "toc": false
+  },
+  {
+    "text": "EHPS.11 Means of compliance  \n(a)  An applicant must comply with this Special Condition using means of compliance accepted by the Agency, \nwhich may include consensus standards. \n\n(b)  An applicant requesting the Agency to accept a means of compliance must provide the means of compliance \nto the Agency in an acceptable form and manner.",
+    "page_start": 6,
+    "page_end": 6,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "CRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 7 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \nEHPS.15 Terminology",
+    "page_start": 7,
+    "page_end": 7,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS \nElectric / Hybrid Propulsion System. \nAn Electric / Hybrid Propulsion System may include, but is not limited \nto, electric engines, turbine engines, piston engines, generators, \nelectrical power generation, distribution, wirings, propulsion \nbatteries, integrated fans, cooling systems, controllers and power \nmanagement system. \nAn EHPS is intended to produce lift, thrust or power for flight and it \nshould include as a minimum the sub-systems of the EHPS that \nprovide thrust, lift or power to a device that provides thrust or lift, \nsuch as a propeller or an aircraft rotor. \nFor examples: \n- \na propulsion battery alone (without any electric engine) \ncannot be considered as an EHPS.  \n- \na propulsion battery associated to an electric engine \nproviding power to a propeller is considered as an EHPS. \nSub-system of EHPS \nA sub-system of the EHPS may include examples such as a turbine \nengine, a piston engine, an electric engine, a generator, an electrical \npower distribution system, an EHPS control system or, a propulsion \nbattery. \nEHPS Control System \nA system or device that controls, limits, monitors or protects the \noperation of the EHPS or a sub-system of the EHPS  \nRated Maximum Continuous Power \nand/or Thrust \nThe power and/or thrust identified in the performance data for use \nduring periods of unrestricted duration. \nRated Take-off Power and/or Thrust \nThe power and/or thrust identified in the performance data for use \nduring take-off, discontinued approach and baulked landing. \nEmergency rating \nMeans a rating intended to be used in the event of a failure leading \nto a power, thrust or lift loss of a sub-system of the EHPS and requiring \nthe remaining sub-systems of the EHPS to compensate fully or \npartially the associated power and/or thrust loss. \nA rating is defined for all the sub-systems of the EHPS providing \nthrust, lift or power to a device that provides thrust or lift, such as a \npropeller or a rotor. \nNormal transient EHPS exceedances \nNormal transient EHPS exceedances are short exceedances, limited in \nboth amplitude and duration, of the rated power/thrust which result",
+    "page_start": 7,
+    "page_end": 7,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "CRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612",
+    "page_start": 8,
+    "page_end": 8,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "An agency of the European Union \nPage 8 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \nfrom the EHPS design in order to ensure the safety of the aircraft. For \nexample, transient overtorque following a power request increase \nmay be required to ensure the proper stability of the aircraft. The \nnature of the transient can be an exceedance on any of the \nparameters of the EHPS, e.g. voltage, current, torque, speed, \ntemperature\u2026 \nInadvertent transient EHPS exceedance \nThe inadvertent transient EHPS exceedances do not result from the \nEHPS design but are the result of abnormal operation or failure \nconditions. \nHazardous EHPS effect \nMeans the effect of Hazardous EHPS failure condition. \nThe following effects, as a minimum, must be regarded as \nHazardous EHPS Effects, unless demonstrated to not be applicable \nfor the intended aircraft application: \n(i) \nNon-containment of high-energy debris (including the \nrelease of a propeller or an Aircraft Rotor by the EHPS); \n(ii) \nConcentration of toxic products in the air of the cabin that is \nsufficient to incapacitate crew or passengers; \n(iii) Significant thrust in the opposite direction to that \ncommanded by the pilot; \n(iv) Uncontrolled fire; \n(v) \nFailure of the EHPS mounting system leading to inadvertent \nEHPS separation; \n(vi) Complete inability to shutdown any sub-systems of the EHPS \ncontaining rotating parts; \n(vii) Complete inability to isolate the components that could cause \na hazard to the aircraft; \n(viii) Serious or fatal human injury, caused by electrocution, arc \nflash, arc blast or excessive electromagnetic field. \nHazardous EHPS failure condition \nFailure conditions potentially resulting in one of the following \neffects: \n(i) Hazardous Aircraft Effect  \n(ii) Catastrophic Aircraft Effect \n(iii) Hazardous EHPS Effect \nCatastrophic Aircraft Effect \nEffect of a Catastrophic Aircraft Failure Condition \nCatastrophic Aircraft Failure Condition \nFailure conditions defined as Catastrophic in the safety assessment of \nthe intended aircraft application. \nHazardous Aircraft Effect \nEffect of a Hazardous Aircraft Failure Condition",
+    "page_start": 8,
+    "page_end": 8,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "CRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 9 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \nHazardous Aircraft Failure Condition \nFailure conditions defined as Hazardous in the safety assessment of \nthe intended aircraft application. \nMajor Aircraft effect \nEffect of a Major Aircraft Failure Condition \nMajor Aircraft Failure Condition \nFailure conditions defined as Major in the safety assessment of the \nintended aircraft application. \nCritical Part \nMeans a part that relies upon meeting prescribed integrity \nspecifications of EHPS.90 to avoid its Primary Failure, which is likely \nto result in a Hazardous EHPS Effect. \nPrimary Failure \nMeans a Failure of a part which is not the result of the prior Failure \nof another part or system. \nEngineering Plan \nMeans a compilation of the assumptions, technical data and actions \nrequired to establish and to maintain the life capability of a Critical \nPart. The Engineering Plan is established and executed as part of the \npre- and post-certification activities. \nManufacturing Plan \nMeans a compilation of the part specific manufacturing process \nconstraints, which must be included in the manufacturing \ndefinition (drawings, procedures, specifications, etc.) of the Critical \nPart to ensure that it meets the design intent as defined by the \nEngineering Plan. \nService Management Plan \nMeans a compilation of the processes for in-service maintenance \nand repair to ensure that a Critical Part achieves the design intent \nas defined by the Engineering Plan. \nHigh energy debris \nMeans a debris that is released following the failure of a \ncomponent or a part and that, if not contained, may have sufficient \nenergy to cause significant damage to the aircraft or serious or \nfatal injury of crew or passengers.  \nSecondary Failure \nMeans a Failure of a part or system which is the result of the prior \nFailure of another part or system. \nRotor \nMeans an individual stage of a fan, compressor or turbine \nassembly (some assemblies may consist of only one stage) or the \nrotating part of an electric engine or generator. \nAircraft rotor \nMeans a device providing essentially lift and that is part of the \naircraft type design. \nFuel \nIn the context of the SC E-19, fuel is considered to be petroleum-\nbased fuels, or petroleum and synthetic fuel blends or equivalent \nbiofuels (also called SAF, Sustainable Aviation Fuel). \nPropulsion Battery \nMeans a battery or a set of batteries intended to provide electrical \npower to the electric engines of the EHPS. In addition, Propulsion \nBatteries can be used to provide electrical power to other EHPS \nsub-systems or to systems of the intended aircraft application.",
+    "page_start": 9,
+    "page_end": 9,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "CRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 10 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \nEHPS.20 EHPS Configuration \n(a)  The list of all the parts and equipment, including references to the relevant drawings and software builds, \nwhich define the proposed type design of the EHPS, must be established.",
+    "page_start": 10,
+    "page_end": 10,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "(b)  When the EHPS is certified as part of the Aircraft Type Certificate, this corresponds to the list of all the parts \nand equipment, including references to the relevant drawings and software builds which define the EHPS \nconfiguration for the aircraft type design. \n\nEHPS.22 Identification \nWhere parts are required to be traceable, or identifiable to manage interchangeability, major turbine engine or \nreciprocating engine modules, EHPS components and sub-systems that can be changed independently in service \nmust be suitably identified so as to ensure traceability and to enable proper control over the interchangeability \nwith different EHPS variants.",
+    "page_start": 10,
+    "page_end": 10,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.25 Instructions for Continued Airworthiness (ICA) \n(a)  In accordance with point 21A.61(a) of Regulation (EU) No 748/2012, the applicant must prepare Instructions \nfor Continued Airworthiness. \n\n(b)  The Instructions for Continued Airworthiness must be provided in dedicated manuals. Alternatively, the \nInstructions for Continued Airworthiness can be provided in the aircraft relevant manuals if the EHPS is certified \nas part of the Aircraft Type Certificate. \n\n(c) The Instructions for Continued Airworthiness must contain a Section titled \u2018Airworthiness Limitations\u2019 that is \nsegregated and clearly distinguishable from the rest of the document. This Section must set forth each mandatory \naction or limitation for in-service maintenance and repair required for type certification. This Section must \ncontain a legible statement in a prominent location that reads: \u2018The Airworthiness Limitations Section is approved \nand variations must also be approved\u2019.",
+    "page_start": 10,
+    "page_end": 10,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "CRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 11 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \nEHPS.30 Instructions for installation and operation of the EHPS \n(a) The applicant must prepare and make available to the Agency prior to the issuance of the type certificate, and \nto the installer at the time of delivery of the EHPS, approved instructions for installation and operation of the \nEHPS.  \n(b) When the EHPS is certified independently of the aircraft, the instructions must include at least the following:",
+    "page_start": 11,
+    "page_end": 11,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "(1) Installation instructions and requirements for each sub-system which constitutes the EHPS; \n(2) Operating instructions, limitations, and Normal transient EHPS exceedances; \n(3) The Type-Certification Basis which is (are) assumed as being applicable to the intended aircraft \napplication; \n(4) The aircraft parts and equipment that may be mounted on, or driven by, the EHPS, which are not part \nof the certified EHPS configuration; \n(5) Where an EHPS relies on components which are not part of the EHPS, the interface conditions, \nreliability specifications and safety rationale for those components upon which the EHPS certification is based; \n(6) The necessary data to allow the installer to demonstrate the compliance to the requirements \nidentified in the Type-Certification basis of the intended aircraft application; \n(7) Any assumptions concerning the conditions that may be imposed on the EHPS when it is installed in \nthe intended aircraft application and that have to be satisfied in order to show compliance with any of the \nprovisions of this Special Condition; \n(8) The list of approved fluids to be used in the EHPS. \n\n(c)  Alternatively, if the EHPS is certified as part of the aircraft certification, instructions for installation and \noperation of the EHPS that are pertinent to the operator of the aircraft must be provided in the relevant manuals.",
+    "page_start": 11,
+    "page_end": 11,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.40 Ratings and operating limitations \n(a)  Ratings and operating limitations must be established, including ratings and limitations based on the \noperating conditions and information specified in this paragraph, and any other information that is necessary for \nsafe operation of the EHPS. Ratings and operating limitations must be approved by the Agency. \n\n(b)  The EHPS operating limitations include any limitation to ensure the safe operation of the EHPS and its \nassociated sub-systems. \n\n(c)  Ratings must be established for Take-off Power and/or Thrust and for Maximum Continuous Power and/or \nThrust, as well as for Emergency Ratings if Emergency Ratings are intended to be used.",
+    "page_start": 11,
+    "page_end": 11,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "CRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 12 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \n\n(d)  The Maximum permitted duration for the use of ratings other than Maximum Continuous Power and/or \nThrust Rating must be established.",
+    "page_start": 12,
+    "page_end": 12,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "(e)  When requested by the Applicant, other ratings, associated with the maximum permitted duration for the \nuse of each of these ratings, may also be established.  \n\n(f)  Emergency rating(s) must be established separately from the other ratings, and the specific failures associated \nwith each emergency rating must be defined.",
+    "page_start": 12,
+    "page_end": 12,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "(g)  Each selected rating must be for the lowest thrust, lift or power that all affected sub-systems of the EHPS of \nthe same type are capable of producing under the conditions used to determine that rating at all times during \nthe flight and at all times between overhaul periods or other maintenance. \n\n(h)  Each Normal transient EHPS exceedance (amplitude and duration) must be established.",
+    "page_start": 12,
+    "page_end": 12,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "CRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 13 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \nSUBPART B \u2013 DESIGN AND CONSTRUCTION",
+    "page_start": 13,
+    "page_end": 13,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.50 Materials \n(a)  The suitability and durability of materials used in the EHPS must be established for the intended design \nconditions of the system. The design values of the relevant properties of materials must be suitably related to \nthe minimum properties stated in the material specification. The design values of the relevant properties of \nmaterials must meet or exceed the properties assumed in the design data over the life time of the EHPS. \n\n(b)  Manufacturing methods and processes must be such as to produce sound structure and mechanisms, and \nelectrical systems that retain the design properties under assumed service conditions. This includes the effects \nof deterioration over time, e.g. corrosion, insulation break-down",
+    "page_start": 13,
+    "page_end": 13,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.80 Safety Assessment \n(a) \n(1) \nAn analysis of the EHPS, including the control system, must be carried out in order to assess all \nFailure Conditions that can reasonably be expected to occur. This analysis must take account of: \n(i) \nThe intended aircraft application: the evaluation of the EHPS failures conditions and their \neffects must be made at aircraft level in coordination with the intended aircraft manufacturer \nwho must establish the probability of occurrence of those failure conditions acceptable for the \nintended aircraft application. This evaluation of the EHPS failure conditions and associated failure \nrates must be detailed in the installation instructions as required in EHPS.30 (b)(7). Alternatively, \nthis data must be established and provided in the safety assessment of the intended aircraft \napplication if the EHPS is certified as part of the aircraft certification. \n(ii) Aircraft-level devices and procedures that are assumed to be associated with the intended \naircraft application. Such assumptions must be stated in the analysis, and detailed in the \nInstallation Instructions as required in EHPS.30 (b)(3). \n(iii) Consequential secondary Failures and dormant Failures. \n(iv) Multiple Failures that result in the Hazardous EHPS Effects, Hazardous Aircraft Effects or \nCatastrophic Aircraft Effects defined in EHPS.15.",
+    "page_start": 13,
+    "page_end": 13,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "(2) \nA summary must be made of those Failures Conditions that could result in Major Aircraft Effects, \nHazardous EHPS Effects, Hazardous Aircraft Effects or Catastrophic Aircraft Effects together with an \nestimate of the probability of occurrence of those effects. Any EHPS critical part must be clearly identified \nin this summary. \n\nCRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 14 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \n(3) \nIt must be shown that the design and construction of the EHPS allows the intended aircraft \napplication to meet the qualitative (including Development Assurance) and quantitative safety \nobjectives defined in the type-certification basis of the intended aircraft application.",
+    "page_start": 13,
+    "page_end": 14,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "(b) \nIf the Primary Failure of certain single elements that are likely to result in Hazardous EHPS Effects cannot \nbe sensibly estimated in numerical terms, reliance must be placed on meeting the prescribed integrity \nspecifications of EHPS.90. These instances must be stated in the safety analysis as required in (a)(2). \n\n(c) \nIf the acceptability of the safety analysis is dependent on one or more of the following items, they must \nbe identified in the analysis and appropriately substantiated: \n(1) \nMaintenance actions being carried out at stated intervals. The maintenance intervals must be \npublished in the Airworthiness Limitations section of the Instructions for Continued Airworthiness (refer \nto EHPS.25) when necessary for preventing the occurrence of: \n(i) Hazardous EHPS Effects at a probability in excess of the Extremely Remote probability defined in \nthe associated Type-Certification basis of the intended aircraft application; or  \n(ii) Hazardous and Catastrophic Aircraft Effects at probabilities in excess of the probabilities defined \nby the intended application manufacturer and declared in the installation manual as stated in \nEHPS.30.",
+    "page_start": 14,
+    "page_end": 14,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "(2) \nIf errors in maintenance of the EHPS, including the EHPS Control System, could lead to Hazardous \nEHPS Effects, Hazardous or Catastrophic Aircraft Effects, appropriate procedures must be included in the \nrelevant EHPS manuals. \n\n(3) \nVerification of the satisfactory functioning of safety or other devices at pre-flight or other stated \nperiods. The details of this verification must be published in the appropriate manual.",
+    "page_start": 14,
+    "page_end": 14,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "(4) \nThe provision of specific instrumentation not otherwise required. \n\n(5) \nOperating instructions. These instructions must be identified: \n(i)  in the operating instructions manual after an appropriate evaluation at aircraft level in \ncoordination with the aircraft manufacturer; or \n(ii) in the intended aircraft application operating manual if the EHPS is certified as part of the aircraft \napplication.",
+    "page_start": 14,
+    "page_end": 14,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.90 EHPS Critical Parts \nThe integrity of the EHPS Critical Parts identified under EHPS.80 must be established by: \n\nCRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 15 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \n(a)  An Engineering Plan, the execution of which establishes and maintains that the combinations of loads, \nmaterial properties, environmental influences and operating conditions, including the effects of parts influencing \nthese parameters, are sufficiently well known or predictable, by validated analysis, test or service experience, to \nallow each EHPS Critical Part to be withdrawn from service at an Approved Life before Hazardous EHPS Effects \ncan occur. Appropriate Damage Tolerance assessments must be performed to address the potential for Failure \nfrom material, manufacturing and service-induced anomalies within the Approved Life of the part. The Approved \nLife must be published as required in EHPS.25.",
+    "page_start": 14,
+    "page_end": 15,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "(b)  A Manufacturing Plan which identifies the specific manufacturing constraints necessary to consistently \nproduce EHPS Critical Parts with the Attributes required by the Engineering Plan. \n\n(c)  A Service Management Plan which defines in-service processes for maintenance and repair of EHPS Critical \nParts which will maintain Attributes consistent with those required by the Engineering Plan. These processes \nmust become part of the instructions for continued airworthiness.",
+    "page_start": 15,
+    "page_end": 15,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.100 Fire Protection \n(a)  The design and construction of the EHPS and the materials used must minimise the probability of the \noccurrence and spread of fire during normal operation and EHPS failure conditions and must minimize the effect \nof such a fire. \n\n(b)  In addition, the design and construction of the EHPS must minimise the probability of the occurrence of an \ninternal fire that could result in structural Failure or Hazardous EHPS Failure.",
+    "page_start": 15,
+    "page_end": 15,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.200 Static and fatigue Loads \n(a)  The loads induced by any part of the EHPS must be established and declared in the Instructions for installation \nand operation of the EHPS as stated in EHPS.30. \nt \n(b)  The loads induced by the intended aircraft application, provided by the manufacturer of the intended aircraft \napplication, must be declared in the Instructions for installation and operation of the EHPS as stated in EHPS.30. \n\n(c)  Each sub-system of the EHPS must be designed and constructed so that it will function properly under all \nloading conditions determined under EHPS.200 (a) and (b). \n\nCRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 16 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet.",
+    "page_start": 15,
+    "page_end": 16,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.210 Strength \n(a)  A mechanical, thermal and electrical stress analysis must show that there is suitable EHPS design margin at \nthe declared operating limits. The suitable design margin must be established in the means of compliance. \n\n(b)  Th maximum stresses in the EHPS must be determined by tests, validated analysis, or a combination thereof, \nand must be shown not to exceed minimum material properties defined in EHPS.50.",
+    "page_start": 16,
+    "page_end": 16,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.230 Vibration Survey \n(a)  The EHPS must be designed and constructed to function throughout its normal operating range of rotor \nspeeds and EHPS output power or thrust, including defined exceedances, without inducing excessive stress in all \naffected parts of the EHPS caused by vibration and without imparting excessive vibration forces to the aircraft \nstructure. \n(b)  The applicant must conduct a vibration survey of the EHPS to establish that the vibration characteristics of \nthose components that may be subject to mechanically induced vibrations, aerodynamically induced \nvibrations, acoustically induced vibrations or electromagnetic field excitation induced vibrations are \nacceptable throughout the declared flight envelope and EHPS operating range for the intended installation \nconfiguration. \n(c)  The effects on vibration characteristics of excitation forces caused by EHPS Fault conditions must be \nevaluated and shown not to result in a Hazardous EHPS Effect.",
+    "page_start": 16,
+    "page_end": 16,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.240 Overspeed and Rotor Integrity \n(a)  A rotor overspeed must not result in either rotor burst, rotor growth or other damage that could result in a \nHazardous EHPS effect. This must be shown by test, validated analysis, or a combination of both. Applicable \nassumed speeds must be declared and justified. Failure conditions shall be taken into account, including loss of \nload. \n\n(b)  Rotors must be shown to provide adequate strength margin with respect to burst, growth and damages, that \ncould result in a Hazardous EHPS effect, above the certified operating conditions and speeds assumed in \nEHPS.240 (a). \n\nCRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 17 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet.",
+    "page_start": 16,
+    "page_end": 17,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.250 Rotating parts containment \n(a)  The failure of any rotating component or part of an equipment, electric engine or generator must not lead to \nthe release of high energy debris. \n\n(b)  If the EHPS includes a compressor or a turbine, it must be demonstrated that after Failure any single \ncompressor or turbine blade will be contained and that no Hazardous EHPS Effect can arise as a result of other \ndamage to the EHPS that is likely to occur before the EHPS is shut down following a blade Failure.",
+    "page_start": 17,
+    "page_end": 17,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.260 Continued Rotation \nIf any of the EHPS main rotating systems continue to rotate after the EHPS is shutdown while in flight, this \ncontinued rotation must be considered in the safety assessment in EHPS.80 and  must not result in effects that \nwould be unacceptable. \n\nEHPS.270 Rain conditions \nThe EHPS must be designed and/or installed such that it is capable of satisfactory operation throughout its \nspecified operating envelope when subject to sudden encounters with rain. \n\nEHPS.280 Icing and snow conditions \nThe EHPS and any of its sub-systems must function satisfactorily when operated throughout the conditions of \natmospheric icing (including freezing fog on ground) and falling and blowing snow defined in the propulsive \nsystem installation ice protection specifications of the Type-Certification basis of the intended aircraft application \nindicated in EHPS.30 .",
+    "page_start": 17,
+    "page_end": 17,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.290 Bird, hail strike and impact of foreign matter \n\nCRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 18 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \n(a)  The EHPS must be designed and/or installed so that any impact or ingestion of bird or hail, or other impact \nof foreign matter, that is likely to occur in any one flight will not cause any Hazardous EHPS Effect or \nCatastrophic Aircraft Effect as defined in EHPS.15. \n(b)  If defined in the Type-Certification Basis of the intended application, it must also be shown that the impacts \ndefined in (a) will not preclude the continued safe flight and landing of the aircraft as a consequence of an \nunacceptable:  \n(1) \nloss of performance; \n(2) \ndeterioration of EHPS/Aircraft handling characteristics; \n(3) \nexceedance of any EHPS operating limitation. \n\n(c)  The possibility for multiple impacts must be considered in (a) and (b) unless it can be shown that they are \nunlikely to occur in any one flight.",
+    "page_start": 17,
+    "page_end": 18,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "CRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 19 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \nSUBPART C \u2013 SYSTEMS and EQUIPMENT",
+    "page_start": 19,
+    "page_end": 19,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.300 Fuel system \n(a)  If the EHPS includes a reciprocating engine or a turbine engine, then any fuel system of the EHPS must be \ndesigned and constructed so that it will function properly and safely in all flight attitudes and atmospheric \nconditions in which the EHPS is expected to operate, including negative g. \n\n(b)  If the EHPS includes a reciprocating engine or a turbine engine, then evidence must be provided that the \ncomplete Engine fuel system is capable of functioning satisfactorily with fuel containing the maximum quantity \nof liquid/solid contamination (including icing), likely to be encountered in service, for a period sufficient to ensure \nthat the Engine will not malfunction as a result. \n\n(c)  Any reliance placed upon the assumed installed conditions or installation requirements must be declared in \nthe instructions for installation as defined in EHPS.30. \n\n(d)  All approved fuels and additives must be declared in the instructions for installation and operation of the \nEHPS as defined in EHPS.30.",
+    "page_start": 19,
+    "page_end": 19,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.310 Lubrication system \n(a)  Any lubrication system of the EHPS must be designed and constructed so as to ensure the proper functioning \nof the EHPS in all flight attitudes and atmospheric conditions in which the EHPS is expected to operate, including \nnegative g. \n\n(b)  All parts of the lubrication system that are not inherently capable of being tolerant to contaminants likely to \nbe present in the lubricant or otherwise introduced into the lubrication system must be suitably protected so as \nto preclude damage to the EHPS and EHPS equipment and have adequate capacity to tolerate contaminants in \nrelation to the specified servicing intervals. \n\n(c)  Any reliance placed upon the assumed installed conditions or installation requirements must be declared in \nthe instructions for installation as defined in EHPS.30. \n\n(d)  All approved lubricants and additives must be declared in the instructions for installation and operation of \nthe EHPS as defined in EHPS.30.",
+    "page_start": 19,
+    "page_end": 19,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "CRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 20 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet.",
+    "page_start": 20,
+    "page_end": 20,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.320 Cooling system \n(a)  The design and construction of the EHPS cooling system must ensure adequate cooling in all flight attitudes \nand atmospheric conditions in which the EHPS is expected to operate. \n\n(b)  Any reliance placed upon the assumed installed conditions or installation requirements must be declared in \nthe instructions for installation as defined in EHPS.30. \n\n(c)  All approved coolants and additives must be declared in the instructions for installation and operation of the \nEHPS as defined in EHPS.30.",
+    "page_start": 20,
+    "page_end": 20,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.330 Equipment \n(a)  Mountings and drives for all equipment to be installed on the EHPS sub-systems must be designed to permit \nsafe operation of the EHPS with the equipment fitted. \n\n(b)  The failure of equipment installed on or driven by the EHPS sub-systems must not result in further damage \nlikely to produce a Hazardous EHPS Effect, Hazardous Aircraft Effect or Catastrophic Aircraft Effect.",
+    "page_start": 20,
+    "page_end": 20,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "(c)  Each item of installed equipment must be installed according to the limitations specified for that equipment. \n\n(d)  Environmental limits of the equipment identified under EHPS.20 that cannot be adequately substantiated in \naccordance with endurance tests, validated analysis, or a combination thereof must be demonstrated, via the \nsystem, equipment and component tests defined in EHPS.490.",
+    "page_start": 20,
+    "page_end": 20,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.340 Ignition system \n(a)  If a sub-system of the EHPS requires the use of an ignition system, the suitability of the system must be \nestablished as a function of the nature of the concerned EHPS sub-system (i.e. continuous, or non-permanent \nignition system). \n\nCRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 21 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \n(b)  Any ignition system of the EHPS must be designed and constructed so as to ensure the proper functioning of \nthe EHPS in all flight attitudes and atmospheric conditions in which the EHPS is expected to operate, including \nrestart or relight operation as demonstrated in EHPS.460. \n\n(c)  Any reliance that is placed upon the assumed installed conditions or installation requirements must be \ndeclared in the instructions for installation as defined in EHPS.30.",
+    "page_start": 20,
+    "page_end": 21,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.350 EHPS Control System \n(a)  The EHPS control system must be designed such that: \n(1)  the EHPS does not experience any unacceptable operating characteristics (including unacceptable \npower oscillations) or exceed any of its operating limitations \n(2)  the EHPS performs its intended function throughout the certified operational envelope of the \nintended aircraft application in a manner which:  \n(i)  enables immediate modulation of EHPS power following a pilot command with adequate \nsensitivity \n(ii)  enables selected values of relevant control parameters over changing atmospheric \nconditions \n(iii)  complies with the operability specifications under EHPS.460.",
+    "page_start": 21,
+    "page_end": 21,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "(b)  Development Assurance \nAny software and Airborne Electronic Hardware, including programmable logic devices, must be designed and \ndeveloped using a structured and methodical approach that provides a level of assurance, that is \ncommensurate with the severity of the hazard associated with the failure or malfunction of the systems using \nthis software or hardware, and is substantiated by a verification methodology acceptable to the Agency. \nSystem aspects are addressed in EHPS.80 (a)(3). \n\n(c)  Validation  \nThe EHPS control system must perform the intended functions in all flight attitudes and atmospheric conditions \nin which the EHPS is expected to operate.",
+    "page_start": 21,
+    "page_end": 21,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "(d)  EHPS shutdown and isolation: \n(1)  There must be means to shutdown rapidly any sub-systems of the EHPS containing rotating parts. \n(2)  There must be means to isolate rapidly the components that could cause a hazard to the aircraft. \n\n(e)  EHPS control system failures. \n\nCRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 22 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \nThe EHPS control system must: \n(1)  Meet the safety objectives of the intended aircraft application; \n(2)  Not have any single failures that result in Hazardous EHPS Effect(s) or Catastrophic Aircraft Effect; \nand \n(3)  Be designed and constructed so that foreseeable Failures or malfunctions leading to local events \nin the intended aircraft application, such as fire, overheat, electrical arcing or Failure leading to damage \nto EHPS Control System components, must not result in a Hazardous EHPS Effect or Catastrophic \nAircraft Effect due to EHPS Control System Failures or malfunctions.",
+    "page_start": 21,
+    "page_end": 22,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "(f)  Protection systems \n(1)  There must be a means for testing or inspecting any protection system necessary to show \ncompliance with EHPS.80. \n(2)  It must be shown that any protection system necessary to show compliance with EHPS.80 remains \navailable between tests or inspection and maintenance periods of the complete protection system. \n\n(g)  Aircraft-supplied data. \nSingle failures leading to a loss, interruption or corruption of aircraft-supplied data, or aircraft-supplied data \nshared between independent EHPS or independent engines of an EHPS must:  \n(1) Not result in a Hazardous EHPS Effect or Catastrophic Aircraft Effect for any EHPS installed on the \naircraft; and  \n(2) Be detected and accommodated. The accommodation strategy must not result in an unacceptable \nchange in thrust, lift or power or an unacceptable change in the EHPS operating and starting \ncharacteristics. The effects of these Failures on EHPS thrust, lift or power, EHPS operability and starting \ncharacteristics throughout the flight envelope must be evaluated and documented as part of the \nInstructions for installation and operation of the EHPS as stated in EHPS.30.",
+    "page_start": 22,
+    "page_end": 22,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "(h)  Information system security protection. \nEHPS control system, including networks, software and data, must be designed and installed so that they are \nprotected from intentional unauthorized electronic interactions that may result in adverse effects on the EHPS. \nThe security risks and vulnerabilities must be identified, assessed and mitigated as necessary. The applicant must \nmake procedures and instructions for continued airworthiness (ICA) available that ensure that the security \nprotections of the EHPS controls are maintained. \n\n(i)  Emergency rating availability \nEHPS having an Emergency rating must incorporate means or provision for means for automatic availability and \nautomatic control of the Emergency rating power within its operating limitations.",
+    "page_start": 22,
+    "page_end": 22,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "CRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 23 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \nEHPS.355 Time-Limited Dispatch \n(a)  If approval is sought for dispatch with Faults present in an EHPS control system, a time limited dispatch \n(TLD) analysis of the EHPS control system must be carried out to determine the dispatch and maintenance \nintervals. \n\n(b)  For each dispatchable configuration it must be shown by test or analysis that: \n(1) \nThe EHPS remains capable of meeting all EHPS specifications for the operability aspects covered \nby EHPS.460 \n(2) \nThe ability to control the EHPS within limits is maintained; \n(3) \nProtection is maintained against Hazardous EHPS Effects and Catastrophic Aircraft Effect, if \nprovided solely by the EHPS control system and shown to be necessary by the safety analyses \nrequired under EHPS.80 and EHPS.350;  \n(4) \nA means is maintained to provide necessary signals to identify EHPS control system Faults; \n(5) \nA further single Failure in the EHPS control system will not produce a Hazardous Engine Effect or \na Catastrophic Aircraft Effect; \n(6) \nThe EHPS continues to meet its certification specifications for external threats; \n(7) \nThe proposed dispatch interval is justified.",
+    "page_start": 23,
+    "page_end": 23,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "(c)  The time-weighted-average of the Full-up Configuration and all allowable dispatch configurations with \nFaults must meet the safety objectives of the intended aircraft application. \n\n(d)  The periods of time allowed prior to rectification of Faults must be documented in the appropriate \nmanual(s). \n\n(e)  Provision must be made for any no-dispatch configuration to be indicated to the flight crew.",
+    "page_start": 23,
+    "page_end": 23,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.360 Aircraft instruments \n(a)  As defined in EHPS.80, the EHPS parameters to be displayed on the aircraft instruments required to ensure \nthe safe operation of the EHPS must be established as part of the safety assessment process. \n\n(b)  Provisions must be made for the installation of the instruments established in EHPS.360 (a).  \n\n(c)  Any reliance placed upon the assumed installation and operation must be declared in the instructions for \ninstallation and operation of the EHPS as defined in EHPS.30.",
+    "page_start": 23,
+    "page_end": 23,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "CRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 24 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet.",
+    "page_start": 24,
+    "page_end": 24,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.370 Electrical power generation, distribution and wirings \n(a)  The electrical power generation, distribution and wirings of the EHPS must be designed and constructed so \nas to meet the Type-Certification basis of the intended aircraft application. \n\n(b)  The electrical power generation, distribution and wirings of the EHPS for any sub-system, as applicable, must \nbe designed and installed to supply the power required for operation of connected loads during all intended \noperating conditions.",
+    "page_start": 24,
+    "page_end": 24,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "(c)  Operation of connected loads must have no detrimental effects on the Electrical power generation, \ndistribution and wirings. \n\n(d)  Disconnection of loads must have no detrimental effects on the Electrical power generation, distribution and \nwirings.",
+    "page_start": 24,
+    "page_end": 24,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.380 Propulsion Battery \n(a)  If the EHPS contains a Propulsion Battery, the Propulsion Battery and its management system must be \ndesigned and constructed so as to meet the Type-Certification basis of the intended aircraft application. \n\n(b)  If the EHPS contains a Propulsion Battery, the Propulsion Battery must be designed and constructed so as to \nprovide the required power supply for the electric engine(s) of the EHPS in order for the intended aircraft \napplication to perform its mission.",
+    "page_start": 24,
+    "page_end": 24,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "(c)  If the EHPS allows the electric engine(s) to operate in reverse mode and to recuperate energy in flight or on \nground: \n(1)  the Propulsion Battery must be designed and constructed so as to absorb the power supply from the \nelectric engine(s); or \n(2)  the energy must be dissipated and must not cause a Hazard to the aircraft. \n\nCRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 25 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \nSUBPART D \u2013 SUBSTANTIATION \nCompliance with the requirements for Endurance, Durability, Vibration, Over Torque, Temperature limit \ndemonstration, Operation (including Power Response, Rotor Locking, Operation with a variable pitch thruster, \nand Operation with a fixed pitch thruster) must be substantiated via test, validated analysis, or a combination \nthereof. The following provisions provide the objectives for these tests.",
+    "page_start": 24,
+    "page_end": 25,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.410 General Conduct of Tests \n(a)  Maintenance of the EHPS is permitted during the tests in accordance with the service and maintenance \ninstructions submitted in the Instructions for Continued Airworthiness defined in paragraph EHPS.25. \n\n(b)  The EHPS or its parts must be subjected to any additional tests and maintenance that the Agency finds \nnecessary, if during the tests:  \n(1) the frequency of maintenance during the testing is excessive;  \n(2) the number of stops due to EHPS malfunction is excessive;  \n(3) a major repair is required; or  \n(4) the replacement of a part is found necessary.",
+    "page_start": 25,
+    "page_end": 25,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "(c)  An applicant may use several EHPS or EHPS sub-systems to perform all tests required under Subpart D. \n\nEHPS.420 Endurance Demonstration  \n(a)  The EHPS must be subjected to an endurance demonstration of safe operation under all operational limits to \nbe applied during service operation of the EHPS. The severity of the demonstration must consider the design and \nintended use of the EHPS and must include sufficient duration with respect to cycles and power settings.",
+    "page_start": 25,
+    "page_end": 25,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "(b)  When approval is sought for a Normal Transient EHPS Exceedance, it must be substantiated that the EHPS is \ncapable of operation at the maximum EHPS transient condition of the affected EHPS parameter(s) without \nmaintenance action. \n\n(c)  When approval is sought for an Inadvertent Transient EHPS Exceedance, it must be substantiated that the \nEHPS is capable of operation at the maximum EHPS transient condition of the affected EHPS parameter(s) without \nmaintenance action other than to correct any failure that led to the exceedance.",
+    "page_start": 25,
+    "page_end": 25,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "CRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 26 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet.",
+    "page_start": 26,
+    "page_end": 26,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.430 Durability Demonstration \nThe EHPS must be subjected to a durability demonstration to show that each part of the EHPS has been designed \nand constructed to minimise the probability of failure of the system and sub-systems between overhaul periods, \nor between replacement intervals of EHPS components/parts. This substantiation must simulate the conditions \nin which the EHPS is expected to operate in service, including typical start-stop cycles and scheduled maintenance \nactions and must be of a sufficient duration in order to provide confidence in the durability of the EHPS.",
+    "page_start": 26,
+    "page_end": 26,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.440 Calibration Assurance \nThe EHPS must be subjected to calibration tests that are necessary to establish its power characteristics and the \nconditions both before and after the endurance and durability demonstrations specified in Subpart D. \n\nEHPS.450 Teardown Inspection \n(a)  After the endurance and durability tests have been completed, each EHPS must be subject to a strip inspection. \nThe condition of the EHPS must be satisfactory for safe continued operation. EHPS components and equipment \nthat function separately must be functionally checked prior to strip to ensure that any changes in function or \nsettings are satisfactory for normal operation.",
+    "page_start": 26,
+    "page_end": 26,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "(b)  Each EHPS component that has any adjustable setting or has a functional characteristic that can be \nestablished independent of installation on or in the EHPS, must retain each setting and functional characteristic \nwithin the limits that were established and recorded at the beginning of the demonstration.  \n\n(c)  If the results of the teardown inspection show that the replacement of a part is necessary then the EHPS or \nits parts must be subjected to any additional tests that the Agency finds necessary.",
+    "page_start": 26,
+    "page_end": 26,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.460 Operational Demonstration \n\nCRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 27 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \n(a) The operational demonstration must include tests, validated analysis, or a combination thereof to \ndemonstrate the proper operability of the EHPS throughout its declared flight envelope and operating range. \nThe declared EHPS operational characteristics must account for installation loads and effects.",
+    "page_start": 26,
+    "page_end": 27,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "(b) Starting and restarting/relighting \n(1)  The applicant must demonstrate the capability of the EHPS to reliably start under all declared ground \natmospheric temperature conditions. \n(2)  The EHPS design must allow the shutdown and restart or the relight of the EHPS, or the affected sub-\nsystem of the EHPS, in flight within an established envelope, unless not required for aircraft operation. \n\n(c)  Power Response \nThe design and construction of the EHPS must allow the EHPS to provide a power response that is suitable for \nthe safe operation of intended aircraft application.",
+    "page_start": 27,
+    "page_end": 27,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS.470 Rotor Locking Demonstration \nIf continued rotation is prevented by a means to lock the rotor(s), the EHPS must be subjected to tests, validated \nanalysis, or a combination thereof that includes repeated locking and unlocking operations to sufficiently \nestablish reliable rotor locking performance.",
+    "page_start": 27,
+    "page_end": 27,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "EHPS 480 EHPS Specific operation \n(a)  If the EHPS is designed to operate with a propeller or an aircraft rotor, all applicable EHPS demonstrations \nrequired by this special condition must be performed with a representative propeller or aircraft rotor. \n\n(b)  Other specific operations, for which certification is sought, must be substantiated by specific tests or \ncomplementary tests to the endurance and durability tests. \n\n(c)  For each declared rating with a duration of two minutes or less, it must be substantiated that the EHPS sub-\nsystems (except the propulsion battery if any) can sustain operation at its temperature limits plus a suitable \nmargin.",
+    "page_start": 27,
+    "page_end": 27,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "CRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 28 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \nEHPS.490 System, equipment and component tests \nFor those systems and components that cannot be adequately substantiated in accordance with endurance tests, \nvalidated analysis, or a combination thereof, additional tests must be conducted to demonstrate that systems or \ncomponents are able to perform their intended functions in all declared environmental and operating conditions.",
+    "page_start": 28,
+    "page_end": 28,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "CRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612 \n\nAn agency of the European Union \nPage 29 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \nAssociated Interpretative Material / Means of Compliance",
+    "page_start": 29,
+    "page_end": 29,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "The following notes about Means of Compliance are published for awareness only in order to ease the reading \nof the Special Condition.",
+    "page_start": 29,
+    "page_end": 29,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "1. The Means of Compliance are intended to be published as a Matrix. The Applicant should select the \ncomponents that constitute their EHPS. For each component, there will be a proposed means of \ncompliance for each relevant requirement of the Special Condition. \n2. The Means of Compliance may be different depending the intended aircraft application. \n3. The Means of Compliance will be based on existing material (such as CS-E, ASTM F3338-18, existing \nSpecial Conditions\u2026) \n4. EHPS.40 (g): \u201cat all time during the flight\u201d. The Means of Compliance should at least cover the \nmeasurement and control system accuracy as well as the State of Charge and State of Health of Energy \nStorage Devices such as batteries \n5. EHPS.50: The Means of Compliance should at least cover CS-E 70 (Materials and Manufacturing Methods) \nand CS-E 90 (Prevention of Corrosion and Deterioration). \n6. EHPS.80 (b): The Means of Compliance should at least cover CS-E 850 (Compressor, Fan and Turbine \nShafts), AMC CS-E 850 and the associated CM. \n7. EHPS.200 (a): \u201cThe loads induced by any part of the EHPS\u201d: The Means of Compliance should at least \ncover pressure loads, static loads from a sub-system of the EHPS on another, and when applicable LCF \n(Low Cycle Fatigue) \n8. EHPS.200 (c): The Means of Compliance should at least cover CS-E 190 (Engines for Aerobatic Use) \n9. EHPS.240: The Means of Compliance should at least cover CS-E 840 (Rotor Integrity) \n10. EHPS.270: \u201cand/or installed\u201d. The Means of Compliance should at least cover aircraft air protections \n(cowlings, air intake screens\u2026) \n11. EHPS.280: The Means of Compliance should at least cover CS-E 230 (De-Icing and Anti-Icing Precautions) \n12. EHPS.290 (a): \u201cand/or installed\u201d. The Means of Compliance should at least cover aircraft air protections \nlike on rotorcrafts \n13. EHPS.300 (a): \u201catmospheric conditions\u201d. The Means of Compliance should at least cover fuel icing risk \n14. EHPS.300 (b): \u201cevidence\u201d. The Means of Compliance should at least cover CS-E 670 (b) (Contaminated \nFuel) \n15. EHPS.300 (c): The Means of Compliance should at least cover CS-E 660 (Fuel Pressure and Temperature) \n16. EHPS.320 (a): The Means of Compliance should at least cover CS-E 580 (Air Systems) for protection of air \nsystem against dust and sand and CS-E 860 (Turbine Rotor Over-temperature) \n17. EHPS.330 (d): The Means of Compliance should at least cover CS-E 80 (Equipment) and its AMC and the \nuse of DO-160 \n18. EHPS.340: The Means of Compliance should at least cover CS-E 240 (Ignition), CS-E 360 (Detonation \nTests), CS-E 460 (Backfire Tests), CS-E 500 (c) (Functioning), CS-E 720 (Continuous Ignition) \n19. EHPS.350 (a) : The Means of Compliance should at least cover the recuperation mode (operation of \nelectric engines as generators to recharge any energy storage device) if any \n20. EHPS.350 (e): The essentially single fault tolerant criteria that was present in CS-E 50 (Engine Control \nSystem) should be part of the Means of Compliance to EHPS.80 when developing a control system for \nturbine or piston engines",
+    "page_start": 29,
+    "page_end": 29,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "CRI Consultation paper \nSpecial Condition \nDoc. No. :  \nSC E-19 \nIssue \n: 1 \nDate \n: 07/04/2021 \nProposed \u2610                                Final \u2612",
+    "page_start": 30,
+    "page_end": 30,
+    "section_ref": "DO-160",
+    "toc": false
+  },
+  {
+    "text": "An agency of the European Union \nPage 30 of 30 \n\u00a9 European Union Aviation Safety Agency. All rights reserved. ISO9001 Certified. Proprietary document. \nCopies are not controlled. Confirm revision status through the EASA-Internet/Intranet. \n21. EHPS.370: The Means of Compliance should at least cover CS-E 135 (Electrical Bonding) \n22. EHPS.370 (b): The Means of Compliance should at least cover the electrical network quality \n23. EHPS.380 (b): The Means of Compliance should cover the energy losses with regards to the State of \nCharge (SoC) and State of Health (SoH) of batteries which could help determining the maximum available \npower used for aircraft performances calculation. \n24. EHPS.420: The Means of Compliance should at least cover CS-E 690 (Engine Bleed), CS-E 440 (Endurance \nTests) and CS-E 470 (Contaminated Fuel) \n25. EHPS.420 (b): The Means of Compliance should at least cover the existing Special Condition \u201cTransient \nover-temperature, over-speed and over-torque limit approval\u201d \n26. EHPS.420 (c): The Means of Compliance should at least cover CS-E 820 (Over-torque Test), CS-E 870 \n(Exhaust Gas Over-temperature Test), CS-E 830 (Maximum Engine Over-speed), overvoltage, overcurrent. \n27. EHP.460 (a): The Means of Compliance should at least cover CS-E 500 (a) (Functioning) \n28. EHPS.460 (b)(1): The Means of Compliance should at least cover CS-E 370 (Starting Tests), CS-E 590 \n(Starter Systems) \n29. EHPS.460 (b)(2): The Means of Compliance should at least cover CS-E 910 (Relighting in Flight) \n30. EHPS.460 (e)(2): The Means of Compliance should at least cover any other important equipment other \nthan propeller or thrust reverser, specific functions (such as energy recuperation), CS-E 700 (Excess \nOperating Conditions), CS-E 860 (Turbine Rotor Over-temperature), CS-E 900 (Propeller Parking Brake), \nCS-E 890 (Thrust Reverser Tests), CS-E 880 (Tests with Refrigerant Injection for Take-Off and/or 2 \u00bd-\nMinute OEI Power), CS-E 290 (Hand Turning) \n31. EHPS.480 (c): The Means of Compliance should at least cover CS-E 920 (Over-temperature Test). \n32. EHPS.490: The Means of Compliance should at least cover the qualification tests of equipment (use of \nDO-160), ignition tests.",
+    "page_start": 30,
+    "page_end": 30,
+    "section_ref": "SC E-19",
+    "toc": false
+  }
+]

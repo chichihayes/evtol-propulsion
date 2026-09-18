@@ -1,0 +1,5 @@
+.env
+__pycache__/
+*.pyc
+.chunk_cache/
+embedded_chunks/

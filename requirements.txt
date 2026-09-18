@@ -1,0 +1,6 @@
+pymysql
+anthropic
+openai
+voyageai
+pymupdf
+numpy

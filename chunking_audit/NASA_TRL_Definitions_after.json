@@ -1,0 +1,23 @@
+[
+  {
+    "text": "Definition Of Technology Readiness Levels \n\nTRL 1 Basic principles observed and reported: Transition from scientific research to applied \nresearch. Essential characteristics and behaviors of systems and architectures.  Descriptive tools \nare mathematical formulations or algorithms. \n\nTRL 2 Technology concept and/or application formulated: Applied research.  Theory and \nscientific principles are focused on specific application area to define the concept. Characteristics \nof the application are described.  Analytical tools are developed for simulation or analysis of the \napplication. \n\nTRL 3 Analytical and experimental critical function and/or characteristic proof-of-\nconcept: Proof of concept validation. Active Research and Development (R&D) is initiated with \nanalytical and laboratory studies.  Demonstration of technical feasibility using breadboard or \nbrassboard implementations that are exercised with representative data. \n\nTRL 4 Component/subsystem validation in laboratory environment: Standalone prototyping \nimplementation and test.  Integration of technology elements.  Experiments with full-scale \nproblems or data sets.",
+    "page_start": 1,
+    "page_end": 1,
+    "section_ref": null,
+    "toc": false
+  },
+  {
+    "text": "TRL 5 System/subsystem/component validation in relevant environment: Thorough testing \nof prototyping in representative environment.  Basic technology elements integrated with \nreasonably realistic supporting elements. Prototyping implementations conform to target \nenvironment and interfaces.  \n\nTRL 6 System/subsystem model or prototyping demonstration in a relevant end-to-end \nenvironment (ground or space): Prototyping implementations on full-scale realistic problems.  \nPartially integrated with existing systems. Limited documentation available.  Engineering \nfeasibility fully demonstrated in actual system application.  \n\nTRL 7 System prototyping demonstration in an operational environment  \n(ground or space): System prototyping demonstration in operational environment. System is at \nor near scale of the operational system, with most functions available for demonstration and test.  \nWell integrated with collateral and ancillary systems.  Limited documentation available.",
+    "page_start": 1,
+    "page_end": 1,
+    "section_ref": null,
+    "toc": false
+  },
+  {
+    "text": "TRL 8 Actual system completed and \"mission qualified\" through test and demonstration in \nan operational environment (ground or space): End of system development.  Fully integrated \nwith operational hardware and software systems.  Most user documentation, training \ndocumentation, and maintenance documentation completed.  All functionality tested in simulated \nand operational scenarios. Verification and Validation (V&V) completed. \n\nTRL 9 Actual system \"mission proven\" through successful mission operations (ground or \nspace): Fully integrated with operational hardware/software systems.  Actual system has been \nthoroughly demonstrated and tested in its operational environment.  All documentation \ncompleted.  Successful operational experience.  Sustaining engineering support in place.",
+    "page_start": 1,
+    "page_end": 1,
+    "section_ref": null,
+    "toc": false
+  }
+]

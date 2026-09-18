@@ -1,0 +1,324 @@
+<title>Pipeline Inspector</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;650&family=IBM+Plex+Serif:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: #F6F3EC; --paper-2: #EFEBDF; --ink: #1E2430; --ink-soft: #3A4152;
+    --accent: #2C5C99; --accent-ink: #FFFFFF; --accent-2: #C1791E;
+    --warn-bg: rgba(193, 121, 30, 0.12); --warn-border: #C1791E;
+    --line: #DAD4C4; --muted: #767261; --card: #FFFFFF;
+    --shadow: 0 1px 2px rgba(30, 36, 48, 0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #12161D; --paper-2: #181D26; --ink: #E7E4DA; --ink-soft: #C7C4B8;
+      --accent: #7CAAE8; --accent-ink: #0E1116; --accent-2: #E0A94D;
+      --warn-bg: rgba(224, 169, 77, 0.14); --warn-border: #E0A94D;
+      --line: #2B323F; --muted: #8B92A3; --card: #171B23; --shadow: 0 1px 2px rgba(0,0,0,0.4);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #12161D; --paper-2: #181D26; --ink: #E7E4DA; --ink-soft: #C7C4B8;
+    --accent: #7CAAE8; --accent-ink: #0E1116; --accent-2: #E0A94D;
+    --warn-bg: rgba(224, 169, 77, 0.14); --warn-border: #E0A94D;
+    --line: #2B323F; --muted: #8B92A3; --card: #171B23; --shadow: 0 1px 2px rgba(0,0,0,0.4);
+  }
+
+  * { box-sizing: border-box; }
+  body { background: var(--paper); color: var(--ink); font-family: "IBM Plex Sans", system-ui, sans-serif; min-height: 100vh; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 32px clamp(16px,4vw,40px) 80px; }
+
+  header { padding-bottom: 20px; margin-bottom: 28px; border-bottom: 1px solid var(--line); }
+  header h1 { font-size: 1.5rem; font-weight: 650; margin: 0 0 6px; letter-spacing: -0.01em; text-wrap: balance; }
+  header p { margin: 0; color: var(--muted); font-size: 0.88rem; line-height: 1.5; max-width: 65ch; }
+
+  .stage-header {
+    display: flex; align-items: baseline; gap: 10px; margin: 40px 0 18px;
+    padding-bottom: 10px; border-bottom: 2px solid var(--ink);
+  }
+  .stage-header h2 { font-size: 1.2rem; font-weight: 650; margin: 0; }
+  .stage-header .q { font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; color: var(--muted); }
+
+  .flow { display: flex; flex-direction: column; }
+  .step { display: flex; gap: 14px; position: relative; }
+  .step-rail { display: flex; flex-direction: column; align-items: center; flex: 0 0 auto; }
+  .step-dot {
+    width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: var(--accent-ink);
+    display: flex; align-items: center; justify-content: center; font-family: "IBM Plex Mono", monospace;
+    font-size: 0.7rem; font-weight: 500; flex: 0 0 auto;
+  }
+  .step-line { width: 2px; flex: 1; background: var(--line); margin: 2px 0; min-height: 16px; }
+  .step-body { flex: 1; min-width: 0; padding-bottom: 26px; }
+
+  .block {
+    background: var(--card); border: 1px solid var(--line); border-radius: 8px;
+    box-shadow: var(--shadow); margin-bottom: 10px; overflow: hidden;
+  }
+  .block.warn { border-color: var(--warn-border); background: var(--warn-bg); }
+  .block-label {
+    font-family: "IBM Plex Mono", monospace; font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--muted); padding: 10px 14px 0;
+  }
+  .block.warn .block-label { color: var(--accent-2); font-weight: 500; }
+  .step-title { font-size: 0.95rem; font-weight: 600; margin: 0 0 10px; }
+  .step-meta { font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; color: var(--muted); margin-bottom: 10px; }
+
+  .content-text {
+    font-family: "IBM Plex Serif", Georgia, serif; font-size: 0.87rem; line-height: 1.6;
+    padding: 8px 14px 14px; white-space: pre-wrap; max-width: 72ch;
+  }
+  .content-mono {
+    font-family: "IBM Plex Mono", monospace; font-size: 0.78rem; line-height: 1.55;
+    padding: 8px 14px 14px; white-space: pre-wrap; color: var(--ink-soft);
+  }
+  .content-text.empty, .content-mono.empty {
+    color: var(--accent-2); font-family: "IBM Plex Mono", monospace; font-style: normal;
+  }
+
+  details.block > summary {
+    cursor: pointer; padding: 10px 14px; font-size: 0.82rem; font-weight: 500; color: var(--ink-soft);
+    list-style: none; display: flex; align-items: center; gap: 8px;
+  }
+  details.block > summary::-webkit-details-marker { display: none; }
+  details.block > summary::before { content: "▸"; color: var(--accent); font-size: 0.7rem; transition: transform .15s; }
+  details.block[open] > summary::before { transform: rotate(90deg); }
+  details.block > summary .n { font-family: "IBM Plex Mono", monospace; font-weight: 400; color: var(--muted); }
+
+  .markdown-out { font-family: "IBM Plex Serif", Georgia, serif; font-size: 0.87rem; line-height: 1.65; padding: 4px 14px 16px; max-width: 74ch; }
+  .markdown-out h2 { font-family: "IBM Plex Sans", sans-serif; font-size: 1.02rem; font-weight: 650; margin: 18px 0 8px; color: var(--accent); }
+  .markdown-out h3 { font-family: "IBM Plex Sans", sans-serif; font-size: 0.92rem; font-weight: 600; margin: 14px 0 6px; }
+  .markdown-out strong { color: var(--ink); font-weight: 600; }
+  .markdown-out hr { border: none; border-top: 1px solid var(--line); margin: 14px 0; }
+  .markdown-out table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.82rem; }
+  .markdown-out th, .markdown-out td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+  .markdown-out th { background: var(--paper-2); font-family: "IBM Plex Sans", sans-serif; font-weight: 600; }
+  .markdown-out code { font-family: "IBM Plex Mono", monospace; background: var(--paper-2); padding: 1px 4px; border-radius: 3px; font-size: 0.85em; }
+  .markdown-out ul, .markdown-out ol { padding-left: 22px; }
+  .markdown-out .overflow-x { overflow-x: auto; }
+
+  .arrow-note { font-family: "IBM Plex Mono", monospace; font-size: 0.68rem; color: var(--muted); padding: 2px 0 8px; }
+
+  .diagram { margin: 0 0 36px; padding: 18px 18px 14px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); }
+  .diagram svg { width: 100%; height: auto; display: block; color: var(--ink-soft); }
+  .diagram figcaption { font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; color: var(--muted); line-height: 1.5; margin-top: 10px; max-width: 68ch; }
+
+  @media (max-width: 640px) {
+    .step { gap: 10px; }
+    .step-dot { width: 22px; height: 22px; font-size: 0.62rem; }
+    .content-text, .content-mono, .markdown-out { max-width: 100%; }
+  }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Pipeline Inspector</h1>
+    <p>Every real input and output for one run of Stage 1 &rarr; Stage 2, on the actual test design description. Nothing summarized &mdash; open any block to read exactly what the model was given and exactly what it returned.</p>
+  </header>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 900 400" role="img" aria-label="Stage 2's real order: the Stage 1 report first goes to a small, separate HyDE call to produce a framing excerpt. That framing, plus the regulatory docs, technical docs, design description, and the full Stage 1 report again, are then all read together in one single main model call -- not as sequential reads.">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+        </marker>
+      </defs>
+
+      <!-- HyDE side-step -->
+      <rect x="20" y="14" width="150" height="34" rx="6" fill="none" stroke="currentColor" opacity="0.55"></rect>
+      <text x="95" y="35" text-anchor="middle" font-size="11.5">Stage 1 report</text>
+      <line x1="170" y1="31" x2="204" y2="31" stroke="currentColor" opacity="0.6" marker-end="url(#arrow)"></line>
+      <rect x="208" y="14" width="180" height="34" rx="6" fill="none" stroke="var(--accent)"></rect>
+      <text x="298" y="35" text-anchor="middle" font-size="11.5" fill="var(--accent)">HyDE call (cheap model)</text>
+      <path d="M298,48 V64 H130 V172" fill="none" stroke="var(--accent)" opacity="0.7" marker-end="url(#arrow)"></path>
+      <text x="330" y="60" font-size="9.5" fill="var(--accent)" opacity="0.85">produces a framing excerpt, fed in below</text>
+
+      <!-- 5 real inputs -->
+      <g font-size="11.5">
+        <rect x="20" y="72" width="150" height="42" rx="6" fill="none" stroke="currentColor"></rect>
+        <text x="95" y="90" text-anchor="middle">9 regulatory docs</text>
+        <text x="95" y="104" text-anchor="middle" font-size="9.5" opacity="0.65">876K tokens</text>
+
+        <rect x="20" y="124" width="150" height="42" rx="6" fill="none" stroke="currentColor"></rect>
+        <text x="95" y="142" text-anchor="middle">3 technical docs</text>
+        <text x="95" y="156" text-anchor="middle" font-size="9.5" opacity="0.65">~28K tokens</text>
+
+        <rect x="20" y="176" width="150" height="42" rx="6" fill="none" stroke="var(--accent)"></rect>
+        <text x="95" y="194" text-anchor="middle" fill="var(--accent)">HyDE framing</text>
+        <text x="95" y="208" text-anchor="middle" font-size="9.5" fill="var(--accent)" opacity="0.8">derived, from above</text>
+
+        <rect x="20" y="228" width="150" height="42" rx="6" fill="none" stroke="currentColor"></rect>
+        <text x="95" y="253" text-anchor="middle">Design description</text>
+
+        <rect x="20" y="280" width="150" height="42" rx="6" fill="none" stroke="currentColor"></rect>
+        <text x="95" y="298" text-anchor="middle">Stage 1 report</text>
+        <text x="95" y="312" text-anchor="middle" font-size="9.5" opacity="0.65">full text, again</text>
+      </g>
+
+      <!-- converging arrows -->
+      <g stroke="currentColor" opacity="0.6">
+        <line x1="170" y1="93" x2="474" y2="150" marker-end="url(#arrow)"></line>
+        <line x1="170" y1="145" x2="474" y2="175" marker-end="url(#arrow)"></line>
+        <line x1="170" y1="197" x2="474" y2="197" stroke="var(--accent)" opacity="0.7" marker-end="url(#arrow)"></line>
+        <line x1="170" y1="249" x2="474" y2="220" marker-end="url(#arrow)"></line>
+        <line x1="170" y1="301" x2="474" y2="245" marker-end="url(#arrow)"></line>
+      </g>
+
+      <!-- main call -->
+      <rect x="478" y="60" width="230" height="270" rx="8" fill="none" stroke="currentColor" stroke-width="1.6"></rect>
+      <text x="593" y="185" text-anchor="middle" font-size="13" font-weight="600">MAIN CALL</text>
+      <text x="593" y="203" text-anchor="middle" font-size="11">DeepSeek reads all 5</text>
+      <text x="593" y="218" text-anchor="middle" font-size="11">inputs together,</text>
+      <text x="593" y="233" text-anchor="middle" font-size="11" font-weight="600">one single pass</text>
+      <text x="593" y="252" text-anchor="middle" font-size="9.5" opacity="0.6">(not sequential reads)</text>
+
+      <line x1="708" y1="195" x2="754" y2="195" stroke="currentColor" opacity="0.6" marker-end="url(#arrow)"></line>
+      <rect x="758" y="163" width="122" height="64" rx="6" fill="none" stroke="currentColor" stroke-width="1.6"></rect>
+      <text x="819" y="190" text-anchor="middle" font-size="11.5" font-weight="600">Stage 2</text>
+      <text x="819" y="205" text-anchor="middle" font-size="11.5" font-weight="600">report</text>
+    </svg>
+    <figcaption>How Stage 2 actually runs: one small HyDE call first, derived from the Stage 1 report &mdash; then one single main call reads the regulatory docs, technical docs, HyDE framing, design description, and the full Stage 1 report all at once, not as separate sequential reads.</figcaption>
+  </figure>
+
+  <div id="app"></div>
+</div>
+
+<script>
+  const DATA = {"query": "Our aircraft uses 8 electric motors in a distributed lift configuration, each independently powered by its own battery pack and motor controller, no shared power bus between motor groups. The flight control computer has triple redundancy, but all three units draw power from a single 28V DC bus. Motors are liquid-cooled with one shared coolant loop across all 8 units.", "hyde_prompt": "You are helping build a search query for an aviation certification regulation retrieval system. Given an engineering design description or question, first work out which regulatory sub-domain(s) it actually belongs to -- for example: structural loads/durability, flight performance and handling qualities, propulsion battery/energy storage, electrical system redundancy and failure conditions, EMI/lightning/HIRF protection, software/control system assurance levels, or operational/administrative requirements (e.g. category classification, seating limits). Do not default to failure-condition/redundancy language unless the description is actually about that.\n\nThen write a short hypothetical excerpt (3-5 sentences) from an aviation certification specification, in the style of EASA/FAA regulations (SC-VTOL, CS-23, CS-27, SC E-19, AMC-20), using the terminology and concepts appropriate to that specific sub-domain. Do not mention this is hypothetical or name the sub-domain explicitly. Respond with ONLY the excerpt text, no preamble.", "stage1": {"hyde_input": "Our aircraft uses 8 electric motors in a distributed lift configuration, each independently powered by its own battery pack and motor controller, no shared power bus between motor groups. The flight control computer has triple redundancy, but all three units draw power from a single 28V DC bus. Motors are liquid-cooled with one shared coolant loop across all 8 units.", "hyde_output": "Each electric motor and its dedicated battery pack and controller must be designed such that no single failure in any one propulsion unit or its associated power source results in loss of thrust from more than that unit. The shared coolant loop shall, following any single failure (e.g., pump, valve, or leak), maintain adequate cooling to all remaining motors to permit continued safe flight and landing. The flight control computer system, despite triple redundancy, shall not depend on a single power bus; an alternate or backup power supply path independent of the primary 28V DC bus must be provided to at least two of the three computers. Additionally, the absence of a common power bus between motor groups does not by itself satisfy propulsion system segregation requirements unless the grouping ensures that no credible electrical fault can disable more than one motor per group.", "system_prompt": "You are an aviation certification compliance assistant. You will be given the full text of EASA aviation certification documents, a hypothetical regulatory framing of the design's safety concerns (for context only, may not be fully accurate), and an engineer's design description.\n\nCheck the design against the documents and produce a structured compliance report with these exact sections:\n\n## Compliant Requirements\nList requirements the design satisfies, each with the specific document and clause reference.\n\n## Non-Compliant Requirements\nList requirements the design fails, each with the exact clause reference and a quote of the relevant text.\n\n## Suggested Fixes\nFor each non-compliant item, a concrete suggested design change.\n\n## Regulatory Gaps Found\nAnything the design raises that the provided documents do not clearly address. Say so explicitly rather than guessing -- do not invent requirements that are not in the provided text.\n\nDo not include a summary section. Every finding must stay in full detail (exact clause, exact quote) -- nothing condensed or paraphrased away. This output is passed directly to a later stage that needs the full findings, not an abbreviated version.\n\nOnly cite documents and clauses that actually appear in the provided text. Never rely on outside knowledge of aviation regulations not present in the given documents.", "corpus_note": "9 stage1 regulatory docs, 876,321 tokens total (raw text, not chunked)", "report": "## Compliant Requirements\n\n| Requirement | Document & Clause | Design Feature Satisfied |\n|-------------|------------------|--------------------------|\n| Independence of energy storage and supply systems – no failure in one system results in loss of supply from another | SC-VTOL VTOL.2430(a)(1) | Each motor powered by its own independent battery pack and controller; no shared power bus between motor groups. |\n| Each propulsion unit’s associated power source is independent – single failure in one unit does not cause loss of thrust from more than that unit | SC-VTOL VTOL.2430(a)(1); also consistent with framing intent | Eight motors each with dedicated battery pack and motor controller; no common power bus linking groups. |\n| Energy storage systems designed to withstand loads and provide energy for intended function | SC-VTOL VTOL.2430(b)(1), (4) | Individual battery packs sized for their respective motor, with adequate structural support (per type design). |\n| Lift/thrust unit installation accounts for likely operating conditions and foreign object threats | SC-VTOL VTOL.2400(c)(1) | Each motor/controller pair independently housed; no shared pathways that could propagate a single event. |\n\n## Non-Compliant Requirements\n\n| Requirement | Document & Clause | Design Deficiency | Relevant Quote from Document |\n|-------------|------------------|------------------|------------------------------|\n| Catastrophic failure conditions must be extremely improbable and **must not result from a single failure** | SC-VTOL VTOL.2510(a)(1) | All three flight‑control computers draw power from a single 28 V DC bus. A single bus fault (e.g., short, regulator failure, wiring damage) can disable all three computers simultaneously, causing loss of control – a catastrophic failure from a single failure. | *\"each catastrophic failure condition is extremely improbable and does not result from a single failure\"* |\n| Each electrical/electronic system that performs a function whose failure would prevent continued safe flight and landing must be designed and installed so that the function is not adversely affected after exposure to lightning (and automatically recovers) | SC-VTOL VTOL.2515(a)(1),(2) (for Category Enhanced) | A single power bus is a single point of failure that also nullifies any lightning‑protection margins for the flight‑control computers; a strike‑induced transient on the bus could affect all three computers. | *\"the function at the aircraft level is not adversely affected during and after the time the aircraft is exposed to lightning\"* |\n| Flight control systems must protect against likely hazards | SC-VTOL VTOL.2300(a)(2) | The shared power bus is a hazard that can defeat the triple redundancy of the flight‑control computers. | *\"protect against likely hazards\"* |\n| System power generation, energy storage, and distribution must supply required power for connected loads under all operating conditions; essential loads for continued safe flight and landing must not be lost due to a single failure | SC-VTOL VTOL.2525(a); SC-VTOL VTOL.2510(a)(1) (interpreted via safety objectives) | The flight‑control computers are essential loads, yet they rely on a single power bus – a single failure can deprive them of power. | *\"supply the power required for operation of connected loads during all intended operating conditions\"* (VTOL.2525(a)) |\n| Independence between multiple energy storage and supply systems – a failure in one system must not result in loss of energy storage or supply of another system | SC-VTOL VTOL.2430(a)(1) | The single shared liquid‑coolant loop connects all eight motors. A single failure (pump seizure, hose rupture, blockage) can cause overheating and subsequent failure of every motor, violating independence. | *\"be designed to provide independence between multiple energy storage and supply systems so that a failure … of any one component in one system will not result in the loss of energy storage or supply of another system\"* |\n| Cooling system must ensure adequate cooling in all flight attitudes and atmospheric conditions expected | EHPS.320(a) (SC‑E‑19, accepted specification for installed electric/hybrid lift/thrust units per SC-VTOL VTOL.2400(b)) | A single‑loop cooling system cannot guarantee adequate cooling after any single failure; loss of coolant or pump failure leads to overheating of all motors. | *\"The design and construction of the EHPS cooling system must ensure adequate cooling in all flight attitudes and atmospheric conditions in which the EHPS is expected to operate.\"* |\n\n## Suggested Fixes\n\n### 1. Flight‑Control Computer Power Supply\n- Provide at least two independent power sources (e.g., an additional dedicated bus fed from a separate battery or from a different generator source) such that at least two of the three flight‑control computers are powered by a bus independent of the primary 28 V DC bus.\n- Alternatively, equip each computer with its own dedicated backup battery or secondary power input, with automatic switching upon failure of the primary bus.\n- Ensure the separation meets common‑cause failure requirements (lightning, HIRF, physical damage).\n\n### 2. Shared Coolant Loop\n- Redesign the cooling system to provide at least two independent coolant loops, each covering a subset of motors (e.g., one loop per side or per group), so that a single failure compromises cooling for only half the power units.\n- Alternatively, prove by analysis and test that a single failure in the shared loop (e.g., a pump failure or hose rupture) does not lead to loss of more than one motor’s thrust capability (e.g., through passive convection cooling, thermal inertia, or a limited-time ****operating mode). This is unlikely with a single loop serving all eight motors, so the split‑loop approach is recommended.\n- Ensure that each independent loop has its own pump, expansion tank, and monitoring.\n\n## Regulatory Gaps Found\n\nThe provided documents do not contain explicit quantitative requirements for **cooling‑system redundancy** or **flight‑control power bus architecture** in the context of distributed electrical propulsion for VTOL aircraft. The requirements cited are derived from general **independence** and **single‑failure‑criterion** clauses (VTOL.2430(a)(1), VTOL.2510(a)(1)). While the design is clearly non‑compliant under those clauses, no specific AMC or MOC details the acceptable means of compliance for cooling‑loop segregation or power‑bus segregation for fly‑by‑wire computers. The applicant should propose a detailed means of compliance for EASA acceptance.\n\n## Overall Compliance Summary\n\nThe design exhibits a sound foundation for propulsion independence by providing each motor with its own battery pack and controller and avoiding a common power bus between motor groups. However, two critical single‑point‑of‑failure issues render the aircraft non‑compliant with the SC-VTOL’s catastrophic‑failure‑criterion:  \n\n- **Flight‑control computers** are all powered from a single 28 V DC bus, contrary to VTOL.2430(a)(1) and VTOL.2510(a)(1).  \n- **The coolant loop** is shared across all eight motors, violating the independence requirement of VTOL.2430(a)(1) and the cooling‑adequacy requirement of EHPS.320.  \n\nThese issues must be resolved before the design can be considered compliant with the applicable certification basis (Category Enhanced). The independent motor‐battery architecture is commendable and meets the segregation goals."}, "stage2": {"hyde_input": "## Compliant Requirements\n\n| Requirement | Document & Clause | Design Feature Satisfied |\n|-------------|------------------|--------------------------|\n| Independence of energy storage and supply systems – no failure in one system results in loss of supply from another | SC-VTOL VTOL.2430(a)(1) | Each motor powered by its own independent battery pack and controller; no shared power bus between motor groups. |\n| Each propulsion unit’s associated power source is independent – single failure in one unit does not cause loss of thrust from more than that unit | SC-VTOL VTOL.2430(a)(1); also consistent with framing intent | Eight motors each with dedicated battery pack and motor controller; no common power bus linking groups. |\n| Energy storage systems designed to withstand loads and provide energy for intended function | SC-VTOL VTOL.2430(b)(1), (4) | Individual battery packs sized for their respective motor, with adequate structural support (per type design). |\n| Lift/thrust unit installation accounts for likely operating conditions and foreign object threats | SC-VTOL VTOL.2400(c)(1) | Each motor/controller pair independently housed; no shared pathways that could propagate a single event. |\n\n## Non-Compliant Requirements\n\n| Requirement | Document & Clause | Design Deficiency | Relevant Quote from Document |\n|-------------|------------------|------------------|------------------------------|\n| Catastrophic failure conditions must be extremely improbable and **must not result from a single failure** | SC-VTOL VTOL.2510(a)(1) | All three flight‑control computers draw power from a single 28 V DC bus. A single bus fault (e.g., short, regulator failure, wiring damage) can disable all three computers simultaneously, causing loss of control – a catastrophic failure from a single failure. | *\"each catastrophic failure condition is extremely improbable and does not result from a single failure\"* |\n| Each electrical/electronic system that performs a function whose failure would prevent continued safe flight and landing must be designed and installed so that the function is not adversely affected after exposure to lightning (and automatically recovers) | SC-VTOL VTOL.2515(a)(1),(2) (for Category Enhanced) | A single power bus is a single point of failure that also nullifies any lightning‑protection margins for the flight‑control computers; a strike‑induced transient on the bus could affect all three computers. | *\"the function at the aircraft level is not adversely affected during and after the time the aircraft is exposed to lightning\"* |\n| Flight control systems must protect against likely hazards | SC-VTOL VTOL.2300(a)(2) | The shared power bus is a hazard that can defeat the triple redundancy of the flight‑control computers. | *\"protect against likely hazards\"* |\n| System power generation, energy storage, and distribution must supply required power for connected loads under all operating conditions; essential loads for continued safe flight and landing must not be lost due to a single failure | SC-VTOL VTOL.2525(a); SC-VTOL VTOL.2510(a)(1) (interpreted via safety objectives) | The flight‑control computers are essential loads, yet they rely on a single power bus – a single failure can deprive them of power. | *\"supply the power required for operation of connected loads during all intended operating conditions\"* (VTOL.2525(a)) |\n| Independence between multiple energy storage and supply systems – a failure in one system must not result in loss of energy storage or supply of another system | SC-VTOL VTOL.2430(a)(1) | The single shared liquid‑coolant loop connects all eight motors. A single failure (pump seizure, hose rupture, blockage) can cause overheating and subsequent failure of every motor, violating independence. | *\"be designed to provide independence between multiple energy storage and supply systems so that a failure … of any one component in one system will not result in the loss of energy storage or supply of another system\"* |\n| Cooling system must ensure adequate cooling in all flight attitudes and atmospheric conditions expected | EHPS.320(a) (SC‑E‑19, accepted specification for installed electric/hybrid lift/thrust units per SC-VTOL VTOL.2400(b)) | A single‑loop cooling system cannot guarantee adequate cooling after any single failure; loss of coolant or pump failure leads to overheating of all motors. | *\"The design and construction of the EHPS cooling system must ensure adequate cooling in all flight attitudes and atmospheric conditions in which the EHPS is expected to operate.\"* |\n\n## Suggested Fixes\n\n### 1. Flight‑Control Computer Power Supply\n- Provide at least two independent power sources (e.g., an additional dedicated bus fed from a separate battery or from a different generator source) such that at least two of the three flight‑control computers are powered by a bus independent of the primary 28 V DC bus.\n- Alternatively, equip each computer with its own dedicated backup battery or secondary power input, with automatic switching upon failure of the primary bus.\n- Ensure the separation meets common‑cause failure requirements (lightning, HIRF, physical damage).\n\n### 2. Shared Coolant Loop\n- Redesign the cooling system to provide at least two independent coolant loops, each covering a subset of motors (e.g., one loop per side or per group), so that a single failure compromises cooling for only half the power units.\n- Alternatively, prove by analysis and test that a single failure in the shared loop (e.g., a pump failure or hose rupture) does not lead to loss of more than one motor’s thrust capability (e.g., through passive convection cooling, thermal inertia, or a limited-time ****operating mode). This is unlikely with a single loop serving all eight motors, so the split‑loop approach is recommended.\n- Ensure that each independent loop has its own pump, expansion tank, and monitoring.\n\n## Regulatory Gaps Found\n\nThe provided documents do not contain explicit quantitative requirements for **cooling‑system redundancy** or **flight‑control power bus architecture** in the context of distributed electrical propulsion for VTOL aircraft. The requirements cited are derived from general **independence** and **single‑failure‑criterion** clauses (VTOL.2430(a)(1), VTOL.2510(a)(1)). While the design is clearly non‑compliant under those clauses, no specific AMC or MOC details the acceptable means of compliance for cooling‑loop segregation or power‑bus segregation for fly‑by‑wire computers. The applicant should propose a detailed means of compliance for EASA acceptance.\n\n## Overall Compliance Summary\n\nThe design exhibits a sound foundation for propulsion independence by providing each motor with its own battery pack and controller and avoiding a common power bus between motor groups. However, two critical single‑point‑of‑failure issues render the aircraft non‑compliant with the SC-VTOL’s catastrophic‑failure‑criterion:  \n\n- **Flight‑control computers** are all powered from a single 28 V DC bus, contrary to VTOL.2430(a)(1) and VTOL.2510(a)(1).  \n- **The coolant loop** is shared across all eight motors, violating the independence requirement of VTOL.2430(a)(1) and the cooling‑adequacy requirement of EHPS.320.  \n\nThese issues must be resolved before the design can be considered compliant with the applicable certification basis (Category Enhanced). The independent motor‐battery architecture is commendable and meets the segregation goals.", "hyde_output": "\"For Category Enhanced certification, each system that provides power to flight control computers must be arranged so that no single failure of a power source, distribution bus, or associated wiring can render more than one flight control computer inoperative. The flight control system must be capable of continued safe flight and landing after any single failure or event affecting a power supply. In addition, the cooling installation for lift/thrust units must provide independent cooling paths such that a single failure of any coolant pump, line, or heat exchanger cannot cause overheating or loss of thrust capability of more than one propulsion unit. Means must be provided to detect and isolate failures that could affect multiple units, and the aircraft must continue to meet the performance requirements for safe landing after such failures.\"", "system_prompt": "You are an aviation design engineering assistant. You will be given: the full text of EASA aviation certification documents, technical engineering reference documents, a hypothetical technical framing (context only), the original design description, and Stage 1's full compliance findings (non-compliant requirements with exact clause references).\n\nFor each non-compliant item from Stage 1, propose 2-3 concrete design changes that would resolve it. For each proposed option:\n- Describe the specific design change.\n- Explain, citing the SAME clause Stage 1 flagged, why this change would satisfy it -- quote or reference   the clause text again to justify this.\n- Reference relevant technical/engineering guidance from the provided technical documents where   applicable (cite the document).\n- State the performance impact (weight, complexity, power, cost) plainly -- do not hide tradeoffs.\n\nThen give ONE ranked recommendation across all options, with a one-sentence reason.\n\nDo not invent compliance -- if you are not confident a proposed fix actually satisfies the clause, say so explicitly rather than asserting it does.", "corpus_note": "9 stage1 regulatory docs + 3 scoped NASA technical docs (~904K tokens total, raw text)", "report": "## Proposed Design Changes\n\n### Non‑Compliant Item 1: Flight‑Control Computer (FCC) Power Supply\n\n**Clause cited in Stage 1:**  \nSC‑VTOL VTOL.2510(a)(1) – *“each catastrophic failure condition is extremely improbable and does not result from a single failure”* and VTOL.2430(a)(1) – independence of energy supply.  \nAlso relevant: VTOL.2300(a)(2) (protection against likely hazards), VTOL.2525(a) (essential loads not lost by single failure), and VTOL.2515(a) (lightning protection).\n\n**Design deficiency:** All three triple‑redundant flight‑control computers draw power from a single 28 V DC bus. A single fault (short, regulator failure, wiring damage, lightning transient) can disable all three computers simultaneously, constituting a catastrophic failure condition from a single failure.\n\n---\n\n#### Option FCC‑1: Dual‑Bus Architecture with Independent Sources\n\n- **Description:** Add a second independent 28 V DC bus powered from a separate battery (e.g., a dedicated avionics battery or a DC/DC converter fed from motor battery pack #2). The three flight‑control computers are connected so that at least two computers are on different buses (e.g., FCC‑1 and FCC‑2 on Bus A, FCC‑3 on Bus B). Each bus is physically segregated and independently protected.\n- **How it satisfies the clause:** A single failure on Bus A (e.g., regulator failure) affects only the computers on Bus A; at least one computer remains powered on Bus B. The catastrophic failure condition “loss of all flight‑control computers” no longer results from a single failure. This directly addresses VTOL.2510(a)(1) and VTOL.2430(a)(1). Dual‑bus segregation also improves lightning‑transient immunity (VTOL.2515(a)) because a strike affecting one bus is less likely to couple into the segregated second bus.\n- **Reference to technical documents:** The NASA X‑57 power system design employs a similar dual‑bus architecture for the avionics system: two independent generator buses (fed from separate traction battery packs via DC/DC converters) and a backup battery (Clarke et al., “X‑57 Power and Command System Design,” Section IV). That design was shown to be robust against single‑bus failures. The NASA quad‑analysis (Thomas & Malone, “Power System Redundancy Design Trends for All‑Electric eVTOL Quadrotors”) advocates redundant battery “primary” systems (e.g., 2‑out‑of‑3) to meet catastrophic failure probability targets, which supports the use of multiple independent power sources.\n- **Performance impact:**  \n  – *Weight:* ~2–3 kg additional for the second bus (cables, contactors, DC/DC converter).  \n  – *Complexity:* Moderate; requires segregation routing and additional circuit protection.  \n  – *Power:* Negligible loss; conversion efficiency of the DC/DC is >95 %.  \n  – *Cost:* Low increase in component count.\n\n---\n\n#### Option FCC‑2: Dedicated Backup Battery per Flight‑Control Computer\n\n- **Description:** Equip each of the three flight‑control computers with a small, dedicated lithium‑ion backup battery (e.g., 50–100 Wh) with automatic switching upon failure of the primary 28 V bus. Each battery is charged from the primary bus during normal operation and provides power for at least 30 minutes of critical flight.\n- **How it satisfies the clause:** A single failure of the primary 28 V bus does not disable any FCC because each automatically switches to its own backup battery. The catastrophic loss of all FCCs from a single bus fault is prevented, meeting VTOL.2510(a)(1). Independence is maintained (VTOL.2430(a)(1)) because no single failure can remove power from more than one FCC. Lightning transients on the primary bus are isolated by the battery and the switching circuit, supporting VTOL.2515(a).\n- **Reference to technical documents:** NASA X‑57 uses a backup avionics battery (lead‑acid) that supplies essential instruments if the main traction batteries fail. The concept of per‑computer backup batteries is an extension of this principle and is a common practice in fly‑by‑wire systems (e.g., Boeing 777, which uses multiple independent electrical power sources for flight controls). The NASA eVTOL redundancy study (Thomas & Malone) shows that a 1‑out‑of‑2 redundant system is mass‑efficient when component reliability is high, and a triple independent supply would provide even higher assurance.\n- **Performance impact:**  \n  – *Weight:* ~1.5–2 kg per battery (total 4.5–6 kg).  \n  – *Complexity:* Moderate; requires battery management and automatic switchover logic.  \n  – *Power:* Charging load on primary bus is negligible (<50 W total).  \n  – *Cost:* Moderate increase due to three batteries and associated electronics.\n\n---\n\n#### Option FCC‑3: Dual‑Bus with Automatic Transfer Switch (ATS)\n\n- **Description:** Provide two independent 28 V buses (same as Option FCC‑1) but connect all three FCCs to both buses through automatic transfer switches. The ATS selects the healthy bus in case of one bus failure, so all three computers remain powered. The two buses are sourced from different batteries (e.g., from motor battery packs #1 and #2).\n- **How it satisfies the clause:** A single bus failure does not disable any FCC because the ATS instantaneously transfers to the remaining bus. The catastrophic condition is avoided. The ATS itself is a single point of failure if it can fail in a way that disconnects both buses; however, the design must ensure that the ATS is highly reliable and that the probability of a combined failure is extremely improbable, or that a manual bypass exists. In practice, a dual‑bus with ATS is simpler than three individual backup batteries but may introduce new single‑failure modes if not carefully designed.\n- **Reference to technical documents:** The NASA X‑57 avionics system uses a cross‑strap switch to allow either generator bus to power all avionics loads, effectively a manual transfer switch. An automatic version is common in transport aircraft (e.g., Airbus A320 electrical system uses automatic bus transfer). The NASA redundancy study confirms that 2‑out‑of‑2 (dual) power sources are often sufficient when reliability targets are met.\n- **Performance impact:**  \n  – *Weight:* ~3–4 kg for additional bus and ATS components.  \n  – *Complexity:* Higher than Option FCC‑1 due to ATS control logic and testing.  \n  – *Power:* Negligible.  \n  – *Cost:* Moderate.\n\n---\n\n### Non‑Compliant Item 2: Shared Liquid Coolant Loop\n\n**Clause cited in Stage 1:**  \nSC‑VTOL VTOL.2430(a)(1) – independence of energy storage and supply systems (extended to cooling as a support system).  \nEHPS.320(a) – *“The design and construction of the EHPS cooling system must ensure adequate cooling in all flight attitudes and atmospheric conditions in which the EHPS is expected to operate.”*  \n(Reference: SC‑E‑19, accepted per VTOL.2400(b)).  \nAlso relevant: VTOL.2425(a) – no hazardous characteristics after failure.\n\n**Design deficiency:** A single pump failure, hose rupture, or coolant leak in the common loop can lead to overheating of all eight motors, causing total loss of thrust – a catastrophic failure from a single failure.\n\n---\n\n#### Option COOL‑1: Split Cooling Loops (Two Independent Loops)\n\n- **Description:** Reconfigure the liquid cooling system into two independent loops, each serving four motors (e.g., left‑side and right‑side groups). Each loop has its own dedicated pump, expansion tank, radiator, and coolant lines. There is no interconnection between loops. The pumps are independently powered from different electrical buses.\n- **How it satisfies the clause:** A single failure (e.g., pump seizure in the left loop) affects only four motors on one side. The remaining four motors continue to be cooled and can provide sufficient thrust to complete a controlled landing. This meets the independence requirement of VTOL.2430(a)(1) and ensures adequate cooling after a single failure per EHPS.320(a). Asymmetric thrust from the loss of one side’s motors can be managed by yaw control (as confirmed by the framing’s requirement that continued safe flight and landing be possible after any single failure).\n- **Reference to technical documents:** The NASA X‑57 cooling architecture uses a dedicated liquid loop per motor/inverter assembly (see Schnulo et al., “Steady State Thermal Analyses of SCEPTOR X‑57 Wingtip Propulsion,” Section I‑B), and the overall design philosophy emphasises independence. The NASA eVTOL quad analysis (Thomas & Malone) demonstrates that splitting redundant paths (e.g., 2‑out‑of‑3 primary systems) is mass‑optimal for meeting reliability requirements. Splitting the coolant loop into two halves follows the same principle.\n- **Performance impact:**  \n  – *Weight:* ~5–8 kg additional (second pump, second radiator, extra piping).  \n  – *Complexity:* Moderate – requires additional plumbing and control but thermodynamically simple.  \n  – *Power:* ~100–200 W extra for the second pump.  \n  – *Cost:* Moderate.\n\n---\n\n#### Option COOL‑2: Individual Motor Cooling Loops\n\n- **Description:** Provide a completely independent liquid cooling system for each of the eight motors. Each system includes a small dedicated pump, a compact radiator (possibly air‑cooled via the motor’s own nacelle), and its own expansion tank. Each pump is powered from the motor’s own battery pack or controller.\n- **How it satisfies the clause:** A single failure in any cooling component affects only that motor. The other seven motors remain fully functional. This maximises independence and fully meets VTOL.2430(a)(1). Cooling adequacy per EHPS.320(a) is maintained because each loop is designed for the worst‑hot‑day conditions for its single motor. No single failure can cause loss of more than one motor’s thrust.\n- **Reference to technical documents:** The NASA X‑57 wingtip motor uses a passive air‑cooling scheme for the motor and inverter (Schnulo et al., Section II‑A). For higher‑power motors, individual liquid cooling is used in many electric aircraft prototypes (e.g., Joby Aviation’s pre‑production aircraft use per‑motor cooling loops). The NASA redundancy study indicates that 1‑out‑of‑1 (non‑redundant) components are acceptable if their failure rate is extremely low, but here we use individual loops to eliminate common‑cause failure. The weight penalty may be significant but is justified for Category Enhanced.\n- **Performance impact:**  \n  – *Weight:* ~15–20 kg for eight complete cooling systems (pumps, radiators, lines, coolant).  \n  – *Complexity:* High – eight separate thermal control loops to manage.  \n  – *Power:* ~400–800 W total for eight pumps.  \n  – *Cost:* High.\n\n---\n\n#### Option COOL‑3: Single Loop with Redundant Pumps and Section Isolation Valves\n\n- **Description:** Keep one coolant loop but add a second (redundant) pump in parallel, plus motor‑group isolation valves that can isolate a failed section (e.g., between motor groups) to contain a leak. Automatic or manual valves can close off a damaged segment, allowing the remaining motors to continue cooling.\n- **How it satisfies the clause:** A pump failure is covered by the redundant pump. A coolant leak can be isolated to a section, so not all motors are lost. However, a single event that causes a simultaneous leak in multiple sections (e.g., a blockage or contamination affecting the entire loop) could still affect all motors. This option provides partial independence but does not fully eliminate a common‑mode failure in the coolant itself. Therefore, it may not fully satisfy VTOL.2430(a)(1) unless the isolation scheme is proven to prevent any single failure from affecting more than a safe number of motors (e.g., up to 4). This is a compromise between weight and safety.\n- **Reference to technical documents:** The NASA X‑57 uses a single loop per motor pair (in concept) but does not specify isolation. In traditional aircraft, hydraulic systems often use redundant pumps and isolation valves (e.g., Boeing 737 hydraulic system). The NASA reliability study supports the principle of redundancy for critical functions.\n- **Performance impact:**  \n  – *Weight:* ~4–6 kg for second pump and valves.  \n  – *Complexity:* Higher due to valve control and leak detection logic.  \n  – *Power:* ~100–200 W for second pump.  \n  – *Cost:* Moderate to high.\n\n---\n\n## Ranked Overall Recommendation\n\n**Primary recommendation:** Combine **Option FCC‑1 (Dual‑Bus Architecture with Independent Sources)** with **Option COOL‑1 (Split Cooling Loops)**. This pair provides a robust balance between eliminating single‑failure points and practical weight/complexity, directly satisfying the cited clauses while leveraging proven redundancy concepts from the NASA X‑57 and eVTOL analysis references.  \n\n**Reason:** Dual‑bus for flight‑control computers avoids the weight and lifecycle cost of three backup batteries and the ATS single‑point issue, while split cooling loops offer a simpler and more mass‑efficient solution than individual loops, still ensuring that any single failure does not disable more than half the propulsion units, which can be safely managed with asymmetric thrust control."}};
+
+  function esc(s) {
+    return (s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  function renderMarkdown(md) {
+    if (!md) return "";
+    let html = esc(md);
+    html = html.replace(/^## (.+)$/gm, "<h2>$1</h2>");
+    html = html.replace(/^### (.+)$/gm, "<h3>$1</h3>");
+    html = html.replace(/^---$/gm, "<hr>");
+    html = html.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+    html = html.replace(/`([^`]+)`/g, "<code>$1</code>");
+
+    // tables (simple GFM)
+    const lines = html.split("\n");
+    let out = [];
+    let i = 0;
+    while (i < lines.length) {
+      if (lines[i].trim().startsWith("|") && lines[i+1] && /^\|?[\s:|-]+\|?$/.test(lines[i+1].trim())) {
+        let tbl = ['<div class="overflow-x"><table>'];
+        const headCells = lines[i].trim().replace(/^\||\|$/g, "").split("|").map(c => c.trim());
+        tbl.push("<tr>" + headCells.map(c => `<th>${c}</th>`).join("") + "</tr>");
+        i += 2;
+        while (i < lines.length && lines[i].trim().startsWith("|")) {
+          const cells = lines[i].trim().replace(/^\||\|$/g, "").split("|").map(c => c.trim());
+          tbl.push("<tr>" + cells.map(c => `<td>${c}</td>`).join("") + "</tr>");
+          i++;
+        }
+        tbl.push("</table></div>");
+        out.push(tbl.join(""));
+        continue;
+      }
+      out.push(lines[i]);
+      i++;
+    }
+    html = out.join("\n");
+    html = html.split(/\n\n+/).map(p => {
+      if (/^<(h2|h3|hr|div)/.test(p.trim())) return p;
+      return `<p>${p.trim().replace(/\n/g, "<br>")}</p>`;
+    }).join("\n");
+    return html;
+  }
+
+  function stepBlock(label, title, meta, bodyHtml, opts) {
+    opts = opts || {};
+    const warnClass = opts.warn ? " warn" : "";
+    if (opts.collapsed) {
+      return `<details class="block${warnClass}">
+        <summary>${esc(title)} <span class="n">${esc(opts.summaryNote || "")}</span></summary>
+        ${meta ? `<div class="step-meta" style="padding:0 14px">${meta}</div>` : ""}
+        ${bodyHtml}
+      </details>`;
+    }
+    return `<div class="block${warnClass}">
+      <div class="block-label">${esc(label)}</div>
+      <div style="padding: 6px 14px 0">
+        <div class="step-title">${esc(title)}</div>
+        ${meta ? `<div class="step-meta">${meta}</div>` : ""}
+      </div>
+      ${bodyHtml}
+    </div>`;
+  }
+
+  function renderStage(stageNum, stageLabel, s, extraInput) {
+    let html = `<div class="stage-header"><h2>Stage ${stageNum} &mdash; ${esc(stageLabel)}</h2></div><div class="flow">`;
+
+    const steps = [];
+
+    // Step 1: input
+    steps.push({
+      dot: "IN",
+      body: stepBlock("Input", extraInput.title, extraInput.meta,
+        `<div class="content-text">${esc(extraInput.text)}</div>`)
+    });
+
+    // Step 2: HyDE call
+    const hydeEmpty = !s.hyde_output || s.hyde_output.trim() === "";
+    steps.push({
+      dot: "HyDE",
+      body: (
+        stepBlock("HyDE prompt (system)", "System prompt sent to the cheap model", null,
+          `<div class="content-mono">${esc(DATA.hyde_prompt)}</div>`,
+          { collapsed: true }) +
+        stepBlock("HyDE input (user message)", "What the model actually read", null,
+          `<div class="content-text">${esc(s.hyde_input)}</div>`,
+          { collapsed: true, summaryNote: `${s.hyde_input.length.toLocaleString()} chars` }) +
+        stepBlock("HyDE output", hydeEmpty ? "Empty response" : "Hypothetical framing produced", null,
+          hydeEmpty
+            ? `<div class="content-mono empty">(empty string &mdash; the call returned nothing. generate_hyde() has no retry/validation, so this failure passed through silently and the pipeline continued anyway.)</div>`
+            : `<div class="content-text">${esc(s.hyde_output)}</div>`,
+          { warn: hydeEmpty })
+      )
+    });
+
+    // Step 3: main call
+    steps.push({
+      dot: "MAIN",
+      body: (
+        stepBlock("Main system prompt", "Instructions sent with the full corpus", null,
+          `<div class="content-mono">${esc(s.system_prompt)}</div>`,
+          { collapsed: true }) +
+        stepBlock("Main input (corpus)", "What actually got read", null,
+          `<div class="content-text">${esc(s.corpus_note)}, plus the HyDE framing above (or nothing, if empty) and the input from Step 1.</div>`)
+      )
+    });
+
+    // Step 4: output
+    steps.push({
+      dot: "OUT",
+      body: stepBlock("Output", `Stage ${stageNum} report`, `${s.report.length.toLocaleString()} characters`,
+        `<div class="markdown-out">${renderMarkdown(s.report)}</div>`,
+        { collapsed: true, summaryNote: "click to expand full report" })
+    });
+
+    steps.forEach((st, idx) => {
+      html += `<div class="step">
+        <div class="step-rail"><div class="step-dot">${st.dot}</div>${idx < steps.length - 1 ? '<div class="step-line"></div>' : ""}</div>
+        <div class="step-body">${st.body}</div>
+      </div>`;
+    });
+
+    html += `</div>`;
+    return html;
+  }
+
+  const app = document.getElementById("app");
+  app.innerHTML =
+    renderStage(1, "Regulatory Compliance Check", DATA.stage1, {
+      title: "Engineer's design description",
+      meta: null,
+      text: DATA.query,
+    }) +
+    renderStage(2, "Design Adjustment", DATA.stage2, {
+      title: "Stage 1 report (first 2,000 chars used for HyDE)",
+      meta: "the full report also goes into the Stage 2 main call, not just this excerpt",
+      text: DATA.stage2.hyde_input,
+    });
+</script>

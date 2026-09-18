@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>eVTOL Propulsion Compliance Assistant</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;650&family=IBM+Plex+Serif:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: #F6F3EC; --paper-2: #EFEBDF; --ink: #1E2430; --ink-soft: #3A4152;
+    --accent: #2C5C99; --accent-ink: #FFFFFF; --line: #DAD4C4; --muted: #767261;
+    --card: #FFFFFF; --shadow: 0 1px 2px rgba(30, 36, 48, 0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --paper: #12161D; --paper-2: #181D26; --ink: #E7E4DA; --ink-soft: #C7C4B8;
+      --accent: #7CAAE8; --accent-ink: #0E1116; --line: #2B323F; --muted: #8B92A3;
+      --card: #171B23; --shadow: 0 1px 2px rgba(0,0,0,0.4); }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: "IBM Plex Sans", system-ui, sans-serif; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 48px 20px 80px; }
+  h1 { font-size: 1.7rem; font-weight: 650; letter-spacing: -0.01em; margin: 0 0 8px; text-wrap: balance; }
+  .sub { color: var(--muted); font-size: 0.95rem; line-height: 1.6; max-width: 62ch; margin: 0 0 36px; }
+  .cards { display: flex; flex-direction: column; gap: 14px; }
+  a.card {
+    display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+    padding: 18px 20px; text-decoration: none; color: inherit; box-shadow: var(--shadow);
+  }
+  a.card:hover { border-color: var(--accent); }
+  a.card h2 { font-size: 1.05rem; font-weight: 600; margin: 0 0 6px; }
+  a.card p { margin: 0; color: var(--muted); font-size: 0.85rem; line-height: 1.5; }
+  .tag { font-family: "IBM Plex Mono", monospace; font-size: 0.68rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; }
+  footer { margin-top: 48px; font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>eVTOL Propulsion Compliance Assistant</h1>
+  <p class="sub">A 3-stage AI system checking eVTOL electric propulsion designs against real EASA certification documents. These two pages show real, measured evidence from the actual pipeline &mdash; not mockups.</p>
+  <div class="cards">
+    <a class="card" href="chunking-before-after.html">
+      <div class="tag">Evidence</div>
+      <h2>Chunking: before &rarr; after</h2>
+      <p>Plain character-count chunking vs. LLM-reviewed chunk boundaries, per document, across all 17 source files. 6,452 chunks &rarr; 2,376.</p>
+    </a>
+    <a class="card" href="pipeline-inspector.html">
+      <div class="tag">Evidence</div>
+      <h2>Pipeline Inspector</h2>
+      <p>Every real input and output at each step of an actual Stage 1 &rarr; Stage 2 run &mdash; the HyDE transformation, the full corpus read, the structured compliance report.</p>
+    </a>
+  </div>
+  <footer>Source and full write-up: see the repository README.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+[
+  {
+    "text": "# Case Study: Pipistrel Velis Electro \u2014 First EASA Type-Certified Electric Aircraft\n\n**Status:** Original summary written for this knowledge base, based on publicly\nreported facts. Not a reproduction of any single source document \u2014 verify\ndetails against primary sources before relying on specific figures.\n\n**Source facts drawn from:** EASA newsroom announcement of the type\ncertificate, and the aircraft's publicly available specifications.\nSee: https://www.easa.europa.eu/newsroom-and-events/press-releases/easa-certifies-electric-aircraft-first-type-certification-fully",
+    "page_start": 1,
+    "page_end": 1,
+    "section_ref": null,
+    "toc": false
+  },
+  {
+    "text": "## Summary\n\nOn 18 May 2020, EASA issued Type Certificate EASA.A.573 to the Pipistrel\nVelis Electro, making it the first fully electric aircraft to receive type\ncertification from a major civil aviation authority. The aircraft is a\ntwo-seat trainer, certified under EASA CS-23 with a bespoke certification\nbasis reflecting its electric powertrain (there was no dedicated electric\npropulsion special condition in force at the time of this program \u2014 SC E-19\nwas published afterward, in 2021).",
+    "page_start": 1,
+    "page_end": 1,
+    "section_ref": null,
+    "toc": false
+  },
+  {
+    "text": "Key characteristics relevant to feasibility/readiness lessons:\n\n- **Powertrain:** a single type-certified electric engine, driving a\n  fixed-pitch propeller.\n- **Energy storage:** a liquid-cooled battery system arranged as two\n  battery packs connected in parallel, giving physical/electrical redundancy\n  at the pack level.\n- **Mission profile:** short-endurance (well under an hour plus reserve),\n  which simplified the battery-energy and thermal-management certification\n  problem relative to longer-range eVTOL missions.\n- **Certification path:** achieved by treating the electric powertrain as a\n  novel technology under the existing CS-23 framework via special\n  conditions/equivalent safety findings, rather than waiting for a\n  purpose-built electric-propulsion certification standard.",
+    "page_start": 1,
+    "page_end": 1,
+    "section_ref": "SC E-19",
+    "toc": false
+  },
+  {
+    "text": "## Why this matters for readiness assessment\n\n- It demonstrates that a **simple, low-redundancy, short-endurance** electric\n  architecture was certifiable years before the eVTOL-specific SC-VTOL / SC\n  E-19 framework existed \u2014 suggesting programs that minimize architectural\n  novelty (single motor, simple battery topology, short mission) can reach\n  certification faster than highly redundant multi-motor distributed\n  propulsion designs.\n- It is a useful **lower bound / reference point** on TRL and certification\n  schedule for any new design: a design that is architecturally *more*\n  complex than the Velis Electro (more motors, higher redundancy, longer\n  endurance, higher voltage) should be expected to take longer and face more\n  open certification questions than this program did, not less.\n- It does **not** provide direct precedent for multi-motor distributed\n  electric propulsion, high-voltage fast-charging, or DO-178C/DO-254-level\n  software/hardware assurance on flight-critical power electronics \u2014 those\n  remain comparatively less mature areas even where the basic \"is an\n  electric powertrain certifiable\" question has been answered.",
+    "page_start": 1,
+    "page_end": 1,
+    "section_ref": "CS-23",
+    "toc": false
+  },
+  {
+    "text": "## Gaps this document does not cover\n\nAdd primary sources (EASA TCDS A.573, any published certification review\nitems, NTSB/EASA incident reports if applicable) if deeper detail is needed\nfor a specific Stage 3 assessment.",
+    "page_start": 1,
+    "page_end": 1,
+    "section_ref": "DO-254-level",
+    "toc": false
+  }
+]

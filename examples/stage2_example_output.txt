@@ -1,0 +1,111 @@
+=== HyDE doc ===
+"For Category Enhanced certification, each system that provides power to flight control computers must be arranged so that no single failure of a power source, distribution bus, or associated wiring can render more than one flight control computer inoperative. The flight control system must be capable of continued safe flight and landing after any single failure or event affecting a power supply. In addition, the cooling installation for lift/thrust units must provide independent cooling paths such that a single failure of any coolant pump, line, or heat exchanger cannot cause overheating or loss of thrust capability of more than one propulsion unit. Means must be provided to detect and isolate failures that could affect multiple units, and the aircraft must continue to meet the performance requirements for safe landing after such failures."
+
+=== Stage 2 Report ===
+## Proposed Design Changes
+
+### Non‑Compliant Item 1: Flight‑Control Computer (FCC) Power Supply
+
+**Clause cited in Stage 1:**  
+SC‑VTOL VTOL.2510(a)(1) – *“each catastrophic failure condition is extremely improbable and does not result from a single failure”* and VTOL.2430(a)(1) – independence of energy supply.  
+Also relevant: VTOL.2300(a)(2) (protection against likely hazards), VTOL.2525(a) (essential loads not lost by single failure), and VTOL.2515(a) (lightning protection).
+
+**Design deficiency:** All three triple‑redundant flight‑control computers draw power from a single 28 V DC bus. A single fault (short, regulator failure, wiring damage, lightning transient) can disable all three computers simultaneously, constituting a catastrophic failure condition from a single failure.
+
+---
+
+#### Option FCC‑1: Dual‑Bus Architecture with Independent Sources
+
+- **Description:** Add a second independent 28 V DC bus powered from a separate battery (e.g., a dedicated avionics battery or a DC/DC converter fed from motor battery pack #2). The three flight‑control computers are connected so that at least two computers are on different buses (e.g., FCC‑1 and FCC‑2 on Bus A, FCC‑3 on Bus B). Each bus is physically segregated and independently protected.
+- **How it satisfies the clause:** A single failure on Bus A (e.g., regulator failure) affects only the computers on Bus A; at least one computer remains powered on Bus B. The catastrophic failure condition “loss of all flight‑control computers” no longer results from a single failure. This directly addresses VTOL.2510(a)(1) and VTOL.2430(a)(1). Dual‑bus segregation also improves lightning‑transient immunity (VTOL.2515(a)) because a strike affecting one bus is less likely to couple into the segregated second bus.
+- **Reference to technical documents:** The NASA X‑57 power system design employs a similar dual‑bus architecture for the avionics system: two independent generator buses (fed from separate traction battery packs via DC/DC converters) and a backup battery (Clarke et al., “X‑57 Power and Command System Design,” Section IV). That design was shown to be robust against single‑bus failures. The NASA quad‑analysis (Thomas & Malone, “Power System Redundancy Design Trends for All‑Electric eVTOL Quadrotors”) advocates redundant battery “primary” systems (e.g., 2‑out‑of‑3) to meet catastrophic failure probability targets, which supports the use of multiple independent power sources.
+- **Performance impact:**  
+  – *Weight:* ~2–3 kg additional for the second bus (cables, contactors, DC/DC converter).  
+  – *Complexity:* Moderate; requires segregation routing and additional circuit protection.  
+  – *Power:* Negligible loss; conversion efficiency of the DC/DC is >95 %.  
+  – *Cost:* Low increase in component count.
+
+---
+
+#### Option FCC‑2: Dedicated Backup Battery per Flight‑Control Computer
+
+- **Description:** Equip each of the three flight‑control computers with a small, dedicated lithium‑ion backup battery (e.g., 50–100 Wh) with automatic switching upon failure of the primary 28 V bus. Each battery is charged from the primary bus during normal operation and provides power for at least 30 minutes of critical flight.
+- **How it satisfies the clause:** A single failure of the primary 28 V bus does not disable any FCC because each automatically switches to its own backup battery. The catastrophic loss of all FCCs from a single bus fault is prevented, meeting VTOL.2510(a)(1). Independence is maintained (VTOL.2430(a)(1)) because no single failure can remove power from more than one FCC. Lightning transients on the primary bus are isolated by the battery and the switching circuit, supporting VTOL.2515(a).
+- **Reference to technical documents:** NASA X‑57 uses a backup avionics battery (lead‑acid) that supplies essential instruments if the main traction batteries fail. The concept of per‑computer backup batteries is an extension of this principle and is a common practice in fly‑by‑wire systems (e.g., Boeing 777, which uses multiple independent electrical power sources for flight controls). The NASA eVTOL redundancy study (Thomas & Malone) shows that a 1‑out‑of‑2 redundant system is mass‑efficient when component reliability is high, and a triple independent supply would provide even higher assurance.
+- **Performance impact:**  
+  – *Weight:* ~1.5–2 kg per battery (total 4.5–6 kg).  
+  – *Complexity:* Moderate; requires battery management and automatic switchover logic.  
+  – *Power:* Charging load on primary bus is negligible (<50 W total).  
+  – *Cost:* Moderate increase due to three batteries and associated electronics.
+
+---
+
+#### Option FCC‑3: Dual‑Bus with Automatic Transfer Switch (ATS)
+
+- **Description:** Provide two independent 28 V buses (same as Option FCC‑1) but connect all three FCCs to both buses through automatic transfer switches. The ATS selects the healthy bus in case of one bus failure, so all three computers remain powered. The two buses are sourced from different batteries (e.g., from motor battery packs #1 and #2).
+- **How it satisfies the clause:** A single bus failure does not disable any FCC because the ATS instantaneously transfers to the remaining bus. The catastrophic condition is avoided. The ATS itself is a single point of failure if it can fail in a way that disconnects both buses; however, the design must ensure that the ATS is highly reliable and that the probability of a combined failure is extremely improbable, or that a manual bypass exists. In practice, a dual‑bus with ATS is simpler than three individual backup batteries but may introduce new single‑failure modes if not carefully designed.
+- **Reference to technical documents:** The NASA X‑57 avionics system uses a cross‑strap switch to allow either generator bus to power all avionics loads, effectively a manual transfer switch. An automatic version is common in transport aircraft (e.g., Airbus A320 electrical system uses automatic bus transfer). The NASA redundancy study confirms that 2‑out‑of‑2 (dual) power sources are often sufficient when reliability targets are met.
+- **Performance impact:**  
+  – *Weight:* ~3–4 kg for additional bus and ATS components.  
+  – *Complexity:* Higher than Option FCC‑1 due to ATS control logic and testing.  
+  – *Power:* Negligible.  
+  – *Cost:* Moderate.
+
+---
+
+### Non‑Compliant Item 2: Shared Liquid Coolant Loop
+
+**Clause cited in Stage 1:**  
+SC‑VTOL VTOL.2430(a)(1) – independence of energy storage and supply systems (extended to cooling as a support system).  
+EHPS.320(a) – *“The design and construction of the EHPS cooling system must ensure adequate cooling in all flight attitudes and atmospheric conditions in which the EHPS is expected to operate.”*  
+(Reference: SC‑E‑19, accepted per VTOL.2400(b)).  
+Also relevant: VTOL.2425(a) – no hazardous characteristics after failure.
+
+**Design deficiency:** A single pump failure, hose rupture, or coolant leak in the common loop can lead to overheating of all eight motors, causing total loss of thrust – a catastrophic failure from a single failure.
+
+---
+
+#### Option COOL‑1: Split Cooling Loops (Two Independent Loops)
+
+- **Description:** Reconfigure the liquid cooling system into two independent loops, each serving four motors (e.g., left‑side and right‑side groups). Each loop has its own dedicated pump, expansion tank, radiator, and coolant lines. There is no interconnection between loops. The pumps are independently powered from different electrical buses.
+- **How it satisfies the clause:** A single failure (e.g., pump seizure in the left loop) affects only four motors on one side. The remaining four motors continue to be cooled and can provide sufficient thrust to complete a controlled landing. This meets the independence requirement of VTOL.2430(a)(1) and ensures adequate cooling after a single failure per EHPS.320(a). Asymmetric thrust from the loss of one side’s motors can be managed by yaw control (as confirmed by the framing’s requirement that continued safe flight and landing be possible after any single failure).
+- **Reference to technical documents:** The NASA X‑57 cooling architecture uses a dedicated liquid loop per motor/inverter assembly (see Schnulo et al., “Steady State Thermal Analyses of SCEPTOR X‑57 Wingtip Propulsion,” Section I‑B), and the overall design philosophy emphasises independence. The NASA eVTOL quad analysis (Thomas & Malone) demonstrates that splitting redundant paths (e.g., 2‑out‑of‑3 primary systems) is mass‑optimal for meeting reliability requirements. Splitting the coolant loop into two halves follows the same principle.
+- **Performance impact:**  
+  – *Weight:* ~5–8 kg additional (second pump, second radiator, extra piping).  
+  – *Complexity:* Moderate – requires additional plumbing and control but thermodynamically simple.  
+  – *Power:* ~100–200 W extra for the second pump.  
+  – *Cost:* Moderate.
+
+---
+
+#### Option COOL‑2: Individual Motor Cooling Loops
+
+- **Description:** Provide a completely independent liquid cooling system for each of the eight motors. Each system includes a small dedicated pump, a compact radiator (possibly air‑cooled via the motor’s own nacelle), and its own expansion tank. Each pump is powered from the motor’s own battery pack or controller.
+- **How it satisfies the clause:** A single failure in any cooling component affects only that motor. The other seven motors remain fully functional. This maximises independence and fully meets VTOL.2430(a)(1). Cooling adequacy per EHPS.320(a) is maintained because each loop is designed for the worst‑hot‑day conditions for its single motor. No single failure can cause loss of more than one motor’s thrust.
+- **Reference to technical documents:** The NASA X‑57 wingtip motor uses a passive air‑cooling scheme for the motor and inverter (Schnulo et al., Section II‑A). For higher‑power motors, individual liquid cooling is used in many electric aircraft prototypes (e.g., Joby Aviation’s pre‑production aircraft use per‑motor cooling loops). The NASA redundancy study indicates that 1‑out‑of‑1 (non‑redundant) components are acceptable if their failure rate is extremely low, but here we use individual loops to eliminate common‑cause failure. The weight penalty may be significant but is justified for Category Enhanced.
+- **Performance impact:**  
+  – *Weight:* ~15–20 kg for eight complete cooling systems (pumps, radiators, lines, coolant).  
+  – *Complexity:* High – eight separate thermal control loops to manage.  
+  – *Power:* ~400–800 W total for eight pumps.  
+  – *Cost:* High.
+
+---
+
+#### Option COOL‑3: Single Loop with Redundant Pumps and Section Isolation Valves
+
+- **Description:** Keep one coolant loop but add a second (redundant) pump in parallel, plus motor‑group isolation valves that can isolate a failed section (e.g., between motor groups) to contain a leak. Automatic or manual valves can close off a damaged segment, allowing the remaining motors to continue cooling.
+- **How it satisfies the clause:** A pump failure is covered by the redundant pump. A coolant leak can be isolated to a section, so not all motors are lost. However, a single event that causes a simultaneous leak in multiple sections (e.g., a blockage or contamination affecting the entire loop) could still affect all motors. This option provides partial independence but does not fully eliminate a common‑mode failure in the coolant itself. Therefore, it may not fully satisfy VTOL.2430(a)(1) unless the isolation scheme is proven to prevent any single failure from affecting more than a safe number of motors (e.g., up to 4). This is a compromise between weight and safety.
+- **Reference to technical documents:** The NASA X‑57 uses a single loop per motor pair (in concept) but does not specify isolation. In traditional aircraft, hydraulic systems often use redundant pumps and isolation valves (e.g., Boeing 737 hydraulic system). The NASA reliability study supports the principle of redundancy for critical functions.
+- **Performance impact:**  
+  – *Weight:* ~4–6 kg for second pump and valves.  
+  – *Complexity:* Higher due to valve control and leak detection logic.  
+  – *Power:* ~100–200 W for second pump.  
+  – *Cost:* Moderate to high.
+
+---
+
+## Ranked Overall Recommendation
+
+**Primary recommendation:** Combine **Option FCC‑1 (Dual‑Bus Architecture with Independent Sources)** with **Option COOL‑1 (Split Cooling Loops)**. This pair provides a robust balance between eliminating single‑failure points and practical weight/complexity, directly satisfying the cited clauses while leveraging proven redundancy concepts from the NASA X‑57 and eVTOL analysis references.  
+
+**Reason:** Dual‑bus for flight‑control computers avoids the weight and lifecycle cost of three backup batteries and the ATS single‑point issue, while split cooling loops offer a simpler and more mass‑efficient solution than individual loops, still ensuring that any single failure does not disable more than half the propulsion units, which can be safely managed with asymmetric thrust control.
