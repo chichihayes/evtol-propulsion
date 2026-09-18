@@ -41,7 +41,7 @@ function readCorpus(name) {
   return fs.readFileSync(path.join(process.cwd(), "api", "corpus", name), "utf-8");
 }
 
-async function callOpenRouter(systemPrompt, userMessage, maxTokens) {
+async function callOpenRouter(systemPrompt, userMessage, maxTokens, model = "deepseek/deepseek-v4-flash") {
   const resp = await fetch("https://openrouter.ai/api/v1/chat/completions", {
     method: "POST",
     headers: {
@@ -49,7 +49,7 @@ async function callOpenRouter(systemPrompt, userMessage, maxTokens) {
       Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
     },
     body: JSON.stringify({
-      model: "deepseek/deepseek-v4-flash",
+      model,
       max_tokens: maxTokens,
       messages: [
         { role: "system", content: systemPrompt },
@@ -69,4 +69,6 @@ async function callOpenRouter(systemPrompt, userMessage, maxTokens) {
   return { text: content.trim(), usage: data.usage };
 }
 
-module.exports = { HYDE_SYSTEM_PROMPT, STAGE1_SYSTEM_PROMPT, STAGE2_SYSTEM_PROMPT, readCorpus, callOpenRouter };
+const HYDE_MODEL = "anthropic/claude-sonnet-4.6";
+
+module.exports = { HYDE_SYSTEM_PROMPT, STAGE1_SYSTEM_PROMPT, STAGE2_SYSTEM_PROMPT, readCorpus, callOpenRouter, HYDE_MODEL };
