@@ -313,11 +313,12 @@
   <section id="pipeline">
     <div class="chapter">Chapter 6</div>
     <h2>The pipeline, as it runs today</h2>
-    <p>Both stages follow the same two-call shape: a small, cheap HyDE call, then one large call that
-    reads everything relevant at once and reasons over it directly.</p>
+    <p>Both stages follow the same shape: two small, cheap HyDE calls run in parallel and get combined,
+    then one large call reads everything &mdash; both framings, the corpus, and the design or report
+    &mdash; at once and reasons over it directly.</p>
 
     <figure>
-      <svg viewBox="0 0 700 330" role="img" aria-label="Flow diagram: a design description feeds a HyDE call and the full stage 1 corpus into a Stage 1 main call, producing a compliance report with no summary section; that report then feeds a second HyDE call and the stage 1 plus stage 2 technical corpus into a Stage 2 main call, producing ranked design fix recommendations.">
+      <svg viewBox="0 0 700 330" role="img" aria-label="Flow diagram: a design description feeds two parallel HyDE calls, combined and fed with the full stage 1 corpus into a Stage 1 main call, producing a compliance report with no summary section; that report then feeds two more parallel HyDE calls, combined with the stage 1 plus stage 2 technical corpus into a Stage 2 main call, producing ranked design fix recommendations.">
         <defs>
           <marker id="arr3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
             <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
@@ -330,7 +331,8 @@
 
         <line x1="91" y1="64" x2="91" y2="100" stroke="currentColor" stroke-width="1.2" marker-end="url(#arr3)"/>
         <rect x="16" y="100" width="150" height="40" rx="7" fill="var(--paper-2)" stroke="currentColor" stroke-width="1"/>
-        <text class="dtext" x="91" y="124" text-anchor="middle" font-size="11" font-weight="600" fill="currentColor">HyDE call</text>
+        <text class="dtext" x="91" y="118" text-anchor="middle" font-size="11" font-weight="600" fill="currentColor">2&times; HyDE calls</text>
+        <text class="dtext" x="91" y="131" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.6">parallel, combined</text>
 
         <line x1="91" y1="140" x2="91" y2="176" stroke="currentColor" stroke-width="1.2" marker-end="url(#arr3)"/>
 
@@ -354,7 +356,8 @@
         <line x1="440" y1="291" x2="500" y2="291" stroke="currentColor" stroke-width="1.2" marker-end="url(#arr3)"/>
 
         <rect x="500" y="100" width="150" height="40" rx="7" fill="var(--paper-2)" stroke="currentColor" stroke-width="1"/>
-        <text class="dtext" x="575" y="124" text-anchor="middle" font-size="11" font-weight="600" fill="currentColor">HyDE call 2</text>
+        <text class="dtext" x="575" y="118" text-anchor="middle" font-size="11" font-weight="600" fill="currentColor">2&times; HyDE calls</text>
+        <text class="dtext" x="575" y="131" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.6">parallel, combined</text>
         <line x1="500" y1="270" x2="575" y2="140" stroke="currentColor" stroke-width="1.2" marker-end="url(#arr3)" opacity="0.7"/>
 
         <rect x="500" y="20" width="150" height="44" rx="7" fill="var(--paper-2)" stroke="currentColor" stroke-width="1"/>
@@ -379,19 +382,22 @@
     <p>Worth asking directly: once Stage 1 reads the full corpus instead of retrieving from it, is the
     HyDE call still doing anything, or is it a leftover from the retrieval-era architecture? Tested it
     directly &mdash; same design description, same corpus, same model, run three ways: with HyDE, with
-    two competing HyDE framings stitched together, and with no HyDE at all.</p>
+    two independent HyDE framings combined, and with no HyDE at all.</p>
     <p>With no HyDE, Stage 1 still caught every issue stated directly in the design description, but
     missed the issues that only emerge from connecting two separate parts of it &mdash; exactly the
-    "reasoning-intensive" gap from Chapter 2, just showing up one stage later than expected. Stacking
-    two HyDE framings together didn't fix that either; it diluted both into vaguer gaps instead of
-    sharpening either one. The version that actually surfaced one of the hard, cross-cutting findings
-    cleanly, with a specific clause citation, was the single, plain HyDE call this pipeline runs today.</p>
+    "reasoning-intensive" gap from Chapter 2, just showing up one stage later than expected. A single
+    HyDE framing fixed that partially: whichever cross-cutting issue it happened to name, Stage 1 caught
+    cleanly with a real clause citation &mdash; but it only ever named one, so the report was only ever
+    strong on that one. Running two independent framings in parallel and combining them, which is what
+    the pipeline does today, trades that single sharp catch for broader coverage of the straightforward
+    issues, at the cost of neither cross-cutting finding coming through quite as cleanly on its own.</p>
     <div class="callout">
       <span class="k">Honest limitation</span>
-      <p>This isn't a solved problem, just a kept one: HyDE's own output varies between runs on identical
-      input, and whichever cross-cutting issue it happens to name is the one Stage 1 reliably elaborates
-      on &mdash; the ones it doesn't name are the ones most likely to get missed. HyDE measurably helps
-      here; it doesn't yet catch everything, every time.</p>
+      <p>This isn't a solved problem. HyDE's own output varies between runs on identical input, and
+      whichever cross-cutting issue it happens to name is the one Stage 1 reliably elaborates on &mdash;
+      the ones it doesn't name are the ones most likely to get missed or under-developed. Two framings
+      broaden what gets named without guaranteeing every hard issue gets named clearly. HyDE measurably
+      helps here; it doesn't yet catch everything, every time.</p>
     </div>
   </section>
 
