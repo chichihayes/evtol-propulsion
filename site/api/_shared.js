@@ -69,20 +69,4 @@ async function callOpenRouter(systemPrompt, userMessage, maxTokens, model = "dee
   return { text: content.trim(), usage: data.usage };
 }
 
-async function generateDualHyde(input) {
-  const [a, b] = await Promise.all([
-    callOpenRouter(HYDE_SYSTEM_PROMPT, input, 4000, "deepseek/deepseek-v4-flash"),
-    callOpenRouter(HYDE_SYSTEM_PROMPT, input, 4000, "anthropic/claude-sonnet-4.6"),
-  ]);
-  const text =
-    `===== HYPOTHETICAL REGULATORY FRAMING 1 =====\n\n${a.text}` +
-    `\n\n===== HYPOTHETICAL REGULATORY FRAMING 2 =====\n\n${b.text}`;
-  const usage = {
-    prompt_tokens: (a.usage?.prompt_tokens || 0) + (b.usage?.prompt_tokens || 0),
-    completion_tokens: (a.usage?.completion_tokens || 0) + (b.usage?.completion_tokens || 0),
-    total_tokens: (a.usage?.total_tokens || 0) + (b.usage?.total_tokens || 0),
-  };
-  return { text, usage };
-}
-
-module.exports = { HYDE_SYSTEM_PROMPT, STAGE1_SYSTEM_PROMPT, STAGE2_SYSTEM_PROMPT, readCorpus, callOpenRouter, generateDualHyde };
+module.exports = { HYDE_SYSTEM_PROMPT, STAGE1_SYSTEM_PROMPT, STAGE2_SYSTEM_PROMPT, readCorpus, callOpenRouter };
