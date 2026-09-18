@@ -71,8 +71,8 @@ async function callOpenRouter(systemPrompt, userMessage, maxTokens, model = "dee
 
 async function generateDualHyde(input) {
   const [a, b] = await Promise.all([
-    callOpenRouter(HYDE_SYSTEM_PROMPT, input, 4000),
-    callOpenRouter(HYDE_SYSTEM_PROMPT, input, 4000),
+    callOpenRouter(HYDE_SYSTEM_PROMPT, input, 4000, "deepseek/deepseek-v4-flash"),
+    callOpenRouter(HYDE_SYSTEM_PROMPT, input, 4000, "anthropic/claude-sonnet-4.6"),
   ]);
   const text =
     `===== HYPOTHETICAL REGULATORY FRAMING 1 =====\n\n${a.text}` +
