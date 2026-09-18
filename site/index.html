@@ -318,7 +318,7 @@
     &mdash; at once and reasons over it directly.</p>
 
     <figure>
-      <svg viewBox="0 0 620 610" role="img" aria-label="Top to bottom flow diagram. Stage 1: a design description splits into two independent AI guesses at the relevant regulation, which merge back into one; that combined guess, together with the design and the full stage 1 corpus, feeds a Stage 1 main call, producing a compliance report with no summary section. Stage 2: that report splits into two more independent guesses, which merge; that guess, together with the report and the stage 1 plus stage 2 technical corpus, feeds a Stage 2 main call, producing ranked design fix recommendations.">
+      <svg viewBox="0 0 620 610" role="img" aria-label="Top to bottom flow diagram. Stage 1: a design description splits into two independent AI guesses at the relevant regulation, which merge back into one; that combined guess, the full stage 1 corpus, and the design description itself (sent directly, not only through the guesses) all feed a Stage 1 main call, producing a compliance report with no summary section. Stage 2: that report splits into two more independent guesses, which merge; that guess, both corpora, the original design description, and the report itself (sent directly) all feed a Stage 2 main call, producing ranked design fix recommendations.">
         <defs>
           <marker id="arr3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
             <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
@@ -333,6 +333,8 @@
 
         <line x1="130" y1="66" x2="68" y2="92" stroke="currentColor" stroke-width="1.3" marker-end="url(#arr3)"/>
         <line x1="130" y1="66" x2="192" y2="92" stroke="currentColor" stroke-width="1.3" marker-end="url(#arr3)"/>
+        <path d="M 260 45 L 276 45 L 276 186 L 262 186" fill="none" stroke="currentColor" stroke-width="1.1" stroke-dasharray="2 3" opacity="0.55" marker-end="url(#arr3)"/>
+        <text class="dtext" x="279" y="120" font-size="8" fill="currentColor" opacity="0.55" transform="rotate(90 279 120)">design, direct</text>
 
         <rect x="0" y="94" width="125" height="44" rx="7" fill="var(--paper-2)" stroke="currentColor" stroke-width="1"/>
         <text class="dtext" x="62.5" y="114" text-anchor="middle" font-size="11" font-weight="600" fill="currentColor">Guess A</text>
@@ -368,6 +370,8 @@
 
         <line x1="130" y1="318" x2="68" y2="374" stroke="currentColor" stroke-width="1.3" marker-end="url(#arr3)"/>
         <line x1="130" y1="318" x2="192" y2="374" stroke="currentColor" stroke-width="1.3" marker-end="url(#arr3)"/>
+        <path d="M 260 297 L 276 297 L 276 468 L 262 468" fill="none" stroke="currentColor" stroke-width="1.1" stroke-dasharray="2 3" opacity="0.55" marker-end="url(#arr3)"/>
+        <text class="dtext" x="279" y="400" font-size="8" fill="currentColor" opacity="0.55" transform="rotate(90 279 400)">report, direct</text>
 
         <rect x="0" y="376" width="125" height="44" rx="7" fill="var(--paper-2)" stroke="currentColor" stroke-width="1"/>
         <text class="dtext" x="62.5" y="396" text-anchor="middle" font-size="11" font-weight="600" fill="currentColor">Guess A</text>
@@ -383,7 +387,7 @@
 
         <rect x="0" y="454" width="260" height="72" rx="9" fill="var(--accent-2)" opacity="0.14" stroke="var(--accent-2)" stroke-width="1.5"/>
         <text class="dtext" x="130" y="480" text-anchor="middle" font-size="13" font-weight="650" fill="var(--accent-2)">Stage 2 main call</text>
-        <text class="dtext" x="130" y="497" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.75">reads report + both guesses + both corpora</text>
+        <text class="dtext" x="130" y="497" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.75">reads report + design + guesses + corpora</text>
         <text class="dtext" x="130" y="510" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.6">deepseek/deepseek-v4-flash</text>
         <text class="dtext" x="130" y="521" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.6">2&ndash;3 ranked fix options per finding</text>
 
@@ -400,10 +404,12 @@
       </svg>
       <figcaption>Fig. 4 &mdash; Read top to bottom. Before either main call reads a single real document,
       the AI first guesses &mdash; twice, independently &mdash; at what the actual regulation might say;
-      this is the "HyDE" step from Chapter 2/3, just run twice and stitched together. Both guesses become
-      extra context for the call that then reads everything for real. Stage 1's report deliberately has
-      no summary section &mdash; it feeds Stage 2 directly, so nothing gets condensed away before the
-      model that needs the full detail sees it.</figcaption>
+      this is the "HyDE" step from Chapter 2/3, just run twice and stitched together. The dashed
+      side-lanes show the original design description and Stage 1's report going into the main calls
+      directly too, not just through the guesses &mdash; every main call reads the real source text
+      itself, the guesses are extra framing, never a replacement. Stage 1's report deliberately has no
+      summary section &mdash; it feeds Stage 2 directly, so nothing gets condensed away before the model
+      that needs the full detail sees it.</figcaption>
     </figure>
 
     <h3>Does HyDE still earn its place once the model reads everything anyway?</h3>
