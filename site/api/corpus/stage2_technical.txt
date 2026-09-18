@@ -1,0 +1,2001 @@
+
+
+===== TECHNICAL REFERENCE: NASA_Power_System_Redundancy_Design_Trends_AllElectric.pdf =====
+
+American Institute of Aeronautics and Astronautics 
+1
+Power System Redundancy Design Trends for 
+All-Electric eVTOL Quadrotors 
+George L. Thomas1 and Brian P. Malone2 
+NASA Glenn Research Center, Cleveland, Ohio, 44135 
+Electrical vertical takeoff and landing (eVTOL) vehicles promise to enable a variety of new 
+local and intraregional air transport missions. However, there are significant challenges that 
+must be solved to enable their use. One challenge is the relatively low reliability of power 
+components (e.g. motors, power electronic devices, and batteries).  No clear development path 
+to create reliable eVTOL power systems has been articulated in the literature, though it is 
+generally assumed redundancy is part of the solution.  This work proposes an analysis process 
+to examine the redundancy design space and select mass optimal designs for eVTOL power 
+systems. The process is applied to a six passenger quadrotor vehicle, and results are used to 
+highlight redundancy design trends for this class of vehicle. This process and associated data 
+can help vehicle designers more effectively develop eVTOLs that meet reliability 
+requirements. 
+I.
+Introduction
+LECTRIC vertical takeoff and landing (eVTOL) vehicles are expected to enable a variety of new missions,
+particularly local and intraregional air travel. A term for these missions is advanced air mobility (AAM) [1].
+eVTOLs are especially promising for these missions because vertical takeoff capability enables operation in localized 
+and urban spaces without access to runways, and propulsion system electrification enables design flexibility (e.g. 
+distributed propulsion) that can increase vehicle efficiency, and facilitates use of low carbon or renewable power for 
+flight. However, electrified propulsion is still largely an open research and development area, with significant 
+investment from industry and government agencies worldwide. 
+A key challenge to electrified propulsion for eVTOLs and most other classes of aircraft is the relatively low 
+reliability of the necessary power components. Previous studies have identified electric machines, power electronics, 
+and batteries as weak links for propulsion system reliability based on historical data [2]. There are several approaches 
+to improve the reliability of these components. One is to run these devices at lower temperature or otherwise increase 
+their operating temperature margin, because reduced operating temperatures are correlated with significantly longer 
+lifespans of electrical power equipment [3]. This may be done by using higher temperature rated components (e.g. 
+high temperature insulation materials, wide bandgap power electronics instead of silicon, etc), by reducing losses 
+within the components, or through more aggressive thermal management, though the latter comes with costs in terms 
+of mass and load power. Another is to reduce electrical stress on the devices, which may include adhering to power 
+quality standards that bound these stresses [4], and increasing margin for electrical variables in the design, although 
+additional margin may incur performance costs. 
+Redundancy is another key approach towards increasing reliability and can be applied at the component or at the 
+system level. Aircraft feature redundancy throughout, including in engine control systems [5] as well as fly-by-wire 
+systems for vehicle control [6]. This work focuses on how redundancy can be used in the power system design in the 
+all-electric NASA Revolutionary Vertical Lift Technology (RVLT) six passenger quadrotor concept vehicle (Quad6) 
+to meet a representative reliability requirement. A rendering of this vehicle, first published in Ref. [7], is given in 
+Figure 1. 
+1 Electrical Engineer, Power Management and Distribution Branch, george.l.thomas@nasa.gov, AIAA Member. 
+2 Electrical Engineer, Power Management and Distribution Branch, brian.p.malone@nasa.gov, AIAA Member. 
+E 
+AIAA SciTech Forum, National Harbor, MD
+January 23-27, 2023
+
+ 
+American Institute of Aeronautics and Astronautics 
+ 
+ 
+2
+ 
+Figure 1: Rendering of the RVLT six passenger quad. 
+ 
+It is expected that electrified propulsion power systems must feature some amount of redundancy. US patents and 
+patent applications have been published describing possible power system redundancy designs, and describe many 
+power system architecture considerations for multirotors, but these do not include analysis on the designs showing 
+intent to meet reliability requirements, and they do not explore redundancy design space trends in detail [8, 9]. Little 
+more has been published on this topic. This paper seeks to address this lack of published information by presenting a 
+process to identify mass optimal redundancy designs that meet a given set of reliability requirements. This paper also 
+applies this process to the RVLT Quad6 concept vehicle and includes a discussion of design trends and results. This 
+methodology and data will help inform vehicle systems designers (especially in startups and those new to the field 
+[10]) about redundancy design trends and practice, which will help them develop plans to meet relevant reliability 
+requirements early on and avoid costly redesign cycles. 
+Regarding reliability requirements, note that the US Federal Aviation Administration (FAA) Advisory Circular 
+(AC) 25.1309–1 and its revisions advise that catastrophic failure conditions must be extremely improbable (10–6 to 
+10–9 or less depending on aircraft class) and that no single failure will result in a catastrophic failure condition, in order 
+for an aircraft to comply with the Federal Aviation Regulation (FAR) 25.1309 airworthiness standard [11]. From this, 
+one can infer that all safety critical systems must be at least single fault tolerant. However, the FAA catastrophic 
+failure probability requirement for eVTOLs has been ambiguous in the past due to the lack of definition and changing 
+type classification for these vehicles [12]. On the other hand, the European Union Aviation Safety Agency (EASA) 
+SC-VTOL-01 requires a failure rate of 10–9 failures per flight hour for special condition certification of small VTOLs 
+[13]. This work assumes requirements of single fault tolerance and a vehicle level catastrophic failure rate of 10–9 
+failures per flight hour consistent with assumptions in previous studies [2]. Further, only catastrophic failures of power 
+system components are considered. Power system reliability requirements are presented later in the text, based on the 
+above assumptions. 
+Section II describes the vehicle studied in this work. Section III covers the reliability analysis approach that was 
+used in this work, with details on the associated reliability and mass models. Section IV discusses results and trends 
+found in the study. Section V provides summary and conclusions. 
+II. 
+Vehicle Assumptions 
+For this study, this vehicle is assumed to require 160 kW shaft power at each rotor. It is also assumed the power 
+distribution architecture for the vehicle is a 1 kV DC radial system. The main bus is assumed to be battery backed and 
+unregulated to avoid adding additional converters or regulators (and thus additional mass) between the battery and the 
+main bus. All power for flight is sourced from Li-ion batteries, and the main bus power is delivered to the motors via 
+inverters or variable speed motor drives which are fed by 5 meter cable runs. The baseline power system architecture 
+(zero fault tolerant, with no redundant components) is shown in Figure 2. 
+ 
+ 
+Figure 2: Power system for the all-electric six passenger quad. 
+ 
+Performance and reliability technology assumptions for this vehicle are given in Table 1. 
+ 
+
+ 
+American Institute of Aeronautics and Astronautics 
+ 
+ 
+3
+Table 1: Component technology assumptions. 
+Variable 
+Value 
+Variable 
+Value 
+Minimum Required Rotor Hover Power (kW) 
+160 
+Battery Specific Energy (Wh/kg) 
+400 
+Mission Duration (h) 
+1 
+Battery Design Energy (kWh) 
+275 
+Pylon / Cable Length (m) 
+5 
+Nominal Battery Voltage (Vdc) 
+1000 
+Electric Machine Specific Power (kW/kg) 
+13 
+Nominal Battery Efficiency at Full Load 
+0.94 
+Electric Machine Efficiency 
+0.96 
+Electric Machine Failure Rate (failures/hr) 
+10-6 
+Power Electronics Specific Power (kW/kg) 
+9 
+Power Electronics Failure Rate (failures/hr) 
+5·10-6 
+Power Electronics Device Efficiency 
+0.95 
+Battery Failure Rate (failures/hr) 
+3.45·10-6 
+ 
+The efficiency, specific power, and specific energy technology values are based on assumptions about near-term 
+future technology projected by the RVLT project [7]. The component failure rates are based on legacy constant failure 
+rate (exponential distribution) models of the associated components and are assumed for this work to be accurate to 
+within an order of magnitude [14, 15]. The authors expect these electric machine and power electronics failure rates 
+may be conservative (i.e. overestimated), assuming proper engineering margin is built into the associated designs and 
+quality parts are used, and so one may expect the system failure rates predicted in this work to be overestimated as 
+well. The battery-backed main bus nominal voltage of 1000 V is chosen to be a conservative medium voltage value 
+consistent with both RVLT hardware test capability goals and previous work [16]. Lastly, the propulsion system is 
+assumed to be RPM controlled and does not feature cross shafting. It is assumed that the vehicle must maintain the 
+full 160 kW rotor power capability at all four rotors and at all times in order to safely end a mission. Thus reliability 
+in this paper is defined as the probability that all four rotors maintain a 160 kW power capability over the course of a 
+full mission duration. 
+III. 
+Modeling and Analysis Approach 
+This work uses the Electrical Power System – Sizing and Analysis Tool (EPS-SAT) to size the candidate system 
+designs to the required load power, and estimate the associated system masses [17, 18]. New reliability engineering 
+functions were added to EPS-SAT to enable calculating power system reliability and catastrophic failure rate based 
+on the system architecture and assumed component failure rate data. In this work, the masses and failure rates of 
+multiple power system design variants featuring different redundancy schemes are calculated. The redundancy design 
+problem can be casted as an optimization problem in these two variables (system mass and failure rate), and a Pareto 
+optimal (non-dominated) set of redundancy design solutions can be identified. Non-dominated design solutions are 
+those that cannot be improved in any one objective function dimension without compromising at least one other 
+dimension, and dominated design solutions are suboptimal ones that can be improved upon in multiple objective 
+dimensions. The Pareto front represented by these solutions captures the tradeoff design trend between mass and 
+reliability. Note that design solutions will be subject to one or more reliability constraints per regulations. The solution 
+to be selected from the design space should be the lowest mass solution that meets the reliability constraints, because 
+the lowest mass solution should enable a higher performing overall vehicle design. Figure 3 shows a visualization of 
+the redundancy design space in mass and failure rate, showing dominated and non-dominated solutions, Pareto front, 
+a reliability constraint, and the mass optimal feasible solution subject to the constraint. 
+ 
+ 
+Figure 3: Redundancy design space for a hypothetical system. 
+ 
+
+ 
+American Institute of Aeronautics and Astronautics 
+ 
+ 
+4
+In this work, a failure rate constraint of 10-10 catastrophic power system failures per flight hour was chosen, 
+assuming this will support the EASA SC-VTOL-1 vehicle level failure rate of 10-9 failures per flight hour [2]. The 
+remainder of this section discusses details of the reliability and mass models used in this work. 
+A. Reliability Modeling 
+In EPS-SAT, single (non-redundant) component reliabilities are calculated from the component failure rates using 
+the exponential distribution definition 
+𝑅= 𝑒−𝜆𝑇 
+(1)
+ 
+where R is the component reliability, λ is the component’s assumed constant failure rate, and T is a period of time of 
+interest in flight hours. In our case, T is taken to be the maximum time duration of a given mission, which is assumed 
+for this initial study to be 1 hour for this vehicle. Once component reliabilities are obtained, the system reliability and 
+failure rates can be calculated as series and parallel combination of the component reliabilities and failure rates. For 
+series combinations of components, the total failure rate is the sum of the component failure rates, and the total 
+reliability is the product of the reliabilities. The reliability for k-out-of-n parallel redundant systems is given by the 
+following function 
+𝑅𝑘-out-of-𝑛(𝑅, 𝑘, 𝑛) = 1 −∑(𝑛
+𝑚) (1 −𝑅)𝑛−𝑚𝑅𝑚
+𝑘−1
+𝑚=0
+ 
+(2)
+ 
+where n is the number of redundant parallel elements, k is the number of healthy elements required for mission success, 
+and m is a summation index used in the expression [19]. Once the reliability of a redundant combination of elements 
+is calculated, the failure rate of the redundant set of components is calculated by the inverse of Eqn. (1). 
+ 
+𝜆= −ln(𝑅)
+𝑇
+ 
+(3)
+ 
+The generalized redundancy architecture for the all-electric Quad6 power system is broken down into primary 
+and secondary power systems and integrated into an end-to-end power system as illustrated in Figure 4.  
+ 
+ 
+Figure 4: Reliability block diagrams for a) the primary power system, b) the secondary power system, 
+and c) the entire power system. 
+ 
+The primary power system is composed of a number of parallel batteries as shown in Figure 4a. The reliability of 
+the k1-out-of-n1 redundant primary power system can be calculated as 
+ 
+𝑅𝑝𝑟𝑖= 𝑅𝑘-out-of-𝑛(𝑅𝑏, 𝑘1, 𝑛1) 
+(4)
+ 
+where k1 and n1 are the redundancy parameters for the primary system and Rb is the reliability of one battery. Second, 
+each rotor is driven by a number of parallel motor/inverter strings, and each parallel set is referred to in this paper as 
+a secondary power system, as shown in Figure 4b. Because each secondary string features a series inverter and motor, 
+the secondary system reliability can then be calculated as 
+ 
+𝑅𝑠𝑒𝑐= 𝑅𝑘-out-of-𝑛(𝑅𝑖𝑅𝑚, 𝑘2, 𝑛2) 
+(5)
+ 
+
+ 
+American Institute of Aeronautics and Astronautics 
+ 
+ 
+5
+where k2 and n2 are the redundancy parameters for the secondary system, and Ri and Rm are the reliabilities of one 
+inverter and one motor. Note that the product of Ri and Rm is the reliability of a single one of the redundant secondary 
+strings. 
+The overall power system is composed of a primary system, and four secondary power systems which each drive 
+one of the four rotors as shown in Figure 4c. It is assumed the power system must be capable of delivering the full 
+160 kW shaft power at all times to all four rotors for the mission to be successful, meaning that none of the four 
+secondary systems can fail for a successful mission. Given these assumptions, the full system reliability can then be 
+written as 
+ 
+𝑅𝑠𝑦𝑠= 𝑅𝑝𝑟𝑖𝑅𝑠𝑒𝑐
+4 
+(6)
+ 
+The parallel inverters in Figure 4b may represent multiple separate inverters or may represent multiple inverter 
+modules or cards that could be packaged in a single box. Likewise, multiple motors in Figure 4b may represent 
+multiple separate motors, or multiple independent modular windings. The modular approach will likely be more mass 
+efficient for both, and so may be preferred. 
+Figure 4 shows all of the primary strings tied in parallel to a single main bus. In order for the reliability equations 
+above to be valid in this case, it must be assumed that proper circuit protection is present and devices adhere to a 
+power quality standard such that failures of one of the redundant primary strings will not affect any of the secondary 
+strings and vice versa. This must be the case so that the failure rates of the redundant primary and secondary systems 
+are independent from one another. In an alternative design, each primary string could power its own independent, 
+isolated bus, and each secondary could then draw power equally from all of these isolated busses. This design approach 
+should improve reliability in practice, however it may be challenging to design the inverters to accept power from 
+each of the isolated primary busses. It is assumed for this work that a single bus is equivalent in terms of mass and 
+failure rate to the alternative multiple iolated bus approach, so selection between these approaches is left for future 
+work.All redundant components are assumed in this paper to “operate hot” and are nominally assumed to equally 
+share load power. Architectures based on load sharing redundancy tend to have higher common cause failure rates 
+than architectures that feature redundant backup systems that normally are not operational. This is because when a 
+load sharing element goes offline, the remaining elements see an instantaneous increase in load, and higher loads are 
+associated with higher component failure rates. Also, since these parallel load sharing components all see the same 
+bus, any power quality phenomenon such as voltage surge will stress all redundant parts equally and such a 
+phenomenon could be a common cause of potential failures. For this work, these common cause failures are accounted 
+for using a beta factor model, with beta assumed to be 0.1. This value is reported to be a conservative beta factor 
+assuming good engineering practice is followed [20]. Note that beta factor models are simplistic and a higher fidelity 
+model of common cause failure rates could be adapted for future work. 
+B. Mass Modeling 
+Masses for single components in this study are calculated by dividing the component design power (a function of 
+the rotor maximum load requirement) by the specific power assumed in Table 1. The mass of a k-out of-n redundant 
+array of parallel components is calculated as expression 
+ 
+𝑚𝑘-out-of-𝑛= 𝑛𝑓𝑚1-out-of-1 
+(7)
+ 
+where f is the fractional design power that each redundant component in the array is designed to. In this work, it is 
+assumed f = 1 / k, which results in the minimum component power rating needed for k components in parallel to equal 
+the design power. 
+Note that this mass modeling approach is fairly simplistic. For one, it does not attempt to predict how the various 
+subsystem masses within a given component will vary with redundancy design variables (e.g., structural, bearings, 
+shaft, back iron, and windings for a motor). Attempts to account for this are difficult because the manner in which 
+these masses vary depends greatly on how the component is designed, and electrified propulsion component designs 
+themselves vary greatly. This model also neglects the fact that as the number of parallel redundant components 
+increases, the amount of overhead mass should also increase (e.g., additional wiring harnesses for the additional 
+redundant components, additional enclosures, etc). For instance, this model predicts 1-out-of-2 redundant systems to 
+have the same mass as 2-out-of-4, which may not be true in reality—one would expect the 2-out-of-4 redundant system 
+to have more overhead mass as it is a more complex system with a larger number of parts. The actual overhead mass 
+for redundant systems should depend strongly on engineering and packaging decisions made in the design process and 
+thus is hard to estimate. In addition, little data has been published on this overhead mass, complicating efforts to model 
+
+ 
+American Institute of Aeronautics and Astronautics 
+ 
+ 
+6
+it. Ultimately, this simplified mass modeling approach was taken to avoid making too many assumptions about the 
+design which could limit the general applicability of the work and overcomplicate the analysis effort. 
+IV. 
+Results and Discussion 
+A study was conducted where the redundancy design variables for the primary (k1 and n1) and secondary (k2 and 
+n2) systems were varied. Each component in a k-out-of-n redundant system is sized to a power level equal to 1 / k 
+times the total power required for the whole set of redundant components. This means that k elements in parallel (the 
+bare minimum for full capability operation) will be capable of up to the total required power. Realistic designs may 
+size components to powers greater than 1/k, as this represents design margin which is often desired or required in real 
+systems. 
+In this study, n1 and n2 were varied from 0 to 4. For each value of n1, k1 was varied from 1 to n1 (and likewise 
+with k2 and n2). This results in an exhaustive search over the redundancy design space for values of n1 and n2 up to 4. 
+Given that this study is an exploration of a design space in four variables (n1, n2, k1, and k2), with two objective 
+variables (system mass and failure rate), the data is not straightforward to analyze. The approach taken in this work is 
+to draw multiple mass versus failure rate curves with the primary power system redundancy parameters held constant 
+while the secondary system parameters are varied for the stated values of k2 and n2. Figure 5 provides an example by 
+showing total power system mass (including battery, cables, motors, and inverters) versus the log of the system 
+catastrophic failure rate for an architecture with a non-redundant primary power system (n1 = k1 = 1) and variable 
+secondary power system redundancy designs (n2 and k2 varied). 
+ 
+Figure 5: Mass versus failure rate trend as secondary system redundancy is varied, highlighting parts of 
+design trend. 
+ 
+Markers are drawn in Figure 5 for each design solution, and the redundancy design parameters associated with a 
+particular solution are indicated in abbreviated text next to each marker. For example, “1oo1p” represents the non-
+redundant primary system design analyzed in this figure. Likewise, “2oo3s” corresponds to a 2-out-of-3 redundant 
+secondary—that is, three redundant strings or sets of components that are sized and operated such that only two of 
+these is needed for full operation. It should be noted that none of the solutions in Figure 5 meet the reliability constraint, 
+indicating some degree of redundancy is needed in the primary power system. 
+Each of the curves for a given primary redundancy design in Figure 5 includes a region where the mass versus 
+failure rate trend is flat or approximately zero slope (as shown in the blue circle), a region with finite negative slope 
+(green circle), and a region with approximately infinite negative slope (red circle). The flat part of the design trend, in 
+blue, is where the secondary system has a lower reliability than the primary and is the limiting factor for system 
+reliability. In this case a higher redundancy allocation to the secondary will improve reliability without adding mass. 
+The red, near infinite negative slope region is where the primary system reliability is significantly lower than the 
+secondary system and dominates the trend. In this part of the trend, further improvements to system reliability require 
+more redundancy allocation to the primary system, or alternatively, one can reduce secondary system redundancy to 
+reduce mass without an impact on reliability. Finally, the finite slope region corresponds to where the primary and 
+secondary system have reliabilities that are fairly close to each other. This region is where one is most likely to find a 
+mass optimal overall design solution and corresponds to design solutions with well balanced redundancy allocation. 
+
+ 
+American Institute of Aeronautics and Astronautics 
+ 
+ 
+7
+Figure 6 shows mass versus failure rate curves for multiple primary system redundancy designs. Each colored 
+solid line plotted in the figure shows the mass versus failure rate trend for one primary system redundancy design 
+while the secondary system redundancy design is varied. Primary system redundancy design values are indicated for 
+each curve in the legend via abbreviated text (koon). The dotted black line shows the Pareto front connecting all non-
+dominated design solutions, and the red dashed line shows the reliability constraint of 10-10 failures per flight hour. 
+Note that some primary system designs (e.g. 2oo2 and 3oo3) are omitted from Figure 6 as they tend to be suboptimal. 
+ 
+Figure 6: Mass versus failure rate trends for several primary power system redundancy designs as the 
+secondary design is varied is varied. 
+ 
+This data shows that to minimize mass, the primary system should be 3oo4 redundant. The data also shows that 
+a 2oo3 redundant primary system has a comparable system failure rate while only being about 10% heavier and is a 
+good alternative solution. The 1oo1 (non-redundant) solution weighs 784 kg, while the best case 2oo3 and 3oo4 
+primary system designs weigh 1092 and 1206 kg respectively. This corresponds to a 39% increase in mass to meet 
+reliability constraints versus the non-redundant solution. Note that a powertrain designer may want to select the 2oo3 
+redundant primary design instead of a 3oo4, despite the additional mass, due to the fact that 2oo3 should result in a 
+simpler, more conventional system.  Ultimately, both primary system design solutions should be considered further. 
+While Figure 6 is useful for indicating overall trends and analysis of primary system redundancy, it does not 
+indicate secondary system design solutions due to lack of space on the graphic. Figure 7 shows the mass versus failure 
+rate data for the 2oo3 and 3oo4 primary systems and indicates both the primary and secondary system redundancy 
+variables of each solution (e.g., 2oo3p/1oo4s on the graphic represents a 2oo3 redundant primary, and 1oo4 redundant 
+secondary). 
+
+ 
+American Institute of Aeronautics and Astronautics 
+ 
+ 
+8
+ 
+Figure 7: Mass versus failure rate for select redundancy design solutions closest to the reliability constraint. 
+ 
+Figure 7 shows that the 2oo4 secondary system design is mass optimal for both the 2oo3 and 3oo4 primary system 
+designs. Note that this secondary system design tends to sit at the bottom of the infinite slope region of each of these 
+curves. This indicates that secondary system solutions more reliable than 2oo4 (i.e., 1oo3 and 1oo4) represent 
+excessive, unnecessary redundancy allocated to the secondary system. 
+This analysis was conducted again on a variant of the vehicle assumed to include cross shafting and collective 
+control instead of RPM control without cross shafting. Mass of the gearbox, cross shafting, and collective mechanisms 
+are neglected in this study for simplicity however these are not insignificant in general. This analysis was conducted 
+to see how different the trend is for these two different propulsion system concepts, given that there is an ongoing 
+debate about the drawbacks and benefits for each in the literature, with no clear winner identified in general. With 
+cross shafting, the propulsion system no longer needs the full 160 kW of motor capability active at each rotor station. 
+Instead, it is assumed it only needs 160 kW total per rotor, no matter where it is generated. This is because the cross 
+shafting allows rotors to be driven with mechanical power generated at other rotor stations. This means that instead 
+of Eqn (4), the total secondary reliability is given by 
+ 
+𝑅sec⁡(cross) = 𝑅𝑘-out-of-𝑛(𝑅𝑖𝑅𝑚, 4𝑘2, 4𝑛2) 
+(8)
+ 
+and instead of Eqn (5), the system reliability is given by 
+ 
+𝑅𝑠𝑦𝑠(𝑐𝑟𝑜𝑠𝑠) = 𝑅𝑝𝑟𝑖𝑅sec⁡(𝑐𝑟𝑜𝑠𝑠) 
+(9)
+ 
+Figure 8 illustrates why this is the case by looking at the full collection of secondary strings at all four rotors, 
+assuming a 1oo2 redundant secondary system. For the non cross shafting system on the left of Figure 8 it can be seen 
+that one of the two secondary strings at the front left rotor may fail and the remaining one will be able to provide full 
+power to that rotor (noting that 1oo2 means each secondary string is sized to the full rotor load of 160 kW). However, 
+without cross shafting, if both fail, the success criteria will not be met, and the result is a catastrophic system failure. 
+On the other hand, the cross shafting system shown on the right of Figure 8 represents one large redundant collection 
+of secondary strings distributed across the vehicle, instead of four smaller ones. In this system, losing all motoring 
+capability at one location is not significantly worse than losing the same amount of capability distributed across 
+multiple locations. 
+
+ 
+American Institute of Aeronautics and Astronautics 
+ 
+ 
+9
+ 
+Figure 8: Block diagram showing shaft connections (double parallel lines) between motors for the non cross-
+shaft quadrotor powertrain concept (left) and for the cross-shaft powertrain (right). 
+ 
+In order to capture the reliability differences between these variant powertrains, Figure 9 shows the trend for 2oo3 
+primary system designs comparing the baseline non-cross shafted concept with the cross shafted one. The data shows 
+that the collection of secondary systems in the cross shafting concept is at least as reliable as the non-cross shafting 
+version, and in multiple cases is more reliable. 
+ 
+ 
+Figure 9: Mass versus failure rate trend comparing baseline concept and concept with cross shafting, shown 
+both over a significant portion of the design space (left) and zoomed in on the constraint (right). 
+ 
+The power system masses (neglecting gearing and shafting) for the baseline and cross shafting concepts are the 
+same, however the trend is slightly more favorable for the cross shafting concept due to the fact that its secondary 
+system generally has lower failure rate than the baseline for the same designs values (n1, n2, k1, and k2). Figure 9 shows 
+that the cross shafting concept benefits from a lower secondary system redundancy allocation compared to the 
+baseline, indicating that it needs less redundancy. For instance, the cross shafting concept is in its infinite slope region 
+for the 2003p/2oo3s redundancy design (indicating the level of secondary redundancy is excessive), whereas for the 
+baseline, the 2003p/2oo3s  design is still within the finite slope region (indicating this level of redundancy is a good 
+allocation).  
+The optimum power system mass for the cross shafting concept is 1153 kg vs 1206 kg for the baseline, resulting 
+in a 4% decrease. This may not be a significant enough decrease in mass to warrant the additional complexity of the 
+cross shafting especially since cross shafting will add weight that may offset the redundancy trend benefit. However 
+other considerations for the drivetrain should ultimately be taken into account including the handling and ride qualities 
+
+ 
+American Institute of Aeronautics and Astronautics 
+ 
+ 
+10 
+of the two concepts. Mainly, there are concerns that RPM control of vehicles with large rotors may be difficult or 
+impossible because the large rotor inertias make it challenging to meet maneuverability requirements. 
+V. 
+Conclusions 
+This paper shows an electrified propulsion power system redundancy design analysis process and applies it to the 
+RVLT all-electric six passenger quadrotor. The process can help conceptual design and analysis teams select power 
+system redundancy architectures by identifying mass optimal designs and highlighting design trends. The 
+implementation of this method in the EPS-SAT tool will help NASA conduct future mass-redundancy tradeoff studies 
+in a single integrated tool, enabling it to develop conceptual power system designs with appropriate levels of 
+redundancy and more accurately estimate associated masses needed for that redundancy. The data from this work 
+shows that for the six passenger quadrotor, 3oo4 and 2oo3 are optimal primary power system redundancy designs 
+(i.e., the batteries that make up the main bus). Likewise, 2oo4 is the mass optimal redundancy design for the secondary 
+power system (i.e., the inverters and motors that drive the rotors). This study shows that the required level of 
+redundancy to meet reliability constraints results in 39-54% additional power system mass compared to a non-
+redundant (1oo1) system. A powertrain with cross shafting was also shown to be more reliable, however the overall 
+benefit in terms of optimal power system mass (4% or less) may not be enough to recommend cross shafting over 
+individual RPM controlled rotors. Note that fidelity may be added to the mass and reliability models in future work. 
+Also note that maintainability was ignored in this study and can be addressed in future work. 
+Acknowledgments 
+The authors would like to acknowledge the Revolutionary Vertical Lift Technology (RVLT) project under the 
+Aerospace Research Mission Directorate (ARMD) that has supported this work. 
+ 
+ 
+References 
+  
+[1] “Advanced Air Mobility National Campaign Overview,” NASA [website],  
+URL: https://www.nasa.gov/aeroresearch/aam/description/ [retrieved 21May2022]. 
+[2] Darmstadt, P., et. al., “Hazards Analysis and Failure Modes and Effects Criticality Analysis (FMECA) of Four Concept 
+Vehicle Propulsion Systems,” The Boeing Company, NASA CR-2019-220217, June 2019. 
+[3]  Lakshminarayanan, V. and Sriraam, N., “The Effect of Temperature on the Reliability of Electronic Components”, 2014 IEEE 
+International Conference on Electronics, Computing and Communication Technologies (IEEE CONECCT), Bangalore, India; 
+February 2014 
+[4] Ae-10 High Voltage Committee, “Aircraft High Voltage DC Power Quality Standard [Work in Progress]” SAE Aerospace 
+Standard AS7499, 2019 
+[5] Kniat, J. and Bluish, J., "An Application of Redundancy in Digital Electronic Engine Control," SAE Technical Paper 801200, 
+1980 
+[6] Bumby, E., “Redundancy Management for Fly-by-Wire Systems,” AIAA Guidance and Control Conference, August 1972. 
+https://doi.org/10.2514/6.1972-884 
+[7] Silva, C., Johnson, W., Solis, E., and Patterson, M., “VTOL Urban Air Mobility Concept Vehicles for Technology 
+Development,” AIAA Aviation Forum, Atlanta, GA, June 25-29, 2018. 
+[8] Bevirt, J., Stoll, A., van der Geest, M., MacAfee, S., Ryan, J., “Electric Power System Architecture and Fault Tolerant VTOL 
+Aircraft Using Same” U.S. Patent Application No. US20200010187A1, 2020. 
+[9] Melack, J., “Systems And Methods For Power Distribution In Electric Aircraft” U.S. Patent No. US11465764 B2, 2022. 
+[10] “eVTOL Aircraft Directory,” Vertical Flight Society [website], URL: https://evtol.news/aircraft [retrieved 24May2022]. 
+[11] US Federal Aviation Administration, “FAA Advisory Circular 25.1309-1A - System Design and Analysis,” 1988 URL: 
+https://www.faa.gov/regulations_policies/advisory_circulars/index.cfm/go/document.information/documentid/22680 
+[retrieved 11November2022] 
+[12] Brinkmann, P., “AAM companies press FAA to clarify pathway for powered-lift certification” Aerospace America, 
+September 23, 2022. URL: https://aerospaceamerica.aiaa.org/aam-companies-press-faa-to-clarify-pathway-for-powered-lift-
+certification/ [retrieved 11November2022]. 
+[13] European Union Aviation Safety Agency (EASA), “Special Condition for Small-Category VTOL Aircraft” EASA 
+Special Condition, SC-VTOL-01, 2019 URL: https://www.easa.europa.eu/sites/default/files/dfu/SC-VTOL-01.pdf [retrieved 
+11November2022] 
+[14] Lalli, V., et al., “Reliability and Maintainability (RAM) Training,” NASA/TP-2000-207428, July 2000. 
+[15] Tang, Q., Shu, X., Zhu, G., Wang, J., and Yang, H., “Reliability Study of BEV Powertrain System and Its Components – A 
+Case Study,” Processes 2021, 9(5), 762.  https://doi.org/10.3390/pr9050762  
+ 
+
+ 
+American Institute of Aeronautics and Astronautics 
+ 
+ 
+11 
+ 
+[16] Thomas, G., Chapman, J., Alencar, J., Hasseeb, H., Sadey, D., and Csank, J., “Multidisciplinary systems analysis of a six 
+passenger quadrotor Urban Air Mobility vehicle powertrain,”. AIAA Propulsion and Energy Forum. August 2020. 
+https://doi.org/10.2514/6.2020-3564 
+[17] Hanlon,  P., Thomas, G., Csank, J., and Sadey, D., "A Tool for Modeling and Analysis of Electrified Aircraft Power Systems," 
+2019 AIAA/IEEE Electric Aircraft Technologies Symposium (EATS), 2019, pp. 1-16, doi: 10.2514/6.2019-4403. 
+[18] “Electrical Power System - Sizing and Analysis Tool (EPS-SAT) (LEW-20017-1),” NASA Software Catalog [website], URL: 
+https://software.nasa.gov/software/LEW-20017-1 [retrieved 24May2022].  
+[19] Nakashima, K., Matznaga, H., Ueda, Y., Yamato, K., “Optimal Design of Redundant Systems for Improving Fail-Safe 
+Characteristics” Computers and Mathematics with Applications, Vol. 24, No. 1/2, pp. 109-117, 1992. 
+[20] Jones, H., “Common Cause Failures and Ultra Reliability,” 42nd International Conference on Environmental Systems, 15 July 
+2012 - 19 July 2012, San Diego, California, https://doi.org/10.2514/6.2012-3602 
+
+
+===== TECHNICAL REFERENCE: NASA_X-57_Power_and_Command_System_Design.pdf =====
+
+X-57 Power and Command System Design 
+Sean Clarke, P.E., Matthew Redifer, 
+Kurt Papathakis, and Aamod Samuel 
+NASA Armstrong Flight Research Center 
+Edwards, California, USA 
+Sean.Clarke@nasa.gov 
+Trevor Foster 
+Empirical Systems Aerospace, Inc. 
+San Luis Obispo, California, USA 
+Trevor.Foster@ESAero.com
+ 
+Abstract—This paper describes the power and command 
+system architecture of the X-57 Maxwell flight demonstrator 
+aircraft. The X-57 is an experimental aircraft designed to 
+demonstrate radically improved aircraft efficiency with a 3.5 
+times aero-propulsive efficiency gain at a “high-speed cruise” 
+flight condition for comparable general aviation aircraft. These 
+gains are enabled by integrating the design of a new, optimized 
+wing and a new electric propulsion system. As a result, the X-57 
+vehicle takes advantage of the new capabilities afforded by electric 
+motors as primary propulsors. Integrating new technologies into 
+critical systems in experimental aircraft poses unique challenges 
+that require careful design considerations across the entire vehicle 
+system, such as qualification of new propulsors (motors, in the case 
+of the X-57 aircraft), compatibility of existing systems with a new 
+electric power distribution bus, and instrumentation and 
+monitoring of newly qualified propulsion system devices. 
+Keywords—aircraft propulsion and power, electric propulsion, 
+experimental aircraft, failure modes and effects analysis, x-plane 
+I. INTRODUCTION 
+The National Aeronautics and Space Administration 
+(NASA) Scalable Convergent Electric Propulsion and 
+Operations Research (SCEPTOR) project is demonstrating 
+radically improved aircraft efficiencies with the X-57 Maxwell 
+flight demonstrator aircraft. In order to achieve the 3.5 times 
+aero-propulsive efficiencies, a Tecnam P2006T (Costruzioni 
+Aeronautiche Tecnam S.r.l., Capua, Italy) airframe was chosen 
+as the baseline aircraft. The aircraft will be retrofitted with a high 
+aspect-ratio wing, the internal combustion engines will be 
+replaced with electric motors and relocated to the wingtips, an 
+array of smaller electric motors and propellers will be integrated 
+into the leading edge of the wing, and the fuel tanks will replace 
+with batteries (see Fig. 1). The X-57 flight demonstrator aircraft 
+was designed using propulsion airframe integration (PAI) 
+techniques that have long interested aircraft designers but were 
+heretofore impractical due to the limitations of more traditional 
+propulsion systems. For example, turbine and piston engines 
+designed for the small scales required for these PAI 
+opportunities cannot achieve specific power and efficiency as 
+high as can larger systems. This condition reduces the gains 
+achieved from PAI when using traditional, hydrocarbon-based 
+powertrains. Improvements in the performance of electric 
+propulsion powertrains make these PAI techniques practical, 
+enabling an overall improvement of aircraft energy usage and, 
+therefore, operating costs. 
+Integrated design for effective interaction between the wing 
+and the propellers is the core demonstration effort on the X-57 
+flight 
+demonstrator 
+aircraft; 
+recent 
+advancements 
+in 
+high-performance electric motors, motor controllers, and battery 
+management technologies enable this new design paradigm. The 
+X-57 will be the first electrified X-plane and because of the 
+electric powertrain that is central to the capability being 
+demonstrated here, the aircraft has been designated Maxwell in 
+honor of James Clerk Maxwell’s foundational work describing 
+the nature of the electromagnetic forces that are harnessed in the 
+electric motors, motor inverters, power buses and batteries that 
+comprise the X-57 traction system. 
+II. SCOPE 
+This paper describes the design of the X-57 avionics power, 
+traction power, and command systems for optimized system 
+reliability given the constraints of a flight research program 
+showcasing experimental hardware in critical systems. The 
+system architecture relies on redundancy throughout the design 
+to limit the scope of failures, component testing to limit the 
+likelihood of failures, and failure analysis and training to limit 
+the persistence of failures. Design decisions throughout the 
+development of the X-57 traction system have been based on 
+these principles and may serve as a case study for development 
+of future experimental aircraft and potential commercial aircraft 
+exhibiting these technologies. Power and command system 
+redundancy is a key feature for limiting the impact of faults 
+along the command and data handling pathways, the traction 
+power buses, the energy storage medium, and the main vehicle 
+motors. Evaluation of each developmental component by way of 
+component independent design review, endurance testing, and 
+function validation in the integrated system are essential to 
+ensuring reliability. The integrated X-57 system design will be 
+evaluated for failure modes and will be integrated into an aircraft 
+simulator with a flight-like cockpit that will be used for pilot 
+training, ensuring rapid response to the most severe fault cases. 
+ 
+Fig. 1. X-57 Isometric model with centerline cut, showing battery system,
+high aspect ratio wing, electric motors, and traction power bus. 
+
+III. SYSTEM DESIGN OVERVIEW 
+Development of the X-57 research systems has been staged 
+into four configurations (Mods I-IV), each of which increases in 
+complexity over the course of the research program. This 
+approach enables researchers to evaluate the baseline 
+performance and handling qualities of the unmodified aircraft in 
+Mod I, the experimental propulsion system dynamics and 
+reliability in Mod II, the high-performance, high aspect-ratio 
+wing in Mod III, and the distributed electric propulsion system 
+in Mod IV. By deploying the traction power, avionics power, 
+and command systems in Mod II, the integrated system 
+performance of these systems can be studied in a flight-proven 
+airframe configuration with ample rudder authority and flexible 
+center of gravity (CG) placement. Thus, by the time the PAI 
+features are being evaluated in Mod III and Mod IV, the 
+electrical systems will be well understood and reliable as a result 
+of the extensive experience gained operating the traction power, 
+avionics power, and command systems during the Mod II 
+ground- and flight-testing program. 
+The X-57 traction system beginning in Mod II consists of 
+two independent battery packs, redundant power distribution 
+buses, and two cruise motors. Each cruise motor is rated for 255 
+Nm and up to 2700 rpm (72 kW), shown in Fig. 2, and powered 
+by two independent motor torque controllers which convert the 
+DC power provided by the batteries to switched AC power based 
+on the torque commanded by the pilot. Details of the cruise 
+motor design and development process are described in [1] and 
+[2]. The battery packs are a custom design that uses commercial 
+off-the-shelf (COTS) lithium-ion 18650 cells arranged into four 
+large (approximately 100 lb.) modules per pack. Each of the two 
+battery packs supply approximately 23 kWh of usable capacity 
+and operate independently from each other. In the event of a 
+failure in one of the redundant systems, either pack can each 
+provide sufficient power for a controlled return to base. 
+Redundancy throughout the design of the traction power, 
+avionics power, and command system is a critical tool for 
+ensuring minimum required thrust is available in the event of 
+any single fault condition on this experimental flight 
+demonstrator. Fig. 3 shows how the traction power system 
+redundancy approach has been used to design for two 
+independent vehicle batteries, traction buses, and motor torque 
+controllers for the main cruise motors. This approach is critical 
+for the X-57 design because the cruise power system is located 
+at the wingtips in order to achieve improved propulsive 
+efficiency. Nominally, this wingtip configuration provides much 
+improved performance of the main propellers, but this 
+configuration also increases the complexity of designing for the 
+single-motor-out failure case because a failure of one of the 
+cruise motors or propellers introduces a large yaw moment due 
+to asymmetric thrust. The redundancy approach of each of the 
+systems described in this paper limits the majority of those 
+failure cases to compromising less than 50 percent of the 
+available thrust at either cruise motor. Similarly, for the Mod IV 
+Distributed Electric Propulsion (DEP) system driving 12 
+propellers along the leading edge of the wing (six on each side) 
+to achieve high lift at low airspeeds, a redundant architecture is 
+critical to reducing the severity of single-failure modes. 
+Asymmetry in the induced velocity of air across the left wing 
+versus the right wing can cause roll or yaw of the aircraft and a 
+resultant loss of lift. The redundancy approach limits the effects 
+of these failures to primarily avoid asymmetric upsets, and 
+secondarily to limit the magnitude of the failure to no more than 
+three of the propulsors for most cases (because no more than 
+three of the motors in the DEP system on each side of the wing 
+share a bus). 
+The traction and command systems developed for the X-57 
+aircraft are intentionally kept as simple as possible to minimize 
+the development risks associated with complex systems and to 
+simplify testing and integration. Most of the components are 
+COTS products or are slightly modified from COTS products. 
+Although the goal is to use parts that are of high technology 
+readiness level (TRL) and already available in the marketplace, 
+some such items are not suitable because of the demanding 
+performance requirements for the X-57 or because of specific 
+application needs. The cruise motors and torque controllers are 
+being developed for this vehicle by Joby Aviation (Santa Cruz, 
+California).  The main vehicle battery system is being developed 
+by Electric Power Systems Inc. (Industry, California). The X-57 
+acceptance and qualification test plan is designed to screen each 
+component with a level of investigation appropriate to 
+identifying manufacturing defects and design flaws before 
+integration into the X-57. 
+Fig. 2. The X-57 Cruise Motor prototype and variable-pitch propeller before a
+test run. Photograph credit Joby Aviation. 
+Fig. 3. X-57 Redundant Traction Power System. 
+
+IV. AVIONICS POWER SYSTEM 
+The X-57 avionics power system is designed to provide a 
+piloting experience similar to that of the Tecnam P2006T, the 
+aircraft from which the X-57 flight demonstrator is derived. The 
+approach to the design involves maintaining as many of the 
+existing avionics systems as possible, allowing, to the extent 
+safely possible, the use of established procedures identified in 
+the relevant Pilot Operating Handbook. The stock configuration 
+follows the approach of many twin engine aircraft by cross-
+strapping the engine generator buses to a main bus which is 
+backed up by a battery. This method allows the operation of 
+esential aircraft avionics systems such as instruments, landing 
+gear, and flaps in the event of many types of system power loss. 
+The avionics power buses can be powered from either the left or 
+right generator buses, or the battery backup. Loads can be shed 
+by opening the cross-strap switches or the left and right avionics 
+buses, affording the pilot many options in the event of various 
+avionics power system failures. 
+The X-57 flight demonstrator follows the same approach, 
+maintaining many of the existing switches, wiring, circuit 
+breakers, and relays of the Tecnam P2006T. As shown in the X-
+57 avionics power system interconnect (Fig. 4), the left and right 
+generator buses are fed by the aircraft traction battery system. 
+The traction battery consists of two battery packs (A and B). 
+Because the battery packs have a nominal voltage of 461 VDC, 
+the traction battery system implements two DC/DC buck 
+converters (one for each battery pack) to generate 14 VDC 
+avionics power which feeds the left and right generator buses 
+from the A and B batteries, respectively. Each buck converter is 
+sized for the entire avionics bus load. The stock aircraft backup 
+battery remains connected to the essential bus to provide 
+essential avionics power in the event of a traction battery failure 
+or shutdown. Avionics power can also be supplied from the 
+aircraft external power socket for ground-testing operations. 
+Notable differences between the Tecnam P2006T and the 
+X-57 flight demonstrator are the instrumentation bus and the 
+new wing avionics buses. The instrumentation bus is fed from 
+the aircraft right generator bus by way of a DC/DC boost 
+converter in order to generate 28 VDC used for instrumentation. 
+The wing avionics buses A and B are added to facilitate the 
+redundancy in the cruise motors. The dual core windings in the 
+cruise motor are nominally powered by two separate cruise 
+motor controllers. Each wing avionics bus provides power to the 
+cruise controllers in the left or right wing. Each motor controller 
+in the left and right wings is fed by the A and B battery pack 
+separately via the wing avionics buses, allowing shutdown or 
+failure of either individual battery or wing avionics bus with 
+continued operation of the motor at reduced power with one 
+remaining controller. 
+To effectively communicate warnings to the pilot about 
+faults in the new avionics power and traction power systems, the 
+Tecnam P2006T annunciator panel was customized. The new 
+annunciator panel configuration, is shown in Fig. 5. The A and 
+B avionics warning lights are triggered by a fault indication from 
+the DC/DC buck converters in the traction battery system. A 
+typical response to this warning would be to shut down the 
+avionics side with the fault, and continue operations on the 
+opposite side. A low-voltage indication from either of the main 
+traction battery sides is considered a critical fault. Depending on 
+other factors, the response may be the shutdown of the offending 
+battery side and immediate return to base with reduced motor 
+performance. These annunciator panel warnings are in addition 
+to other warnings that are part of the command bus system, 
+including fault notification via the multi-function display and 
+audio alarms. 
+V. TRACTION POWER SYSTEM 
+The X-57 traction power system is designed to safely and 
+reliably provide power to the motor torque controllers and 
+ensure that enough power would remain available to safely land 
+the aircraft in the event of single-point failures. This is achieved 
+by using redundant power buses, physical separation of cabling 
+and conduits, and electronically controlled power contactors for 
+safe operation of the motor controllers. 
+While definitive guidelines exist for designing a safe and 
+reliable traction power system, certified, airworthy electric 
+aircraft propulsion systems for manned flight are a relatively 
+new design space. There is little precedent or documentation to 
+define proper standards. Existing Federal Aviation Regulations 
+(FARs), such as Part 23 and Part 25, or Aeronautical Radio, 
+Incorporated (ARINC) 400 series standards provide only basic 
+wiring standards and limited guidance can be inferred from 
+turbine or gas engine regulations. Designing the X-57 traction 
+power system necessitated evaluating the system as a whole to 
+implement standard aircraft features and capabilities. Once a 
+functional system was developed, the available standards were 
+combined with best practices to implement each subsystem. 
+One such subsystem is the traction power cabling which 
+includes standard aircraft features such as redundancy and 
+isolation. The Mod II/III traction power bus for the X-57 is 
+Fig. 4. The X-57 avionics power system interconnect. 
+Fig. 5. The X-57 annunciator panel with electric propulsion system indication.
+
+divided into two independent A and B buses that are each 
+subdivided between the left (A/L and B/L) and right (A/R and 
+B/R) side of the aircraft, as shown in Fig. 3.  Each bus (A and 
+B) is independently powered by an electrically-isolated battery. 
+This architecture provides redundancy to the cruise motors in 
+the event one of the buses fails. The buses are additionally 
+isolated from each other, within the wing, each bus running 
+inside dedicated conduits. This isolation aids in preventing 
+cascading bus failures. Driving each cruise motor are two motor 
+torque controllers, commonly referred to as the cruise motor 
+controller (CMC). Each bus feeds one of the CMCs for one 
+cruise motor. This technique follows the same redundant design 
+philosophy that given any single-point failure, each cruise motor 
+can still operate under the command of a single CMC.  
+Contactor pallets are installed in the traction bus cabling 
+between the batteries and the motors. There are two contactor 
+pallets (A and B) located in the fuselage of the aircraft 
+corresponding to the associated A or B bus.  Each pallet contains 
+sensors and electrical components to complete or interrupt the 
+circuit to the motor controllers. To safely power on the CMCs 
+and avoid inadvertently energizing the traction bus in the wing, 
+custom pre-chargers with integrated, aircraft-grade contactors 
+are used on the pallets. The pre-chargers control the voltage in 
+the traction bus to restrict the inrush current and the contactors 
+allow remote switching of the power from the traction bus. 
+Current and voltage sensors within each pallet are used to 
+measure the total energy consumption rate and total energy 
+consumed. Isolation of the A and B buses is maintained with two 
+contactor pallets physically placed on separate sides of the 
+aircraft. This arrangement prevents failure of components within 
+one pallet from cascading to the other pallet.  
+The wire used for the X-57 traction bus cable is unique in 
+that it is custom designed to address several challenges. 
+Minimizing weight is inherently important, so using small-
+gauge wire is necessary. Wire that is too small, however, is a 
+safety concern because of the potential for wires to overheat. 
+Each electric cruise motor is designed to run at a total power of 
+60 kW with each CMC nominally drawing 30 kW. The design 
+of the X-57 batteries calls for lithium-ion cells in a series/parallel 
+configuration combined with a depth-of-discharge limitation 
+that drives the voltage range between 416 VDC and 525 VDC. 
+To size the traction cable, we assume that each bus (A/L, A/R, 
+B/L, B/R) must carry 30 kW, which results in a current ranging 
+from 57 A to 72 A for each bus. Derating factors for altitude and 
+number of conductors in a bundle are determined using [3] 
+which relates wire size (in American wire gauge, AWG) to the 
+expected temperature rise. The X-57 design uses four flat 
+10-AWG conductors that are equivalent to 4-AWG as shown in 
+Fig. 6. These current limits only allow 4-AWG if the cable is 
+able to reject heat to ambient air. If the air temperature is allowed 
+to rise due to high-current operation of the wire, the 4-AWG 
+wire may fail. In this design example, aerospace standards do 
+exist, however, those standards fail to take into account 
+considerations from a systems perspective. This standard 
+provides a good first approximation, but model-driven 
+engineering (MDE) can refine the design further. Initial 
+application of the SAE standard estimated that 2-AWG would 
+be required for nominal operation. Additionally, it is possible to 
+over-drive the CMC in response to some system failures, which 
+would require pulling more than the nominal design current 
+through a single bus. In this case, the SAE standard estimates 
+that 2-AWG is required. Taking the MDE approach, a 
+specialized 4-AWG cable with a high-temperature jacket was 
+selected. The traction bus conduits are fabricated from a 
+thermally-conductive composite material and are thermally 
+isolated from the wing structure. In practice, the time spent 
+operating at elevated temperatures will be monitored and limited 
+as needed to prevent damage to the traction bus. Tests on the 
+traction bus cable with X-57 flight profiles are being conducted 
+using the NASA Electric Aircraft Testbed (NEAT) at the NASA 
+Glenn Research Center (Cleveland, Ohio) in order to better 
+quantify the performance of the cable. 
+Radiated electromagnetic interference (EMI) from the 
+traction bus is an additional design challenge, and can interfere 
+with other systems on the vehicle. The traction system may 
+exhibit high frequency interference due to inverter switching 
+events or lower frequency noise related to motor field rotation. 
+To mitigate this, several traditional shielding methods were 
+considered, but the custom wing in the Mod III configuration 
+has very limited space, so it was not possible to use shielded #4 
+AWG wires for the traction bus. However, the custom cable 
+described in Fig. 6 meets the space requirements. This cable 
+comprises four adjacent 10-AWG wires, creating a flat cable 
+that is four times wider than it is tall. The manufacturer claims 
+that this configuration reduces the inductance and radiated noise 
+as compared to an equivalent round wire, and modeling of these 
+cable configurations supports this claim, as presented in Fig. 7. 
+To test this performance, the NEAT facility conducted 
+qualitative testing to assess radiated emissions on candidate 
+ 
+Fig. 6. The X-57 annunciator panel with electric propulsion system indication.
+Fig. 7. Near-field electric and magnetic field strength comparison between 
+traditional two-conductor cable and the X-57 “flat cable” configuration. 
+
+cabling for the X-57 flight demonstrator. The NEAT test setup 
+has a 125-kW motor-inverter and DO-160 line impedance 
+stabilization network equipped for radio frequency emission 
+measurement. Testing indicated that there was no significant 
+difference in radiated emissions between the baseline shielded 
+cable and the unshielded cables described in Table I; however, 
+emissions are sensitive to the specific equipment being tested. 
+The flat cable was selected because that cable fit the geometry 
+restrictions in the Mod III wing without noticeable EMI 
+concessions. There may be a benefit given the ability to tightly 
+stack the supply and return cables to cancel radiated fields. 
+VI. COMMAND SYSTEM 
+A. Overview 
+The X-57 command bus is used to control the electric motors 
+and provides aircraft health and status. The command flow 
+consists of throttle encoders (TEs) which digitize the existing 
+Tecnam throttle lever positions and the electric motor 
+controllers, which use this position as a torque target. The 
+architecture of the bus follows the Controller Area Network 
+(CAN) standard and includes both standard CAN messages and 
+the higher-level CANopen protocol. The CAN protocol offers 
+various benefits including error detection, message arbitration, 
+multicast reception, and prioritization [4]. The single-wire pair 
+required for the CAN physical layer and a lack of a bus 
+controller simplify implementation. All devices on the X-57 
+command bus adhere to the CAN2.0A standard and operate at 
+1,000 kbaud. The CANopen system is a higher layer protocol, 
+allowing configuration of nodes and defining the internal device 
+structure of each device on the network [5]. Since CANopen is 
+a higher layer of protocol built on CAN, components using the 
+CANopen protocol can interoperate on a bus with components 
+that communicate with standard CAN messaging. 
+The components of the command bus were selected based 
+on robustness and compatibility with the CAN bus. Because 
+some components use the CANopen standard, precautions were 
+taken to ensure the components using the standard CAN 
+protocol do not interfere with the additional functionality of the 
+CANopen devices. The CANopen protocol uses a portion of the 
+message identification (first 4 bits of the message ID) of the 
+CAN structure to identify configuration parameters and data 
+parameters. By considering the data parameter identifiers used 
+by CANopen, and carefully selecting the device identifications 
+both for the CANopen and standard CAN devices, message 
+collisions between the two standards is prevented. A diagram of 
+the command system network is shown in Fig. 8. 
+B. Components 
+The battery management system (BMS) is a custom solution 
+built by Electric Power Systems (EPS). It uses a CANopen 
+standard that has been customized to fit with the X-57 CAN 
+architecture. The BMS provides battery health and status 
+information to the CAN bus, which can help convey relevant 
+information to the pilot. 
+The CMC is a custom solution provided by Joby Motors 
+(Santa Cruz, California) and uses a CAN interface. The motor 
+controller communicates health and status information for itself 
+and the motor, including torque, speed, and temperatures, that 
+can be used to provide situational awareness to the pilot. 
+The MoTeC synchronous versatile input module (SVIM) is 
+an analog to digital converter that transmits the data on a CAN 
+bus. These modules collect data at high rates (5000 samples per 
+second) and high resolution (15-bit) synchronously with other 
+modules as needed. For the X-57 application, these modules are 
+used to record the blade pitch angle and temperatures associated 
+with the CMCs and the motors. The size and capability to 
+transmit on CAN make these devices useful in an EMI 
+environment research capacity. 
+The MoTeC Pty Ltd (Melbourne, Australia) D175 is a 
+full-color, customizable display and is the main interface 
+between the pilot and the command bus. Fig. 9 shows s sample 
+screen of the display. These screens show health and status 
+information from the BMS, CMC, and TEs while also showing 
+warnings and alarms based on the values from these systems. 
+The screens are toggled with switch inputs incorporated into the 
+display. Along with the situational awareness provided by this 
+TABLE I.  
+NEAT FACILITY EMI CABLE TEST MATRIX 
+Cable 
+Manufacturer 
+Part number 
+Configuration 
+1 
+Champlain 
+EXRAD-XLX2X 
+Round/Shield 
+2 
+TE Connectivity 
+WMSHF260-0113-2-9 
+Round/Unshield 
+3 
+Methode 
+CD-0322-1B 
+Flat/Unshield 
+ 
+Fig. 8. The X-57 command system network diagram. 
+ 
+Fig. 9. The X-57 cockpit display reflects the duality of the X-57 system
+design. Indicators include State of Charge, discharge rate, and throttle position. 
+
+display, the screens provide additional information that aid in 
+troubleshooting on the ground and quickly diagnosing problems 
+in the air. The two main pages for the pilot are toggled using a 
+simple switch, while the remaining pages are accessed by 
+combining the switch with an eight-position rotary switch. This 
+setup allows 16 different pages with information about the 
+health and status of various X-57 components. 
+A MoTeC advanced central logger (ACL) works as the 
+processor for the display. The logger collects all of the relevant 
+signals, performs mathematical operations on them, and feeds 
+the results to the display. As such, the logger is used to determine 
+the health and status of the battery and motors and to provide 
+any alarms or warnings to the pilot by way of the display. The 
+ACL also controls the light-emitting diode (LED) lights on the 
+D175 display that provide quick information to the pilot, such as 
+battery state-of-charge (SOC) or emergency location. Finally, 
+the ACL serves as the interpreter for the SVIMs. The SVIM 
+transmits data on the CAN bus in a proprietary format that is not 
+easily interpreted by the instrumentation stack. Therefore, data 
+that come from the SVIM are read by the ACL and then 
+retransmitted to the command bus for the instrumentation stack 
+to record. Since the instrumentation stack time-tags all the data 
+being recorded, there is an inherent delay between the time when 
+the SVIM transmits the data and the instrumentation stack 
+records the data after ACL retransmission. This delay is 
+acceptable because of the slow rate of change of the data being 
+collected by the SVIM. 
+The two throttle encoders used in the project are Baumer Ltd. 
+(Southington, Connecticut) rotary encoders that are CANopen 
+compliant. These devices measure rotation of the stock Tecnam 
+throttle levers and put the data on the CAN bus. Each device also 
+has dual encoders to provide greater reliability. 
+Western Reserve Controls (WRC) (Akron, Ohio) fiber optic 
+bus extenders (FOBEs) are commercial products that are 
+customized for X-57 by repackaging for fit and robustness 
+requirements. These bus extenders convert the electrical signals 
+on the copper CAN bus to optical signals on fiber optic cables 
+and convert them back to electrical signals on a copper segment 
+closer to remote CAN components. The distance of the CMCs 
+from the rest of the CAN bus components, and their use of high 
+current to run the motors, present a higher risk of EMI in the 
+copper CAN bus segments. This risk is mitigated by separating 
+the segments with FOBEs and fiber optic cables. Using fiber 
+optic cables also reduces the risk of reaching the line-length 
+limits of the CAN bus standard and susceptibility radiated EMI 
+from the traction power bus. 
+A CAN-controlled relay box is a product by Blink Marine 
+(Milan, Italy) that allows relays to be opened and closed using 
+CAN messages. This provides an audio annunciator capability 
+that can provide key alarms to the X-57 pilot. These alarms are 
+defined collaboratively with the test pilots, system designers, 
+and operations team. The audio annunciator works by grounding 
+specific inputs to the device, resulting in output in the form of 
+an audio message. CAN messages from the ACL to the relay 
+box energize relays which completes the circuit to the 
+annunciator, allowing the ACL to determine any alarm states 
+and to alert the pilot both audibly (through the audio 
+annunciator) and visually (through the D175 display). The audio 
+annunciator that uses the relay box is a PRD60 accessory device 
+developed by PS Engineering (Lenoir City, Tennessee). The 
+device contains six pre-programmed messages and the ability to 
+mute messages by acknowledging them with a simple 
+push-button. 
+The X-57 instrumentation system contains a CAN bus 
+monitoring card that will interface to the command system. This 
+card is used to only listen to the traffic on the CAN bus and 
+record all of that traffic with a time tag. A subset of these 
+messages is also transmitted to the ground station. 
+C. Risk Mitigation 
+The X-57 command bus is considered a mission-critical 
+system, but not a safety-critical system. This designation is 
+possible because the pilot does not need to rely on the command 
+bus for the safe operation of the X-57 flight demonstrator 
+aircraft. All of the safety-related information provided by the 
+CAN bus is also independently measured and displayed on the 
+right-hand instrument panel in the cockpit. The X-57 aircraft is 
+also designed with an unpowered reversion mode in which the 
+pilot can safely control the aircraft and complete an unpowered, 
+higher speed landing. This capability is facilitated by limiting 
+flight to the area over Rogers dry lakebed (Edwards, California), 
+which provides ample landing options. 
+Although the command system itself is not safety-critical, 
+the CMC and BMS, which are safety-critical components, do 
+interface with the command bus. A command bus failure for the 
+X-57 flight demonstrator aircraft could result in a loss of 
+communication to and from the BMSs or CMCs. Therefore, the 
+BMS and CMC are designed to behave in a safe manner in case 
+of this failure. The BMS operates independently and only 
+reports health and status to the command bus. It also reports 
+operational status directly to the independent annunciator panel 
+in the cockpit. The CMC, however, relies on command inputs 
+from the command bus, so the CMC includes safety features to 
+allow safe operation of the X-57 aircraft in spite of command 
+bus interruption. If command is lost from the throttle encoders, 
+an internal CMC counter will increment. During an initial count 
+up period, the last verified torque command is held and executed 
+by the CMC. After a preset time, the CMC will execute a gradual 
+ramp-down of the commanded torque to idle. These features 
+enable continued operation for a short time after command bus 
+failure, whereas the preset timeout prevents an indefinite 
+running of the motors in the case of ground-testing when the 
+aircraft is being operated remotely. As a mission-critical system, 
+additional measures are taken to reduce the risk of various 
+command bus failures, as detailed below.  
+While the CAN standard makes the command bus resistant 
+to EMI, steps are taken to further reduce the risk of the high-
+power systems introducing electric noise into the command bus. 
+Mod II to the X-57 aircraft will locate the CMC and motors in 
+the same location as the original Tecnam engines. Mod III to the 
+X-57 aircraft, however, will require the command bus to extend 
+to that point. As such, the FOBEs are used to incorporate the 
+fiber optic cable segment between the fuselage and the CMC for 
+both Mod II and Mod III. These FOBEs operate in such a way 
+that they are invisible to the devices on the CAN Bus. The 
+devices on either end of the fiber optic link behave no differently 
+than if they were all connected by way of a copper bus. 
+
+To reduce the risk of throttle command failure, the Baumer 
+throttle encoders used to measure the angle of the Tecnam 
+throttle levers contain a redundant encoder. The component 
+transmits the measurement from each encoder onto the CAN 
+bus. The components that read this information can then act on 
+any discrepancies between the data reported by each encoder. A 
+discrepancy between the two encoders is a case wherein which 
+the CMC will consider the incoming command as invalid and 
+revert to the command bus failure mode, as described above. 
+Further risk mitigation for the throttle encoders involves the 
+physical component. The initial design to digitize the throttle 
+position used a cable-pull encoder. This method was revised to 
+use a rotary encoder that has a direct mechanical connection to 
+the throttle levers to reduce the chance of the cable snagging. 
+The physical layer of the command bus also contains 
+redundancy for the motor commands. The data from each 
+throttle encoder component go to two CMCs on each side of the 
+aircraft. To prevent a complete failure on one side in the case of 
+a physical break of the command bus, the physical tie-in of each 
+CMC connected to the same motor is located on opposite ends 
+of the command bus. Therefore, a break on one side of the 
+command bus ensures a physical path from the throttle encoders 
+to at least one CMC on each side as indicated in Fig. 9. 
+VII. FAILURE ANALYSIS 
+The redundancy architecture described above minimizes the 
+scope of single-mode faults, and the component testing will 
+reduce the likelihood of faults occurring during the flight phases 
+of the SCEPTOR project. These assumptions must be analyzed 
+formally to ensure no faults with severe consequences are likely 
+to occur at critical moments. A Failure Modes and Effects 
+Analysis (FMEA) identifies the repercussions of each relevant 
+failure. When coupled with overarching hazard tracking and 
+emergency procedure development and testing in a full cockpit 
+simulator with the X-57 test pilots, this approach greatly reduces 
+the exposure to catastrophic failures. 
+The X-57 FMEA was limited to single-point failure modes 
+of the power and communication systems and identifies 
+procedural mitigations and failure classifications. The analysis 
+focused on top-level components and linkages and will identify 
+unique failure case for each component. Some components have 
+multiple sub-component-level failures, but their effect on that 
+component and the rest of the system is the same; therefore, only 
+unique failure cases are considered. The analysis began by 
+constructing a full power and communication architecture 
+schematic, shown in Fig. 10. 
+The diagram depicts the X-57 airplane in the fully integrated 
+Mod IV configuration, with the 12 in-board high-lift electric 
+motor/propeller propulsors. The Mod II and Mod III versions of 
+the diagram would omit the 12 inboard propulsors, as those are 
+introduced as part of the Mod IV development. There is very 
+little difference to the power and communication architecture 
+between the Mod II and Mod III airplanes. A selection of the 
+nearly four dozen X-57 Mod II and Mod III failures identified 
+in the FMEA process are described in Table II. Mod IV failures 
+also include all permutations for any specific inboard motor or 
+groups of inboard motors, but are not discussed in this paper. 
+There were two primary failure situations that the team 
+identified as critically important for mitigation: asymmetric 
+thrust condition for the Mod III configuration, and an in-flight 
+battery fire. These two failures represent conditions that may be 
+unrecoverable for the pilot. The X-57 system has many design 
+and procedural considerations to prevent these conditions, and 
+mitigation strategies for these situations are in place. 
+The Mod III asymmetric thrust scenario is a condition such 
+that only one of the wingtip electric motors provides thrust, and 
+the resulting moment cannot be trimmed out with the rudder and 
+elevators. The stock Tecnam aircraft can trim a one-engine-
+inoperable (OEI) condition, and the Mod II aircraft can trim an 
+OEI because the locations of the propulsors and location of the 
+thrust generation is the same. In Mod III, however, by placing 
+the propulsors at the wingtips, the effective moment arm is 
+increased beyond the capacity of the rudder to counteract. In this 
+Fig. 10. The X-57 command system network diagram. 
+
+situation, it is better to disable both propulsors (operating as an 
+unpowered glider) than to operate only one motor. Depending 
+on the type and severity of the failure, the pilot may elect to 
+remove power from the operational side or de-rate to 50 percent 
+(a condition which is still trimmable with the stock rudder). 
+The battery fire or thermal event scenario is when one or 
+both of the lithium-ion traction batteries are on fire or in thermal 
+runaway. This condition is critical, as it not only degrades the 
+power available to the motors for thrust, but could burn through 
+structural members inside the fuselage. The battery features a 
+vent system that segregates any ejecta or noxious gases from the 
+pilot. Battery fire mitigation includes fire prevention methods, 
+best practices from industry, and design features from the 
+lithium battery systems developed by NASA for the 
+International Space Station. 
+These two failure scenarios provide a starting point for 
+identifying component-level failures and their respective 
+criticality status (safety-critical, mission-critical, or negligible). 
+Table II describes a selection of the identified failures. The 
+Failure Scenario Matrix was derived from the NASA Orion 
+PA-1 project redundancy analysis. In the nominal case when all 
+systems are operating, all systems are green, for “operational”. 
+Each row describes a failure and the impacts on related 
+components, shown with an F (failed component), D (degraded 
+performance) or I (inoperable) to show when a component 
+failure impact other components. 
+Each failure receives a criticality designation, which is used 
+by the test pilot and operations engineers for mitigation and 
+recovery strategies. Failures categorized as safety-critical, 
+which are a direct result of an asymmetric thrust condition, a 
+battery fire or thermal event, or a loss-of-power condition in 
+which the airplane effectively becomes an unpowered glider and 
+an emergency landing is unavoidable. For instance, the Battery 
+Contactor (4x) scenario indicates that both contactors on each 
+battery pack (a total of four) have failed in the open position, 
+removing all high-voltage power from the batteries to the 
+traction bus. The motor controllers and cruise motors therefore 
+no longer have traction power and cannot provide thrust to the 
+airplane, so they are shown with an I to indicate “inoperable” in 
+Table II. Alternatively, in the Gen. bus (DC conv.) A||B scenario, 
+one generator bus DC converter can no longer provide 14 VDC 
+to the avionics buses, but the remaining one continues to operate 
+nominally. No other systems are impacted, so this scenario is 
+categorized as N or “negligible”.  
+VIII. CONCLUSION 
+The SCEPTOR project is a rapid-execution, build-fly-learn 
+experiment opportunity with a comparatively low budget and 
+limited schedule. Careful design of the developmental systems 
+and thorough analysis of these systems allow for a more agile 
+project while still addressing the thesis that propulsion airframe 
+integrations enabled by electric propulsion systems can be a net 
+benefit to aircraft performance. Many of the X-57 aircraft 
+systems are simpler than their commercial counterparts so that 
+the research team can focus only on the handful of technologies 
+that are being developed. The traction power system, however, 
+is one major exception; this system is developmental and 
+resources are limited, so careful consideration of the path to 
+NASA X-Plane flight qualification is appropriate and necessary. 
+ 
+REFERENCES 
+[1] A. Dubois, M. van der Geest, J. Bevirt, S. Clarke, R. J. Christie, and N. 
+K. Borer, “Design of an electric propulsion system for SCEPTOR’s 
+outboard nacelle,” AIAA-2016-3925, 2016.  
+[2] N. Borer, M. Patterson, J. Viken, M. Moore, S. Clarke, M. Redifer, et al., 
+“Design and performance of NASA SCEPTOR distributed electric 
+propulsion flight demonstrator,” AIAA 2016-3920, 2016. 
+[3] Wiring Aerospace Vehicle, SAE Aerospace Standard AS50881F, 2015. 
+[4] Robert Bosch GmbH, CAN Specification, Version 2.0, Stuttgart, 1991, 
+http://www.bosch-semiconductors.de/media/ubk_semiconductors/pdf_1/
+canliteratur/can2spec.pdf [cited 27 March 2017]. 
+[5] CAN in Automation, “CANopen – The Standardized Embedded 
+Network,” 
+https://www.can-cia.org/can-knowledge/canopen/canopen. 
+[cited 3 April 2017]. 
+RECOMMENDED READING 
+[6] S. Clarke, and M. Moore, “Convergent Aeronautics Solutions Project – 
+SCEPTOR – Scalable Convergent Electric Propulsion Technology and 
+Operations Research,” NASA DFRC-E-DAA-TN37115, 2016. 
+[7] S. Clarke, “SCEPTOR Power System Design: Experimental Electric 
+Propulsion System Design and Qualification for Crewed Flight Testing,” 
+NASA DFRC-E-DAA-TN32895, 2016. 
+[8] S. Ginn, and S. Clarke, “Spiral Development of Distributed Electric 
+Propulsion from Ground to Flight,” NASA DFRC-E-DAA-TN36914, 
+2016. 
+[9] J. Murray, and J. Lechniak, “The LEAPTech Experiment, Approach, 
+Results, Recommendations,” NASA DFRC-E-DAA-TN36158, 2016. 
+[10]  K. Papathakis, K. Kloesel, Y. Lin, S. Clarke, J. Ediger, and S. Ginn, 
+“Design and development of a 200-kw turbo-electric distributed 
+propulsion testbed,” AIAA 2016-4611, 2016. 
+[11] R. Jansen, C. Bowman, and A. Jankovsky, “Sizing power components of 
+an electrically driven tail cone thruster and range extender,” 
+AIAA-2016-3766, 2016. 
+TABLE II.  
+X-57 MOD II AND MOD III FAILURE SCENARIO MATRIX 
+Failure Scenario 
+Cruise Motor (1||2) 
+Cruise Motor (1&2) 
+MC / inverter (1x) 
+MC / inverter (2x) 
+MC / inverter (4x) 
+Pitch controller (s) 
+Cruise Contactor (1x) 
+Fiber Optic Modems 
+Traction bus (A||B) 
+Traction bus (A&B) 
+Battery (A||B) 
+Battery (A&B) 
+Generator bus (A||B) 
+Wing av. bus (A||B) 
+Criticality 
+Single cruise motor 
+F
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ S
+Single motor controller 
+D
+ F  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ M
+Quad motor controller 
+ 
+I
+ 
+ F  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ S
+Prop Pitch feather (1x) 
+I
+ 
+ 
+ 
+ F  
+ 
+ 
+ 
+ 
+ 
+ 
+ S
+Cruise contactor (1x) 
+D
+ D  
+ 
+ F  
+ 
+ 
+ 
+ 
+ 
+ M
+Fiber Optic Modem 
+D
+ 
+I 
+ 
+ 
+ 
+ F  
+ 
+ 
+ 
+ 
+ M
+Traction bus A||B (L||R) 
+D
+ D  
+ 
+ 
+ 
+ F
+ 
+ 
+ 
+ 
+ M
+Traction bus A&B (L&R)
+ 
+I
+ 
+ 
+I 
+ 
+ 
+ 
+ F
+ 
+ 
+ 
+ S
+Battery A||B (therm. evt.) 
+ D
+ D  
+ 
+ 
+ 
+I
+ F
+ 
+I
+ S
+Batt A&B (therm. evt.) 
+ 
+I
+ 
+ D  
+ 
+ 
+ 
+I
+ F
+ 
+ S
+BMS (L||R)  
+ D
+ 
+ 
+I 
+ 
+ 
+I 
+ 
+ F
+ 
+ 
+ S
+BMS (L&R) 
+ D
+ 
+ 
+I 
+ 
+ 
+I 
+ 
+ 
+ F
+ 
+ S
+Battery contactor (1x) 
+ D
+ 
+I 
+ 
+ 
+ 
+ D
+ F
+ 
+ 
+ M
+Battery contactor (4x) 
+ 
+I
+ 
+ 
+I 
+ 
+ 
+ 
+ D
+ F
+ 
+ S
+Gen. bus (DC conv.) A||B
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ F
+ N
+Wing av. bus A||B (L||R) D
+ 
+I 
+ 
+ 
+ 
+ 
+I 
+ 
+ 
+ 
+ 
+ F M
+Wing av. bus A||B (L&R)
+ D
+ 
+I 
+ 
+ 
+ 
+I 
+ 
+ 
+ 
+ 
+ F M
+ 
+Operational 
+D Degraded performance 
+I Inoperable 
+F Component failure 
+ 
+S Land as soon as possible M Land as soon as practical N Assess after flight 
+ 
+ 
+
+
+===== TECHNICAL REFERENCE: NASA_X-57_SCEPTOR_Thermal_Analysis.pdf =====
+
+Steady State Thermal Analyses of SCEPTOR X-57
+Wingtip Propulsion
+Sydney L. Schnulo,∗Jeﬀrey C. Chin,† and Andrew D. Smith‡
+NASA Glenn Research Center, Cleveland, OH, 44135, U.S.A.
+Arthur Dubois§
+Joby Aviation, Santa Cruz, CA, 95060, U.S.A.
+Electric aircraft concepts enable advanced propulsion airframe integration approaches
+that promise increased eﬃciency as well as reduced emissions and noise. NASA’s fully elec-
+tric Maxwell X-57, developed under the SCEPTOR program, features distributed propul-
+sion across a high aspect ratio wing. There are 14 propulsors in all: 12 high lift motor that
+are only active during take oﬀand climb, and 2 larger motors positioned on the wingtips
+that operate over the entire mission. The power electronics involved in the wingtip propul-
+sion are temperature sensitive and therefore require thermal management. This work fo-
+cuses on the high and low ﬁdelity heat transfer analysis methods performed to ensure that
+the wingtip motor inverters do not reach their temperature limits. It also explores diﬀer-
+ent geometry conﬁgurations involved in the X-57 development and any thermal concerns.
+All analyses presented are performed at steady state under stressful operating conditions,
+therefore predicting temperatures which are considered the worst-case scenario to remain
+conservative.
+Nomenclature
+A
+Area, m2
+AR
+Aspect Ratio
+Cf
+Flow Coeﬃcient
+Dh
+Hydraulic Diameter, m
+δ
+Boundary Layer Thickness, m
+H
+Heat Sink Channel Height, m
+h
+Convective Heat Transfer Coeﬃcient, W/m2K
+k
+Thermal Conductivity, W/mK
+L
+Length, m
+N
+Number of Fins
+Nu
+Nusselt Number
+ν
+Kinematic Viscosity of Air, m2/s
+P
+Power, kW
+Pr
+Prandtl Number
+˙Q
+Heat Transfer Rate, W
+q
+Dynamic Pressure, Pa
+Re
+Reynolds Number
+ρ
+Density, kg/m3
+T
+Temperature, ◦C
+U
+Flow Velocity, m/s
+V
+Velocity, m/s
+W
+Heat Sink Channel Width, m
+I.
+Introduction
+In electric aircraft, temperature limits are not only a major concern in component design, but the
+dissipation of heat is spread across the aircraft. Batteries, power buses, motors, and inverters all carry
+a thermal load.1 A major challenge in using power electronics for aircraft propulsion is maintaining safe
+operating temperatures without adding excess weight and drag associated with many thermal management
+∗Aerospace Engineer, Propulsion Systems Analysis Branch, sydney.l.schnulo@nasa.gov, and AIAA Member.
+†Aerospace Engineer, Propulsion Systems Analysis Branch, jeﬀrey.c.chin@nasa.gov, and AIAA Member.
+‡Aerospace Engineer, Vantage Partners, andrew.d.smith-1@nasa.gov, and AIAA Member.
+§Aeronautical Engineer, Joby Aviation, arthur.dubois@jobyaviation.com, AIAA Member.
+1 of 14
+American Institute of Aeronautics and Astronautics
+
+methods, such as implementation of an active cooling loop or external heat sinks.
+Traditional internal
+combustion engines may produce much more heat than electric components, but this waste heat is expelled
+through the exhaust. Many unique power electronic cooling architectures have been explored to minimize the
+negative impact of adding means of cooling.2 The cooling method explored in this paper involves allowing
+ﬂow to pass through the X-57 wingtip nacelle of the cruise propulsion system to passively cool the motor
+and inverters in series.
+A.
+Background
+NASA is collaborating with multiple industry partners through the Scalable Convergent Electric Propulsion
+Technology Operations Research (SCEPTOR) program to develop a new generation of aircraft which leverage
+propulsion airframe integration and boundary layer interaction to improve the overall energy consumption
+and aircraft weight over conventional internal combustion engines. The research testbed, shown in ﬁgure 1,
+has become the ﬁrst aircraft in 10 years to be given a NASA X-plane designation: the Maxwell X-57. The
+Figure 1: NASA’s Scalable Convergent Electric Propulsion Technology Operations Research (SCEPTOR)
+ﬁnal fully electric X-57 aircraft concept with distributed propulsion.
+project succeeds and is informed by previous NASA distributed electric propulsion (DEP) research endeavors
+including HEIST and LEAPTECH.3 The plane is being developed in progressively complex modiﬁcations,
+or mods. Mod I is the baseline: a stock Tecnam P2006T. The ﬁnal design, Mod IV, is the Tecnam plane
+outﬁtted with a high aspect ratio wing and batteries in the fuselage. Six small high lift motors span the
+leading edge of each high aspect ratio wing to enable a 2.5 times reduction in wing area and are ultimately
+intended to provide a 4.8 times reduction in energy at cruise over the original Tecnam P2006T aircraft.4
+The high lift motors are only active during takeoﬀand climb; during other segments of the mission, their
+propellers collapse aerodynamically against their nacelles to reduce drag.
+B.
+Wingtip Propulsor Cooling Architecture
+Primary propulsion power is derived from two larger cruise propulsors mounted to the aircraft wingtips. The
+nacelle ingests air which cools the outrunner permanent magnet motors through a radial heat sink placed on
+the inner radius of the stator.5 Arthur Dubois and Robert Christie completed the motor heat sink design in
+previous work.2 The geometry of the nacelle ﬂow path is shown in ﬁgure 2.
+2 of 14
+American Institute of Aeronautics and Astronautics
+
+Figure 2: Free stream air ﬂows through the wingtip nacelle, ﬁrst through the motor, then it is ducted
+through the heat sink where it leaves the nacelle through the exhaust hole. It is important to note that there
+is another duct and inverter ﬁlling the other half of the nacelle.
+The ﬂow exhausted from the motor is then directed through the ﬁnned heat sink that is installed on the
+motor inverter chip. Flow exits through the exhaust hole. There are two inverters for each cruise motor, so
+the second inverter/heat sink/duct conﬁguration is mirrored over the horizontal center line of ﬁgure 2. This
+discussion details the methods used to ensure adequate cooling to the inverters, as well as considerations for
+the second modiﬁcation of the design.
+II.
+Inverter Heat Sink Optimization and Analysis
+Each six phase cruise motor is driven by a pair of custom 3-phase inverters developed by Joby Aviation.
+The inverters are located mid-nacelle, and have no dedicated supply of cooling air. Because of their relatively
+high heat tolerance, the inverter ﬁn row may be cooled by exhaust air from the motor heat sink annulus.
+Nacelle conﬁgurations with dedicated cooling inlets were explored, but rejected.5 The most stressful inverter
+thermal conditions occur during the climb phase of ﬂight. Each inverter must dissipate no less than 1KW
+without exceeding a temperature of 150◦C, while using air that has already been heated by the motor as
+a cooling ﬂuid. To take full advantage of the temperature gradient between the motor exhaust and the
+inverter, the inverter is outﬁtted with a traditional parallel plate heat sink, shown in ﬁgure 3.
+Figure 3: Maxwell X-57 wingtip motor inverter heat sink design.
+The most challenging aspect of designing the inverter heat sink is the need to balance a high heat exchange
+density with low ﬂow resistance. Any signiﬁcant ﬂow restrictions through the inverter have a cascading eﬀect
+resulting in lower ﬂow rates, and thus higher exhaust temperatures from the motor. This makes it more
+likely that both the motor and inverter assemblies will overheat. Through the design this was taken into
+account, and the ﬁnal ﬂow ﬁeld with the ﬂow restrictions of the heat sinks is shown in ﬁgure 2.
+3 of 14
+American Institute of Aeronautics and Astronautics
+
+A.
+Fin Row Analysis
+The X57 cruise motor controller is cooled by a row of aluminum ﬁns immersed in air that has been pre-heated
+by the cruise motor. The decision to cascade air from the motor to controllers reduces the induced drag
+from the cruise nacelle cooling. Unfortunately, it also complicates thermal performance studies of the cruise
+controllers. A channel ﬂow model was used to estimate controller heat sink performance. Ground testing by
+Joby Aviation has already established an upper limit for available cooling air rates and temperature from
+the X57 motor. Table 1 gives the heat sink channel dimensions.
+Table 1: Inverter heat sink channel dimensions.
+Channel Width (m)
+0.002
+Channel Height (m)
+0.043
+Channel Length (m)
+0.135
+Fin Thickness (m)
+0.002
+Number of Channels
+59
+Number of Fins
+60
+A simple continuity check yields an upper limit for the channel Reynolds number, where the greatest
+expected ﬂow rate through the controller heat sink is equal to half of the ﬂow through the motor, as there
+are two inverters per motor:
+Uchannel =
+Umotor
+2 ∗Nchan ∗Achan
+(1)
+Reynolds number can then be established using average channel velocity and dimensions. Having es-
+tablished a ﬂow rate and regime for the controller heat sink, a steady state operating temperature can be
+resolved from an internal heat transfer correlation with the given inlet conditions.
+˙Qconvection = h ∗Achannel ∗(Tchannel −Tmotorexhaust)
+(2)
+To ﬁnd the convective heat transfer coeﬃcient, Nusselt number is calculated.6
+h = Nu ∗k
+Dh
+(3)
+Nu = 8.325 ∗(1 −2.042 ∗AR + 3.085 ∗AR2 −2.477 ∗AR3)
+(4)
+where
+AR = Wchannel
+Hchannel
+(5)
+With a total wetted channel area of 0.685 m2, this yields an estimate for the controller convective heat
+transfer coeﬃcient of 56 W/m2K. Solving for the isothermal heat sink temperature, Tcontroller:
+Tcontroller = Tmotorexhaust + Qcontroller
+h ∗Achannel
+(6)
+yields a controller temperature of 91.3◦C. This is assuming steady state at maximum power, where the
+ﬂow coming out of the motor is characterized to be 60◦C. In addition to this low ﬁdelity analysis, high
+ﬁdelity thermal analysis performed in StarCCM showed a maximum temperature of 97◦C, resulting in a 6
+percent error between the models.
+4 of 14
+American Institute of Aeronautics and Astronautics
+
+Figure 4: High ﬁdelity steady state analysis done by Joby Aviation in StarCCM yields a max temperature
+of 97◦C.
+B.
+Heat Sink Geometry Design
+In the ﬁrst iteration of the heat sink, the ﬁn tips remained a constant height across the length, as the bottom
+of the heat sink created a sunk in contour to conform to the geometry of the inverter chip. The original heat
+sink design installed on the inverter is shown in ﬁgure 5
+Figure 5: The original heat sink design featured ﬁns that were ﬂat across the top surfaces, while the bottom
+curved to stay aligned with the inverter geometry.
+The question of how this expanding ﬂow area as air travels through the heat sink geometry would aﬀect
+heat transfer prompted a high ﬁdelity analysis.
+CFD of a single ﬂow channel, performed in COMSOL
+Multiphysics, reveal a recirculation zone where inverter waste heat would not be rejected as eﬀectively. This
+analysis can be seen in ﬁgure 6(a).
+5 of 14
+American Institute of Aeronautics and Astronautics
+
+(a) Original ﬁn gap design.
+(b) Final ﬁn gap design.
+Figure 6: CFD of the original heat sink (a) single ﬁn row channel shows a recirculation zone (blue) as the
+bottom dips to keep in contact with the inverter. When the bottom contour is duplicated at the top of the
+heat sink ﬁns, the ﬂow through the heat sink is more even (b).
+To mitigate this concern, the contoured ﬁn tips that are presented in ﬁgure 3 are implemented. This
+geometry allows even ﬂow through the heat sink (ﬁgure 6(b)) due to ﬁn height and therefore ﬂow area
+remaining constant, ensuring optimal heat transfer.
+III.
+Directing the Flow from the Motor Exhaust to the Heat Sinks
+In order to maximize the ﬂow rate through the inverter heat sink, the ﬂow out of the available motor
+annulus area is ducted and forced through the two heat sinks on either side of the motor. If the ducting is
+not present, then ﬂow will be inclined to avoid the resistance that the heat sink introduces. Due to necessary
+structural bulkheads aft of the motor and on the inboard side of the cruise nacelle, a ﬂow obstruction was
+unavoidable. The duct geometry and expected ﬂow ﬁeld are shown in ﬁgure 7 Multiple duct designs were
+studied to mitigate ﬂow losses and asymmetry at the front face of the heat sink.
+Figure 7: Inverter inlet duct in context (left), COMSOL result with ﬂow obstruction (middle), duct solid
+geometry with structural cutout (right)
+To minimize ﬂow recirculation past the structural cutout, two designs were compared against a baseline
+duct without any structural interference (ﬁgure 8). The ﬁrst design contained a discrete cutout, while the
+alternate design creates a gradual ramping path with the intention of reducing recirculation behind the
+cutout. It was found that the ramp did not improve ﬂow, and actually reduced the edge speed further.
+6 of 14
+American Institute of Aeronautics and Astronautics
+
+Figure 8: COMSOL studies (bottom) of diﬀerent geometries (top) with respect to structural constraints.
+As a second study, ﬂow vanes were explored to redirect air displaced by the bulkhead cutouts, again
+with the intention to minimize the ﬂow velocity mismatch at the face of the heat sink. Various baﬄing
+conﬁgurations were explored, varying the number, size and angle of the vanes to partially redirect the ﬂow
+from fast regions to slower regions blocked by structural members. Each new design was analyzed in a coarse
+meshed COMSOL CFD to rapidly characterize each conﬁguration, as shown in ﬁgure 9.
+Figure 9: Flow-evening COMSOL studies with added turning vanes in the ducts.
+It was concluded that fairly even ﬂow could be attained with a single turning vane in the center of the
+duct. Looking into the ﬂow, displaced ﬂow is redirected back toward the right edge of the duct, while the
+high speed air on the left side of the vane is expanded to reduce speed. Regardless of the blockage, the
+ﬂow gradient is primarily due to the left side of the duct drawing in air from a larger segment of the motor
+annulus circumference.
+7 of 14
+American Institute of Aeronautics and Astronautics
+
+IV.
+Conduction Analysis to Structure
+Beyond the thermal analysis of the motor and inverter system, calculations were performed to ensure
+heat spread to the nacelle composites did not surpass the thermal limits of the resins. Heat is transferred to
+the composite structure through two mechanisms: conduction through the mounting structure, or convection
+through the internal airﬂow path. Both scenarios are found to be within composite resin temperature limits
+of 74◦C for the worst-case steady-state scenario condition of maximum power during takeoﬀ. Structural
+temperatures would be even lower if the analyses were repeated based on transient conditions, since structures
+would slowly approach the air temperature, and the exposure to the hot air would only be momentary until
+the plane climbs into cooler air.
+Steady state CFD was performed in StarCCM to ﬁrst examine the convection heat scenario. Results show
+internal air temperatures reaching a maximum of 70◦C at the motor structural bulkhead and 72◦C from
+the inverter heat sink exhaust. This is assuming hot day (49◦C) conditions at Armstrong Flight Research
+Center. These temperatures serve as an upper bound for the composite temperature. This analysis provides
+extra conservatisms by not factoring in the heat capacity of the composites, and heat spreading though the
+skin that would occur. The uneven temperature proﬁle can be attributed to the asymmetry between the
+inboard and outboard geometry, the nacelle mounting structure reduces airﬂow causing acceptable hot spots.
+The design provides opportunity for even greater temperature margin by further conﬁning the air within
+additional ducting at the bulkhead and aft of the inverter. This would restrict the warmest air from ever
+(even momentarily) impinging on the composites.
+A second set of analyses were performed by GRC to model the heat conducted from the motor stator
+coils, inwards through the internal mounting structure, then back outwards towards the composite nacelle
+structure. This heat path was shown to be insigniﬁcant. The long narrow path does not lend itself to eﬃcient
+conduction, and the temperature drop in the bulkhead alone is suﬃcient to show the temperature drop across
+the entire system to be much lower than temperatures seen through the convective mechanism examined
+above. Figure 10 shows a COMSOL FEA analysis showing conduction from an overly conservative internal
+temperature to a negligible outer temperature that will be in direct contact with the composite structure.
+Figure 10: The purple motor structure (Left) does not directly touch the nacelle. Conduction requires heat
+to travel from the outer perimeter, inward to the middle, through fasteners, and back outwards through
+the bulkhead. (Right) Heat conduction from the motor to the bulkhead to the outer composite structure.
+Assumes 15W/m2-K convection across bulkhead and 150W/m2-K outside edge convection coeﬃcient.
+V.
+Modiﬁcation II Geometry Discussion
+The SCEPTOR technologies are being demonstrated in a series of modiﬁcations, or Mods. In Mod I,
+the original Tecnam 2006T aircraft was instrumented and ﬂown as a baseline. This is the only fuel burning
+Mod. Mod II will have the original Tecnam airframe with the Rotax 912S3 piston engines replaced by Joby
+cruise motors and inverters. The motors will be driven by batteries in the fuselage. In Mod III, the high
+aspect ratio wing will be added, equipped with high lift nacelles. The cruise motors will operate from the
+wing tips. Finally, Mod IV will operate as described in previous sections. It is important to understand
+8 of 14
+American Institute of Aeronautics and Astronautics
+
+the diﬀerence between the Mod II and Mod IV cruise nacelles for the purpose of this work, as the subtle
+geometry diﬀerences have an eﬀect on the heat transfer occurring in both the motor and the inverter.
+A.
+Mod II Baﬄing Study
+In the second modiﬁcation (Mod II) of the X-57 vehicle, the Tecnam P2006T piston engines are replaced
+with the cruise motors. Mod II serves as the electric Tecnam baseline and allows for the validation of electric
+motors, batteries, and instrumentation to inform the later modiﬁcations. For the implementation of this
+conﬁguration, cowling is placed around the motor, as shown in ﬁgure 11.
+Figure 11: Cruise motor with Mod II cowling.
+The motor is surrounded by cowling which allows a 3/8 inch gap for ﬂow over the motor on the top
+half and a rapid increase in area on the bottom half. This is cause for concern as it was found that 14
+percent of the motor cooling occurs radially through the nacelle skin to the environment with a convective
+heat transfer coeﬃcient of 120 W/m2K in the Mod IV conﬁguration where the motor is directly exposed
+to the ambient air.5 To evaluate this concern, low ﬁdelity calculations yield the thermal boundary layer
+thickness over the length of the motor as well as the eﬀective convective heat transfer coeﬃcient on both
+the top and bottom motor surfaces. If the boundary layers do not interact and the heat transfer coeﬃcient
+is comparable to the Mod IV value, the motor will still be able to dissipate 14 percent of its heat through
+the motor skin. Because ﬂow is turbulent, the thickness of the thermal boundary layer is comparable to the
+velocity boundary layer thickness.6 The velocity and thermal boundary layer thickness over the motor ﬂow
+are found using equations 7 and 8 respectively.
+δ
+Lmotor
+= 0.382 ∗(
+ν
+U ∗Lmotor
+)1/5
+(7)
+δt = δ ∗Pr−0.33
+(8)
+As the ﬂow moves across the motor surface, it is important that the boundary layer thickness does not
+grow to half of the gap thickness. If it does grow to larger than half of the gap thickness, then the boundary
+layer will begin to interact with the boundary layer that exists on the inner lip of the cowling. This interaction
+will hinder heat transfer with respect to the Mod IV conﬁguration where the motor is exposed to free air.
+Figure 12 shows the results of the analysis along the length of the motor.
+9 of 14
+American Institute of Aeronautics and Astronautics
+
+Figure 12: Thermal boundary layer low ﬁdelity analysis results.
+The gap center line shown is the mid line of the 3/8 inch gap. It is apparent that the boundary layers
+will not begin to interact along the length of the motor, so the convective heat transfer will occur at the
+same rate as when the motor is exposed to free stream air. To verify this, the convective heat transfer
+coeﬃcient across the motor is calculated. Analysis of the free stream motor case showed an average heat
+transfer coeﬃcient of 120 W/m2K.5 Equation 9 provides the heat transfer coeﬃcient over the length of the
+motor.
+h = Nu ∗kair
+Lmotor
+(9)
+In order to calculate the convective heat transfer coeﬃcient, Nusselt number must be evaluated. Nusselt
+number is found using equation 10.6
+Nu = 0.296 ∗Re ∗Pr1/3
+(10)
+The average heat transfer coeﬃcient along the length of the motor is found to be roughly 133 W/m2K
+which corroborates the boundary layer thickness conclusion that heat transfer will take place with the cowling
+in the same manner as the free stream scenario. The heat transfer coeﬃcient across the length of the motor
+is seen in ﬁgure 13(a).
+(a) Constant 3/8” gap.
+(b) Expanding gap.
+Figure 13: Convective heat transfer coeﬃcient across the motor length where there is a constant 3/8” gap
+between the baﬄing and the motor skin (a) and where the gap height is expanding across the motor length
+(b) is 133 W/m2K and 45 W/m2K respectively.
+10 of 14
+American Institute of Aeronautics and Astronautics
+
+It is important to note that the results shown in ﬁgure 13(a) assumed a constant 3/8 inch gap, and
+therefore steady velocity, over the motor. This is the case for the top surface of the motor. In the bottom
+surface however, the area of the gap expands considerably along the length of the motor. This causes the
+ﬂow to decelerate. Taking this deceleration into consideration, the average heat transfer coeﬃcient decreases
+signiﬁcantly, to about 45 W/m2K (ﬁgure 13(b)). This implies that the bottom of the motor will not receive
+as much cooling as the top. To ensure that this is not the case, it was recommended that baﬄing be added
+to the lower motor to ensure a consistent 3/8” annular gap around the entirety of the motor.
+B.
+Mod II Cooling Analysis Script with Oﬀ-Nominal Cases
+Mod II not only includes outer baﬄing, but the ducts and inverters are placed in a slightly diﬀerent conﬁg-
+uration in which the inverters are seated side-by-side rather than back-to-back, ﬁgure 14, in order to ﬁt into
+the original Tecnam wing.
+Figure 14: Internal ducting for Mod II inverter cooling
+A python script was developed to support thermal analysis of the Mod II conﬁguration and ﬂight condition
+matrix. The steady state thermo-hydraulic model consists of a network of zero dimensional ﬂuid nodes
+connected by ﬂow-resisting elements. For the Mod II study, only major heat sources, heat sinks, and ﬂow
+resistors were modeled, as shown in ﬁgure 15.
+Figure 15: Resistor visualization of the heat transfer circuit modeled in python.
+While the X-57 Mod II example is simpliﬁed (merging parallel ﬂow paths through each inverter), the
+script can accommodate ﬂow networks of arbitrary conﬁguration so long as solutions for overall and branch
+ﬂow resistances are included. The input parameters as well as sample inputs are given in table 2.
+11 of 14
+American Institute of Aeronautics and Astronautics
+
+Table 2: Sample Inputs: X-57 Mod II Flight Condition.
+Inlet Dynamic Pressure, (Pa)
+1171
+Density at Altitude (kg/m3)
+1.055
+Cruise Power (kW per Motor)
+72.1
+Inlet Temperature (◦C)
+35
+Motor Dissipated Heat (kW)
+3.605
+Controller Dissipated Heat (kW)
+2.884
+Thermal characterization of the Mod II nacelle ﬂow path assumes a constant convective heat transfer
+coeﬃcient, constant convective surface area, and a range of inlet dynamic pressure that result in cooling
+channel ﬂow rates consistent with the internal convection model. For the purposes of the script, ﬂow is
+idealized (incompressible), as the maximum inlet dynamic pressure for any tested case rarely exceeds 1500
+Pa.7 Additionally, viscous eﬀects in each component are captured by their respective ﬂow coeﬃcients, where
+the total ﬂow rate though the resistor network is:
+U = q(Cfmotor + Cfcontroller)
+(11)
+The generalized ﬂow coeﬃcients are derived from the pressure response of the Darcy Weisbach correlation
+for fully developed ﬂow7 and are assumed to be constant for all inlet dynamic pressures. Entrance and exit
+region eﬀects were not modeled in either component, as the rectangular cooling channels in both the motor
+and controller heat sinks have a suﬃciently long aspect ratio (Dh/L greater than 100). If node pressures
+are desired, residual dynamic pressures can be found by applying continuity to individual resistive elements.
+With steady state ﬂow resolved the motor, controller, and plenum (or node) temperatures can be solved
+be applying the convective heat transfer expression and enthalpy balance across each element. The total
+convective heat transfer coeﬃcient, h, captures the wetted surface area inside the cooling channels in addition
+to the explicitly computed convective heat transfer coeﬃcient per the Dittus-Boelter6 correlation in which
+h = Nu ∗k
+Dh
+(12)
+and
+Nu = 0.023 ∗Re4/5 ∗Pr2/5
+(13)
+Because of the narrow range of tested ﬂight conditions, an average convective heat transfer coeﬃcient is
+computed for each component; in eﬀect, creating a linearized hydraulic model. Because the accuracy of the
+thermal performance script depends on good characterization of the major hydraulic resistive elements in
+the cruise nacelle (as well as convective heat sources and sinks) veriﬁed test data is critical to estimating real-
+world thermal performance of the Mod II cruise assembly. Without such characterization, it is diﬃcult to
+compare thermal performance between the various X-57 conﬁgurations. However, even without high ﬁdelity
+results, the steady state thermal performance script can be useful when comparing diﬀerent ﬂight conditions
+for one conﬁguration. Applied to three cruise states of the X-57 mod II (slightly varying air speed, power
+and altitude), the script resolves each condition’s relative thermal performance, as shown in ﬁgure 16. Test
+ID 3 corresponds to the max takeoﬀpower just after liftoﬀ. Test ID 11 and 13 correspond to maximum
+climb rates, using the highest motor power and a more typical motor power, respectively.
+12 of 14
+American Institute of Aeronautics and Astronautics
+
+Figure 16: Mod II python test script outputs (top) and inputs (bottom)
+Coupling between the controller and motor states is apparent when comparing test IDs 3 and 11: for only
+a 15 knot increase in air speed, the motor temperature drops 12.5◦C, while the controller falls nearly 30◦C.
+The decreased temperature of the air leaving the motor provides a higher temperature gradient, improving
+the eﬀectiveness of the downstream controller heat sink. This python script allows the user to run many
+diﬀerent ﬂight conditions in small amounts of time to predict thermal performance.
+VI.
+Conclusion
+Future work will rely on test data to better characterize the ﬂow characteristics through the nacelle to
+improve overall model ﬁdelity, especially of the Mod II script. Many of the ﬂow correlations and coeﬃcients
+are assumed based on CFD analysis and need to be veriﬁed through testing to fully validate model accu-
+racy. Additionally, as the design of the wingtip progresses, other thermal concerns may occur to warrant
+further thermal calculations. One example is that instrumentation and controls will be placed aft of the
+inverter. Thermal considerations will play a role in both protecting the equipment from operating above its
+temperature limit and ensuring that it is positioned in a way to allow adequate ﬂow through the system.
+By performing steady state analysis of the methods used to cool the power electronics of the wingtip
+propulsor, it has been ensured that the components will not reach their temperature limit in the SCEPTOR
+X-57 ﬂight proﬁle. For the most part, steady state analysis was performed at the highest power operating
+point. The steady state temperatures reached were below the temperature limit of the motor and inverter.
+This is conservative because in reality, the components will not be running at these high power draws long
+enough to reach steady state. The results of the thermal analyses presented indicate safe performance of the
+SCEPTOR Maxwell X-57 Aircraft.
+13 of 14
+American Institute of Aeronautics and Astronautics
+
+Acknowledgments
+The authors would like to thank all involved in the X-57 Performance and Sizing IPT, as well as the
+Power and Controls IPT for their input and guidance on the thermal design of the wingtip nacelles and
+related subsystems. External contributions from ESAero and Joby Aviation were also invaluable.
+References
+1Chin, J., Schnulo, S., and Smith, A., “Transient Thermal Analyses of Passive Systems on SCEPTOR X-57,” June 2017.
+2Dubois, A., van der Geest, M., Bevirt, J., Christie, R., Borer, N. K., and Clarke, S. C., “Design of an Electric Propulsion
+System for SCEPTOR’s Outboard Nacelle,” 16th AIAA Aviation Technology, Integration, and Operations Conference, AIAA
+Aviation, American Institute of Aeronautics and Astronautics, jun 2016.
+3Papathakis, Kurt, K. K. L. Y. C. S. and Ginn, S., “Design and Development of a 200-kW Turbo-electric Distributed
+Propulsion Testbed,” June 2016.
+4Borer, N. K., Patterson, M. D., Viken, J. K., Moore, M. D., Bevirt, J., Stoll, A. M., and Gibson, A. R., “Design and
+Performance of the NASA SCEPTOR Distributed Electric Propulsion Flight Demonstrator,” 16th AIAA Aviation Technology,
+Integration, and Operations Conference, AIAA Aviation, American Institute of Aeronautics and Astronautics, jun 2016.
+5Christie, Robert, D. A. and Derlaga, J., “Design of an Electric Propulsion System for SCEPTOR,” 16th AIAA Aviation
+Technology, Integration, and Operations Conference, AIAA Aviation, American Institute of Aeronautics and Astronautics, jun
+2016.
+6Incropera, F. and DeWitt, D., Fundamentals of heat and mass transfer, J. Wiley, 2002.
+7White, F. M., Fluid Mechanics, McGraw Hill, 1979.
+14 of 14
+American Institute of Aeronautics and Astronautics

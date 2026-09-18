@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compliance Check</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;650&family=IBM+Plex+Serif:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: #F6F3EC; --paper-2: #EFEBDF; --ink: #1E2430; --ink-soft: #3A4152;
+    --accent: #2C5C99; --accent-ink: #FFFFFF; --accent-2: #C1791E;
+    --line: #DAD4C4; --muted: #767261; --card: #FFFFFF; --good: #3A7D4F; --err: #B54A3F;
+    --shadow: 0 1px 2px rgba(30, 36, 48, 0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #12161D; --paper-2: #181D26; --ink: #E7E4DA; --ink-soft: #C7C4B8;
+      --accent: #7CAAE8; --accent-ink: #0E1116; --accent-2: #E0A94D;
+      --line: #2B323F; --muted: #8B92A3; --card: #171B23; --good: #5FB87B; --err: #E0796A;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4);
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: "IBM Plex Sans", system-ui, sans-serif; min-height: 100vh; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 40px 20px 80px; }
+
+  header { padding-bottom: 18px; margin-bottom: 26px; border-bottom: 1px solid var(--line); }
+  header a { color: var(--muted); font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; text-decoration: none; }
+  header h1 { font-size: 1.4rem; font-weight: 650; margin: 10px 0 6px; letter-spacing: -0.01em; }
+  header p { margin: 0; color: var(--muted); font-size: 0.85rem; line-height: 1.5; max-width: 62ch; }
+
+  .form-card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); padding: 18px; margin-bottom: 8px; }
+  label { display: block; font-size: 0.78rem; font-weight: 500; color: var(--muted); margin-bottom: 8px; }
+  textarea {
+    width: 100%; min-height: 120px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 7px;
+    background: var(--paper); color: var(--ink); font-family: "IBM Plex Serif", Georgia, serif; font-size: 0.92rem;
+    line-height: 1.55; resize: vertical;
+  }
+  textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .actions { display: flex; gap: 10px; margin-top: 12px; align-items: center; }
+  button {
+    font: inherit; font-size: 0.85rem; font-weight: 500; padding: 9px 18px; border-radius: 7px; border: none;
+    cursor: pointer; background: var(--accent); color: var(--accent-ink);
+  }
+  button:disabled { opacity: 0.5; cursor: default; }
+  button.ghost { background: none; border: 1px solid var(--line); color: var(--ink-soft); }
+  .cost-note { font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; color: var(--muted); margin: 10px 2px 0; }
+
+  .flow { display: none; flex-direction: column; margin-top: 28px; }
+  .flow.active { display: flex; }
+  .step { display: flex; gap: 14px; }
+  .step-rail { display: flex; flex-direction: column; align-items: center; flex: 0 0 auto; }
+  .step-dot {
+    width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; font-weight: 500; flex: 0 0 auto;
+    background: var(--paper-2); color: var(--muted); border: 1.5px solid var(--line); transition: all 0.2s;
+  }
+  .step-dot.busy { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); animation: pulse 1.2s ease-in-out infinite; }
+  .step-dot.done { background: var(--good); color: #fff; border-color: var(--good); }
+  .step-dot.error { background: var(--err); color: #fff; border-color: var(--err); }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+  .step-line { width: 2px; flex: 1; background: var(--line); margin: 2px 0; min-height: 18px; }
+  .step-body { flex: 1; min-width: 0; padding-bottom: 26px; }
+
+  .block { background: var(--card); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); overflow: hidden; }
+  .block-label { font-family: "IBM Plex Mono", monospace; font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding: 10px 14px 0; }
+  .step-title { font-size: 0.95rem; font-weight: 600; margin: 4px 14px 0; }
+  .step-status { font-family: "IBM Plex Mono", monospace; font-size: 0.74rem; color: var(--muted); padding: 4px 14px 10px; }
+  .step-status.error-text { color: var(--err); }
+  .content-text { font-family: "IBM Plex Serif", Georgia, serif; font-size: 0.87rem; line-height: 1.6; padding: 0 14px 14px; white-space: pre-wrap; max-width: 72ch; }
+
+  .markdown-out { font-family: "IBM Plex Serif", Georgia, serif; font-size: 0.87rem; line-height: 1.65; padding: 4px 14px 16px; max-width: 74ch; }
+  .markdown-out h2 { font-family: "IBM Plex Sans", sans-serif; font-size: 1.02rem; font-weight: 650; margin: 18px 0 8px; color: var(--accent); }
+  .markdown-out h3 { font-family: "IBM Plex Sans", sans-serif; font-size: 0.92rem; font-weight: 600; margin: 14px 0 6px; }
+  .markdown-out strong { color: var(--ink); font-weight: 600; }
+  .markdown-out hr { border: none; border-top: 1px solid var(--line); margin: 14px 0; }
+  .markdown-out table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.82rem; }
+  .markdown-out th, .markdown-out td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+  .markdown-out th { background: var(--paper-2); font-family: "IBM Plex Sans", sans-serif; font-weight: 600; }
+  .markdown-out code { font-family: "IBM Plex Mono", monospace; background: var(--paper-2); padding: 1px 4px; border-radius: 3px; font-size: 0.85em; }
+  .markdown-out .overflow-x { overflow-x: auto; }
+
+  @media (max-width: 640px) {
+    .step { gap: 10px; }
+    .step-dot { width: 22px; height: 22px; font-size: 0.62rem; }
+    .content-text, .markdown-out { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="index.html">&larr; back</a>
+    <h1>Compliance Check</h1>
+    <p>Describe an eVTOL electric propulsion design. This runs the real pipeline &mdash; Stage 1 checks it against 9 EASA certification documents, Stage 2 proposes fixes for anything non-compliant. Live, not pre-computed.</p>
+  </header>
+
+  <div class="form-card">
+    <label for="design-input">Design description</label>
+    <textarea id="design-input">Our aircraft uses 8 electric motors in a distributed lift configuration, each independently powered by its own battery pack and motor controller, no shared power bus between motor groups. The flight control computer has triple redundancy, but all three units draw power from a single 28V DC bus. Motors are liquid-cooled with one shared coolant loop across all 8 units.</textarea>
+    <div class="actions">
+      <button id="run-btn">Run compliance check</button>
+      <button id="clear-btn" class="ghost" type="button">Clear</button>
+    </div>
+    <p class="cost-note">Real API calls, real cost (~$0.05-0.10 per run) &mdash; takes 1-3 minutes, both stages read the source documents in full.</p>
+  </div>
+
+  <div class="flow" id="flow"></div>
+</div>
+
+<script>
+  const STEPS = [
+    { id: "s1hyde", title: "Stage 1 &mdash; HyDE framing", api: "/api/stage1-hyde" },
+    { id: "s1main", title: "Stage 1 &mdash; compliance check", api: "/api/stage1-main" },
+    { id: "s2hyde", title: "Stage 2 &mdash; HyDE framing", api: "/api/stage2-hyde" },
+    { id: "s2main", title: "Stage 2 &mdash; design fixes", api: "/api/stage2-main" },
+  ];
+
+  function esc(s) {
+    return (s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  function renderMarkdown(md) {
+    if (!md) return "";
+    let html = esc(md);
+    html = html.replace(/^## (.+)$/gm, "<h2>$1</h2>");
+    html = html.replace(/^### (.+)$/gm, "<h3>$1</h3>");
+    html = html.replace(/^---$/gm, "<hr>");
+    html = html.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+    html = html.replace(/`([^`]+)`/g, "<code>$1</code>");
+    const lines = html.split("\n");
+    let out = [], i = 0;
+    while (i < lines.length) {
+      if (lines[i].trim().startsWith("|") && lines[i + 1] && /^\|?[\s:|-]+\|?$/.test(lines[i + 1].trim())) {
+        let tbl = ['<div class="overflow-x"><table>'];
+        const head = lines[i].trim().replace(/^\||\|$/g, "").split("|").map(c => c.trim());
+        tbl.push("<tr>" + head.map(c => `<th>${c}</th>`).join("") + "</tr>");
+        i += 2;
+        while (i < lines.length && lines[i].trim().startsWith("|")) {
+          const cells = lines[i].trim().replace(/^\||\|$/g, "").split("|").map(c => c.trim());
+          tbl.push("<tr>" + cells.map(c => `<td>${c}</td>`).join("") + "</tr>");
+          i++;
+        }
+        tbl.push("</table></div>");
+        out.push(tbl.join(""));
+        continue;
+      }
+      out.push(lines[i]);
+      i++;
+    }
+    html = out.join("\n");
+    html = html.split(/\n\n+/).map(p => /^<(h2|h3|hr|div)/.test(p.trim()) ? p : `<p>${p.trim().replace(/\n/g, "<br>")}</p>`).join("\n");
+    return html;
+  }
+
+  function buildFlowSkeleton() {
+    const flow = document.getElementById("flow");
+    flow.innerHTML = STEPS.map((s, idx) => `
+      <div class="step">
+        <div class="step-rail">
+          <div class="step-dot" id="dot-${s.id}">${idx + 1}</div>
+          ${idx < STEPS.length - 1 ? '<div class="step-line"></div>' : ""}
+        </div>
+        <div class="step-body">
+          <div class="block">
+            <div class="block-label">Step ${idx + 1}</div>
+            <div class="step-title">${s.title}</div>
+            <div class="step-status" id="status-${s.id}">Waiting&hellip;</div>
+            <div id="body-${s.id}"></div>
+          </div>
+        </div>
+      </div>`).join("");
+    flow.classList.add("active");
+  }
+
+  function setStep(id, state, statusText) {
+    const dot = document.getElementById(`dot-${id}`);
+    const status = document.getElementById(`status-${id}`);
+    dot.classList.remove("busy", "done", "error");
+    if (state) dot.classList.add(state);
+    if (state === "done") dot.textContent = "✓";
+    if (state === "error") dot.textContent = "!";
+    status.textContent = statusText;
+    status.classList.toggle("error-text", state === "error");
+  }
+
+  async function callApi(url, payload) {
+    const resp = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const data = await resp.json();
+    if (!resp.ok) throw new Error(data.error || `HTTP ${resp.status}`);
+    return data;
+  }
+
+  async function run() {
+    const design = document.getElementById("design-input").value.trim();
+    if (!design) return;
+    const btn = document.getElementById("run-btn");
+    btn.disabled = true;
+    buildFlowSkeleton();
+
+    try {
+      setStep("s1hyde", "busy", "Generating hypothetical regulatory framing…");
+      const h1 = await callApi("/api/stage1-hyde", { design });
+      document.getElementById("body-s1hyde").innerHTML = `<div class="content-text">${esc(h1.hyde_doc)}</div>`;
+      setStep("s1hyde", "done", `Done — ${h1.usage?.completion_tokens ?? "?"} output tokens`);
+
+      setStep("s1main", "busy", "Reading 9 regulatory documents (876K tokens)… this is the slow step");
+      const s1 = await callApi("/api/stage1-main", { design, hyde_doc: h1.hyde_doc });
+      document.getElementById("body-s1main").innerHTML = `<div class="markdown-out">${renderMarkdown(s1.report)}</div>`;
+      setStep("s1main", "done", `Done — ${s1.usage?.prompt_tokens ?? "?"} input / ${s1.usage?.completion_tokens ?? "?"} output tokens`);
+
+      setStep("s2hyde", "busy", "Generating hypothetical technical framing…");
+      const h2 = await callApi("/api/stage2-hyde", { stage1_report: s1.report });
+      document.getElementById("body-s2hyde").innerHTML = `<div class="content-text">${esc(h2.hyde_doc)}</div>`;
+      setStep("s2hyde", "done", `Done — ${h2.usage?.completion_tokens ?? "?"} output tokens`);
+
+      setStep("s2main", "busy", "Reading regulatory + technical documents… this is the slow step");
+      const s2 = await callApi("/api/stage2-main", { design, stage1_report: s1.report, hyde_doc: h2.hyde_doc });
+      document.getElementById("body-s2main").innerHTML = `<div class="markdown-out">${renderMarkdown(s2.report)}</div>`;
+      setStep("s2main", "done", `Done — ${s2.usage?.prompt_tokens ?? "?"} input / ${s2.usage?.completion_tokens ?? "?"} output tokens`);
+    } catch (err) {
+      const running = STEPS.map(s => s.id).find(id => document.getElementById(`dot-${id}`).classList.contains("busy"));
+      if (running) setStep(running, "error", "Failed: " + err.message);
+    } finally {
+      btn.disabled = false;
+    }
+  }
+
+  document.getElementById("run-btn").addEventListener("click", run);
+  document.getElementById("clear-btn").addEventListener("click", () => {
+    document.getElementById("design-input").value = "";
+    document.getElementById("flow").classList.remove("active");
+  });
+</script>
+</body>
+</html>
